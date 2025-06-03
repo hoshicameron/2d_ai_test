@@ -1,7 +1,7 @@
 # Task ID: 1.3.2
 # Parent Task ID: 1.3
 # Title: Implement AbilitySO and Placeholder Derived Abilities
-# Status: pending
+# Status: completed
 # Dependencies: 1.1.2, 1.1.4
 # Priority: high
 # Estimated Effort: M
@@ -125,5 +125,6 @@ Implement an abstract `AbilitySO.cs` ScriptableObject for common ability propert
 
 # Notes/Questions:
 - The actual execution logic for abilities is not part of these SOs; they are data containers. Logic will be in player states or an ability component.
-- The constructors in derived SOs are a way to set default values for `abilityName`, `description`, etc., which is good practice.
-- Consider if `AbilitySO` should have methods like `Activate(GameObject owner)`. For now, it's kept as a pure data container as per common SO data patterns, with logic handled elsewhere. The plan is not explicit on this.
+- The constructors in derived SOs are used to set default values for `abilityName`, `description`, etc.
+- Kept `AbilitySO` as a pure data container with logic handled by other components.
+- Implementation completed on 2025-06-03. All ability classes have been implemented with proper inheritance and default values.
