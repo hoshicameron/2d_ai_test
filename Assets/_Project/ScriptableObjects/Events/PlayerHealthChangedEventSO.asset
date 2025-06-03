@@ -9,8 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
+  m_Script: {fileID: 11500000, guid: 23efa00040d94ae3b7a24bbc2b2408b5, type: 3}
   m_Name: PlayerHealthChangedEventSO
-  m_EditorClassIdentifier: PetalsOfHope.Runtime:PetalsOfHope.Core.Events:IntEventSO
+  m_EditorClassIdentifier: 
   _developerDescription: 'Raised when the player''s health changes. Payload: current
     health value.'

@@ -9,8 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
+  m_Script: {fileID: 11500000, guid: 067ceacfca4c4729854774b50d7bd614, type: 3}
   m_Name: CameraShakeRequestedEventSO
-  m_EditorClassIdentifier: PetalsOfHope.Runtime:PetalsOfHope.Core.Events:Vector2EventSO
+  m_EditorClassIdentifier: 
   _developerDescription: 'Raised to request a camera shake effect. Payload: x = intensity,
     y = duration.'
