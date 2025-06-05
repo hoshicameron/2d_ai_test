@@ -4,7 +4,9 @@ using PetalsOfHope.Core.Input;
 using PetalsOfHope.Core.StateMachine;
 using PetalsOfHope.Data.Abilities.Types;
 using PetalsOfHope.Data.Player;
+using PetalsOfHope.Editor;
 using PetalsOfHope.Gameplay.Player.States;
+using PetalsOfHope.Utilities;
 using UnityEngine;
 using CoreAnimation = PetalsOfHope.Core.Animation.AnimationController;
 
@@ -16,6 +18,10 @@ namespace PetalsOfHope.Gameplay.Player
     [RequireComponent(typeof(CoreAnimation))]
     public class PlayerController : MonoBehaviour
     {
+        [Header("Health Events")]
+        [Tooltip("Listen to the player dies event.")]
+        [SerializeField] private GameEventSO _playerDiedEventSO;
+        
         [Header("Data Dependencies")]
         [SerializeField] private PlayerStatsSO _stats;
         [SerializeField] private InputReader _inputReader;
@@ -40,7 +46,11 @@ namespace PetalsOfHope.Gameplay.Player
         [SerializeField] private string fallAnimationName = "fall";
         [SerializeField] private string moveAnimationName = "move";
         [SerializeField] private string dashAnimationName = "dash";
+        [SerializeField] private string deathAnimationName = "death";
 
+        [field: SerializeField, ReadOnly]
+        public string CurrentStateName { get; set; } = "None";
+        
         // Properties
         public PlayerStatsSO Stats => _stats;
         public InputReader InputReader => _inputReader;
@@ -58,8 +68,8 @@ namespace PetalsOfHope.Gameplay.Player
         public MovingState MovingState { get; private set; }
         public JumpingState JumpingState { get; private set; }
         public FallingState FallingState { get; private set; }
-
         public DashState DashState { get; private set; }
+        public DeathState DeathState { get; private set; }
 
         private void Awake()
         {
@@ -75,6 +85,7 @@ namespace PetalsOfHope.Gameplay.Player
             JumpingState = new JumpingState(this, StateMachine, jumpAnimationName);
             FallingState = new FallingState(this, StateMachine, fallAnimationName);
             DashState = new DashState(this, StateMachine, dashAnimationName, DashData);
+            DeathState = new DeathState(this, StateMachine, deathAnimationName);
             
         }
 
@@ -101,6 +112,8 @@ namespace PetalsOfHope.Gameplay.Player
                 _inputReader.JumpCancelledEvent.RegisterListener(HandleJumpReleasedInput);
                 _inputReader.DashEvent.RegisterListener(HandleDashInput);
             }
+            
+            _playerDiedEventSO.RegisterListener(HandlePlayerDeath);
         }
 
         private void OnDisable()
@@ -112,6 +125,8 @@ namespace PetalsOfHope.Gameplay.Player
                 _inputReader.JumpCancelledEvent.UnregisterListener(HandleJumpReleasedInput);
                 _inputReader.DashEvent.UnregisterListener(HandleDashInput);
             }
+            
+            _playerDiedEventSO.UnregisterListener(HandlePlayerDeath);
         }
 
         private void Update()
@@ -121,6 +136,12 @@ namespace PetalsOfHope.Gameplay.Player
             if (_dashCooldownTimer > 0f)
             {
                 _dashCooldownTimer -= Time.deltaTime;
+            }
+
+            // Update the current state name for debugging
+            if (StateMachine != null && StateMachine.CurrentState != null)
+            {
+                CurrentStateName = StateMachine.CurrentState.GetType().Name;
             }
         }
 
@@ -163,6 +184,11 @@ namespace PetalsOfHope.Gameplay.Player
             IsDashing = true;
             StateMachine.ChangeState(DashState);
             return true;
+        }
+        
+        private void HandlePlayerDeath()
+        {
+            StateMachine.ChangeState(DeathState);
         }
     }
 }

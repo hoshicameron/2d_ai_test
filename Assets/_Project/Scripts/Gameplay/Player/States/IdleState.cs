@@ -17,6 +17,7 @@ namespace PetalsOfHope.Gameplay.Player.States
 
         public override void Enter()
         {
+            _player.CurrentStateName = _stateMachine.CurrentState.GetType().Name;
             _player.AnimationController.Play(_idleAnimationName);
             
             if (_player.Rigidbody.linearVelocity.x != 0)
