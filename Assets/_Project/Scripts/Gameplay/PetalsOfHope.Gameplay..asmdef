@@ -1,0 +1,17 @@
+{
+    "name": "PetalsOfHope.Gameplay.",
+    "rootNamespace": "",
+    "references": [
+        "GUID:bb71d705545c76744ba2bd04ccc13f15",
+        "GUID:cd5008e71fad33342bf6565e6d6e6a21"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

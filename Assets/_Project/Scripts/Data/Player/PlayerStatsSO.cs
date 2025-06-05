@@ -14,5 +14,9 @@ namespace PetalsOfHope.Data.Player
         [Min(0f)]
         [Tooltip("Force applied to the player when jumping.")]
         public float jumpForce = 10f;
+
+        [Range(0f, 1f)]
+        [Tooltip("How much control the player has in the air (0 = no control, 1 = full control like on ground).")]
+        public float airControlFactor = 0.8f;
     }
 }
