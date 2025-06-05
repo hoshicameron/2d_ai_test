@@ -18,6 +18,7 @@ namespace PetalsOfHope.Gameplay.Player.States
 
         public override void Enter()
         {
+            _player.CurrentStateName = _stateMachine.CurrentState.GetType().Name;
             _player.AnimationController.Play(_jumpAnimationName);
             _player.Rigidbody.linearVelocity = new Vector2(_player.Rigidbody.linearVelocity.x, 0f);
             _player.Rigidbody.AddForce(Vector2.up * _player.Stats.jumpForce, ForceMode2D.Impulse);
