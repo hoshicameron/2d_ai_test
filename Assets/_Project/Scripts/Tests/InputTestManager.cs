@@ -1,8 +1,9 @@
+using PetalsOfHope.Core.Input;
 using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 
-namespace PetalsOfHope.Core.Input.Test
+
+namespace PetalsOfHope.Tests
 {
     public class InputTestManager : MonoBehaviour
     {

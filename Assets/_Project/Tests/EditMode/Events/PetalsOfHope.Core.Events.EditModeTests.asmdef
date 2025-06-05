@@ -1,7 +1,10 @@
 {
-    "name": "PetalsOfHope.Editor",
+    "name": "PetalsOfHope.Core.Events.EditModeTests",
+    "rootNamespace": "",
     "references": [
-        "PetalsOfHope.Runtime"
+        "UnityEngine.TestRunner",
+        "UnityEditor.TestRunner",
+        "PetalsOfHope.Core"
     ],
     "includePlatforms": [
         "Editor"
@@ -12,7 +15,7 @@
     "precompiledReferences": [],
     "autoReferenced": true,
     "defineConstraints": [
-        "UNITY_EDITOR"
+        "UNITY_INCLUDE_TESTS"
     ],
     "versionDefines": [],
     "noEngineReferences": false
