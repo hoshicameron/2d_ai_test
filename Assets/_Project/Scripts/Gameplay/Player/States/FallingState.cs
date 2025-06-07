@@ -24,6 +24,21 @@ namespace PetalsOfHope.Gameplay.Player.States
 
         public override void Update()
         {
+            // Check for wall grab transition
+            if (_player.CanWallGrab())
+            {
+                _stateMachine.ChangeState(_player.WallGrabState);
+                return;
+            }
+
+            // Check for wall jump from falling (coyote wall jump)
+            if (_player.CanWallJump())
+            {
+                _stateMachine.ChangeState(_player.WallJumpState);
+                return;
+            }
+
+            // Handle normal ground landing
             if (_player.IsGrounded)
             {
                 if (Mathf.Abs(_player.MoveInput.x) > Mathf.Epsilon)
