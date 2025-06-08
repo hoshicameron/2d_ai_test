@@ -1,6 +1,7 @@
 using UnityEngine;
 using PetalsOfHope.Data.Player;
 using PetalsOfHope.Core.Events;
+using PetalsOfHope.Interfaces;
 using CoreAnimation = PetalsOfHope.Core.Animation.AnimationController; // Alias
 
 // In Assets/_Project/Scripts/Gameplay/Player/PlayerHealth.cs
@@ -9,7 +10,7 @@ namespace PetalsOfHope.Gameplay.Player
     // It's good practice for health systems to also implement IDamageable if that interface exists (Task 3.3.1)
     // For now, implementing as described in Phase 2.2.5
     // public class PlayerHealth : MonoBehaviour, PetalsOfHope.Interfaces.IDamageable 
-    public class PlayerHealth : MonoBehaviour
+    public class PlayerHealth : MonoBehaviour, IDamageable
     {
         [Header("Data Dependencies")]
         [Tooltip("Player's statistics, including max health.")]
