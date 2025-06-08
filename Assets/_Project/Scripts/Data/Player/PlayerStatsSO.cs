@@ -18,5 +18,7 @@ namespace PetalsOfHope.Data.Player
         [Range(0f, 1f)]
         [Tooltip("How much control the player has in the air (0 = no control, 1 = full control like on ground).")]
         public float airControlFactor = 0.8f;
+
+        public float gravityScale = 1f;
     }
 }

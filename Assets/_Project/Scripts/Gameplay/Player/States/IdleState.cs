@@ -34,6 +34,12 @@ namespace PetalsOfHope.Gameplay.Player.States
 
         public override void Update()
         {
+            if (_player.CanClimb && Mathf.Abs(_player.ClimbInput) > 0f)
+            {
+                _stateMachine.ChangeState(_player.ClimbState);
+                return;
+            }
+            
             if (_player.JumpInputPressed && _player.IsGrounded)
             {
                 _stateMachine.ChangeState(_player.JumpingState);
@@ -50,6 +56,8 @@ namespace PetalsOfHope.Gameplay.Player.States
             {
                 _stateMachine.ChangeState(_player.FallingState);
             }
+            
+            
         }
 
         public override void FixedUpdate()

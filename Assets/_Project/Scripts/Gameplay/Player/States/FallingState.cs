@@ -24,6 +24,13 @@ namespace PetalsOfHope.Gameplay.Player.States
 
         public override void Update()
         {
+            
+            if (_player.CanClimb && Mathf.Abs(_player.ClimbInput) > 0f)
+            {
+                _stateMachine.ChangeState(_player.ClimbState);
+                return;
+            }
+            
             // Check for double jump input
             if (_player.JumpInputPressed && _player.RemainingJumps > 0)
             {
