@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fff76f42eb916bc489b7998524c7a95d, type: 3}
-  m_Name: DefaulWallGrabSO
+  m_Name: DefaulWallGrabAbilitySO
   m_EditorClassIdentifier: 
   abilityName: WallGrab
   icon: {fileID: 0}
@@ -20,6 +20,6 @@ MonoBehaviour:
   wallGrabTime: 0.5
   wallLayer:
     serializedVersion: 2
-    m_Bits: 0
-  wallCheckOffset: {x: 0.5, y: 0}
-  wallCheckSize: {x: 0.1, y: 0.8}
+    m_Bits: 8
+  wallCheckOffset: {x: 0.71, y: 0}
+  wallCheckSize: {x: 0.43, y: 0.8}

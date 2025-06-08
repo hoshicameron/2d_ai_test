@@ -38,6 +38,7 @@ namespace PetalsOfHope.Gameplay.Player
         [SerializeField] private DashSO _dashData;
         [SerializeField] private WallGrabSO _wallGrabData;
         [SerializeField] private WallJumpSO _wallJumpData;
+        [SerializeField] private DoubleJumpSO _doubleJumpData;
         
         
         [Header("Animation")]
@@ -83,6 +84,7 @@ namespace PetalsOfHope.Gameplay.Player
         public CapsuleCollider2D Collider { get; private set; }
         public StateMachine StateMachine { get; private set; }
         public CoreAnimation AnimationController { get; private set; }
+        public int RemainingJumps { get; set; }
         
         public bool IsDashing { get; set; }
         public DashSO DashData => _dashData;
@@ -94,7 +96,8 @@ namespace PetalsOfHope.Gameplay.Player
         public bool IsWallGrabInput => (WallSide == 1 && MoveInput.x > 0.1f) || 
                                        (WallSide == -1 && MoveInput.x < -0.1f);
 
-
+        public int MaxJumps => _doubleJumpData.MaxJumps;
+        public float DoubleJumpForceMultiplier => _doubleJumpData.doubleJumpForceMultiplier;
         #endregion
 
         #region State Instances
@@ -108,6 +111,7 @@ namespace PetalsOfHope.Gameplay.Player
 
         public WallGrabState WallGrabState { get; private set; }
         public WallJumpState WallJumpState { get; private set; }
+        
 
         #endregion
         
@@ -196,6 +200,12 @@ namespace PetalsOfHope.Gameplay.Player
 
             if (!wasGrounded && IsGrounded)
             {
+                // Reset jumps when grounded
+                RemainingJumps = MaxJumps;
+                
+                // Reset jump input flags when landing
+                ResetJumpInputFlags();
+                
                 _playerLandedEventSO?.Raise();
             }
         }
@@ -255,35 +265,7 @@ namespace PetalsOfHope.Gameplay.Player
             WallSide = wallHit.transform.position.x > transform.position.x ? 1 : -1;
         }
         
-        private void OnDrawGizmos()
-        {
-            if (_wallGrabData == null) return;
-            
-            // Draw wall check box
-            Gizmos.color = IsTouchingWall ? Color.green : Color.yellow;
-            Vector2 checkPosition = (Vector2)transform.position + 
-                                 new Vector2(
-                                     _wallGrabData.wallCheckOffset.x * transform.localScale.x, 
-                                     _wallGrabData.wallCheckOffset.y
-                                 );
-            Gizmos.DrawWireCube(checkPosition, _wallGrabData.wallCheckSize);
-            
-            // Draw direction indicator
-            if (IsTouchingWall)
-            {
-                Gizmos.color = Color.red;
-                Vector3 dir = WallSide > 0 ? Vector3.right : Vector3.left;
-                Gizmos.DrawRay(transform.position, dir);
-            }
-            
-            if (_groundCheckPoint != null)
-            {
-                Gizmos.color = Color.cyan;
-                Gizmos.DrawWireSphere(_groundCheckPoint.position, _groundCheckRadius);
-            }
-        }
-
-        public bool CanWallGrab()
+       public bool CanWallGrab()
         {
             if (_wallGrabData == null) return false;
             
@@ -300,6 +282,34 @@ namespace PetalsOfHope.Gameplay.Player
             return (IsTouchingWall || Time.time < LastWallTouchTime + _wallJumpData.coyoteWallTime) && 
                    !IsGrounded && 
                    JumpInputPressed;
+        }
+        
+        private void OnDrawGizmos()
+        {
+            if (_wallGrabData == null) return;
+            
+            // Draw wall check box
+            Gizmos.color = IsTouchingWall ? Color.green : Color.yellow;
+            Vector2 checkPosition = (Vector2)transform.position + 
+                                    new Vector2(
+                                        _wallGrabData.wallCheckOffset.x * transform.localScale.x, 
+                                        _wallGrabData.wallCheckOffset.y
+                                    );
+            Gizmos.DrawWireCube(checkPosition, _wallGrabData.wallCheckSize);
+            
+            // Draw direction indicator
+            if (IsTouchingWall)
+            {
+                Gizmos.color = Color.red;
+                Vector3 dir = WallSide > 0 ? Vector3.right : Vector3.left;
+                Gizmos.DrawRay(transform.position, dir);
+            }
+            
+            if (_groundCheckPoint != null)
+            {
+                Gizmos.color = Color.cyan;
+                Gizmos.DrawWireSphere(_groundCheckPoint.position, _groundCheckRadius);
+            }
         }
     }
 }

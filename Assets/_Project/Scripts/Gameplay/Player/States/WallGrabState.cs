@@ -34,6 +34,7 @@ namespace PetalsOfHope.Gameplay.Player.States
         {
             _player.IsWallSliding = false;
             _player.OnWallGrabEnd?.Invoke();
+            _player.ResetJumpInputFlags();
         }
 
         public override void Update()

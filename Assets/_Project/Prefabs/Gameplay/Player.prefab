@@ -229,6 +229,7 @@ MonoBehaviour:
   _dashData: {fileID: 11400000, guid: b52ff8e9853128347824203ebddc025c, type: 2}
   _wallGrabData: {fileID: 11400000, guid: 3682986883c9f104894f93273f115e77, type: 2}
   _wallJumpData: {fileID: 11400000, guid: f1c91f1de12181c49bf7090dbf7c7fb5, type: 2}
+  _doubleJumpData: {fileID: 11400000, guid: d390d854b2781ff48aba24d6b437932d, type: 2}
   idleAnimationName: Idle
   jumpAnimationName: Jump
   fallAnimationName: Fall

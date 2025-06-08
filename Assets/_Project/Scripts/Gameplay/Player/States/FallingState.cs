@@ -24,7 +24,14 @@ namespace PetalsOfHope.Gameplay.Player.States
 
         public override void Update()
         {
-            // Check for wall grab transition
+            // Check for double jump input
+            if (_player.JumpInputPressed && _player.RemainingJumps > 0)
+            {
+                _stateMachine.ChangeState(_player.JumpingState);
+                return;
+            }
+
+            // Check for wall grab transition (only when falling or at apex)
             if (_player.CanWallGrab())
             {
                 _stateMachine.ChangeState(_player.WallGrabState);
@@ -64,7 +71,7 @@ namespace PetalsOfHope.Gameplay.Player.States
 
         public override void Exit()
         {
-            // Clean up any state-specific logic here when exiting FallingState
+            _player.ResetJumpInputFlags();
         }
         
         private void FlipSprite()
