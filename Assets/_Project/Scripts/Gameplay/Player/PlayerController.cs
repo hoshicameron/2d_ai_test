@@ -39,6 +39,7 @@ namespace PetalsOfHope.Gameplay.Player
         [SerializeField] private WallGrabSO _wallGrabData;
         [SerializeField] private WallJumpSO _wallJumpData;
         [SerializeField] private DoubleJumpSO _doubleJumpData;
+        [SerializeField] private ClimbSO _climbData;
         
         
         [Header("Animation")]
@@ -50,6 +51,9 @@ namespace PetalsOfHope.Gameplay.Player
         [SerializeField] private string wallGrabAnimationName = "WallGrab";
         [SerializeField] private string wallJumpAnimationName = "WallJump";
         [SerializeField] private string deathAnimationName = "Death";
+        [SerializeField] private string climbUpAnimationName = "ClimbUp";
+        [SerializeField] private string climbDownAnimationName = "ClimbDown";
+        [SerializeField] private string climbIdleAnimationName = "ClimbIdle";
 
         [field: SerializeField, ReadOnly] public string CurrentStateName { get; set; } = "None";
 
@@ -58,6 +62,10 @@ namespace PetalsOfHope.Gameplay.Player
         #region Private Variables
 
         private float _dashCooldownTimer;
+        private bool _isTouchingLadder;
+        private Collider2D _currentLadder;
+        private bool _isClimbing;
+        private float _climbInput;
 
         #endregion
         
@@ -98,6 +106,13 @@ namespace PetalsOfHope.Gameplay.Player
 
         public int MaxJumps => _doubleJumpData.MaxJumps;
         public float DoubleJumpForceMultiplier => _doubleJumpData.doubleJumpForceMultiplier;
+        
+        public bool IsTouchingLadder => _isTouchingLadder;
+        public bool IsClimbing => _isClimbing;
+        public bool CanClimb => _isTouchingLadder && Mathf.Abs(_climbInput) > 0.1f;
+        public ClimbSO ClimbData => _climbData;
+        public Collider2D CurrentLadder => _currentLadder;
+        public float ClimbInput => _climbInput;
         #endregion
 
         #region State Instances
@@ -111,6 +126,7 @@ namespace PetalsOfHope.Gameplay.Player
 
         public WallGrabState WallGrabState { get; private set; }
         public WallJumpState WallJumpState { get; private set; }
+        public ClimbState ClimbState { get; private set; }
         
 
         #endregion
@@ -133,7 +149,8 @@ namespace PetalsOfHope.Gameplay.Player
             DeathState = new DeathState(this, StateMachine, deathAnimationName);
             WallGrabState = new WallGrabState(this, StateMachine, wallGrabAnimationName, _wallGrabData);
             WallJumpState = new WallJumpState(this, StateMachine, wallJumpAnimationName, _wallJumpData);
-
+            ClimbState = new ClimbState(this, StateMachine, climbIdleAnimationName, climbDownAnimationName,
+                climbUpAnimationName, _climbData);
         }
 
         private void Start()
@@ -180,11 +197,14 @@ namespace PetalsOfHope.Gameplay.Player
         {
             CheckIfGrounded();
             CheckWallCollision();
+            CheckLadder();
             
             if (_dashCooldownTimer > 0f)
             {
                 _dashCooldownTimer -= Time.deltaTime;
             }
+            
+            UpdateClimbInput(MoveInput);
 
             // Update the current state name for debugging
             if (StateMachine != null && StateMachine.CurrentState != null)
@@ -284,6 +304,27 @@ namespace PetalsOfHope.Gameplay.Player
                    JumpInputPressed;
         }
         
+        private void CheckLadder()
+        {
+            if (_climbData == null) return;
+
+            var hit = Physics2D.OverlapBox(
+                transform.position,
+                _climbData.ladderCheckSize,
+                0f,
+                _climbData.climbableLayer
+            );
+
+            _isTouchingLadder = hit != null;
+            _currentLadder = hit;
+            
+        }
+
+        private void UpdateClimbInput(Vector2 moveInput)
+        {
+            _climbInput = moveInput.y;
+        }
+        
         private void OnDrawGizmos()
         {
             if (_wallGrabData == null) return;
@@ -309,6 +350,12 @@ namespace PetalsOfHope.Gameplay.Player
             {
                 Gizmos.color = Color.cyan;
                 Gizmos.DrawWireSphere(_groundCheckPoint.position, _groundCheckRadius);
+            }
+            
+            if (_climbData != null)
+            {
+                Gizmos.color = _isTouchingLadder ? Color.green : Color.yellow;
+                Gizmos.DrawWireCube(transform.position, _climbData.ladderCheckSize);
             }
         }
     }

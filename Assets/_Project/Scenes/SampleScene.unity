@@ -400,6 +400,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 747051337734881239, guid: 52888f11d23a3df4482ae247ef0c1e46, type: 3}
+      propertyPath: _climbData
+      value: 
+      objectReference: {fileID: 11400000, guid: e59bbaf9c76e5734698627a1bc210c10, type: 2}
     - target: {fileID: 1821344402836837637, guid: 52888f11d23a3df4482ae247ef0c1e46, type: 3}
       propertyPath: m_Name
       value: Player
