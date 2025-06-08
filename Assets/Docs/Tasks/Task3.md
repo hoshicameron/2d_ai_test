@@ -1,7 +1,7 @@
 # Task ID: 3
 # Parent Task ID: None
 # Title: Phase 3: Enemy Systems Implementation
-# Status: pending
+# Status: completed
 # Dependencies: 2 # Core Gameplay Systems (esp. State Machine, AnimationController), 1.3.1 (EnemyStatsSO)
 # Priority: critical
 # Estimated Effort: XL (aggregate of subtasks)

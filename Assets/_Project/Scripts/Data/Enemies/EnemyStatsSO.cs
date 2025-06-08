@@ -22,5 +22,9 @@ namespace PetalsOfHope.Data.Enemies
         [Min(0)]
         [Tooltip("Amount of damage the enemy deals on contact or attack.")]
         public int damage = 10;
+
+        [Min(0f)]
+        [Tooltip("Duration of the death animation in seconds before the enemy is destroyed.")]
+        public float deathAnimationDuration = 1f;
     }
 }
