@@ -20,8 +20,19 @@ namespace PetalsOfHope.Gameplay.Player.States
         {
             _player.CurrentStateName = _stateMachine.CurrentState.GetType().Name;
             _player.AnimationController.Play(_jumpAnimationName);
+            
+            // Calculate jump force (normal jump or double jump)
+            var isDoubleJump = _player.RemainingJumps < _player.MaxJumps;
+            var  jumpForce = isDoubleJump ? _player.Stats.jumpForce * _player.DoubleJumpForceMultiplier 
+                                            : _player.Stats.jumpForce;
+            
+            // Apply jump force
             _player.Rigidbody.linearVelocity = new Vector2(_player.Rigidbody.linearVelocity.x, 0f);
-            _player.Rigidbody.AddForce(Vector2.up * _player.Stats.jumpForce, ForceMode2D.Impulse);
+            _player.Rigidbody.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+            
+            // Consume a jump
+            _player.RemainingJumps--;
+            
             _player.ResetJumpInputFlags();
             _jumpCutoffApplied = false;
         }

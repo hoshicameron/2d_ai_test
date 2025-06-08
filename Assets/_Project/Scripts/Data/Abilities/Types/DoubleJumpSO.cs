@@ -11,6 +11,8 @@ namespace PetalsOfHope.Data.Abilities.Types
         [Tooltip("Additional jump force for the double jump, relative to normal jump or absolute.")]
         public float doubleJumpForceMultiplier = 1.0f;
 
+        public int MaxJumps = 2;
+
         public DoubleJumpSO()
         {
             abilityName = "Double Jump";

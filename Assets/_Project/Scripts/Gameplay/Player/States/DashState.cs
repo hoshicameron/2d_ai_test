@@ -36,6 +36,8 @@ namespace PetalsOfHope.Gameplay.Player.States
             
             // Trigger any dash start events
             _player.OnDashStart?.Invoke();
+            
+            _player.ResetJumpInputFlags();
         }
 
         public override void Exit()

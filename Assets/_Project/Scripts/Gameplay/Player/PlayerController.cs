@@ -18,6 +18,8 @@ namespace PetalsOfHope.Gameplay.Player
     [RequireComponent(typeof(CoreAnimation))]
     public class PlayerController : MonoBehaviour
     {
+        #region Serialized Variables
+
         [Header("Health Events")]
         [Tooltip("Listen to the player dies event.")]
         [SerializeField] private GameEventSO _playerDiedEventSO;
@@ -32,26 +34,46 @@ namespace PetalsOfHope.Gameplay.Player
         [SerializeField] private float _groundCheckRadius = 0.2f;
         [SerializeField] private LayerMask _groundLayer;
         
-        [Header("Dash")]
+        [Header("Abilities Data")]
         [SerializeField] private DashSO _dashData;
-        private float _dashCooldownTimer;
-        public Action OnDashStart;
-        public Action OnDashEnd;
-        public bool IsDashing { get; set; }
-        public DashSO DashData => _dashData;
+        [SerializeField] private WallGrabSO _wallGrabData;
+        [SerializeField] private WallJumpSO _wallJumpData;
+        [SerializeField] private DoubleJumpSO _doubleJumpData;
+        
         
         [Header("Animation")]
-        [SerializeField] private string idleAnimationName = "idle";
-        [SerializeField] private string jumpAnimationName = "jump";
-        [SerializeField] private string fallAnimationName = "fall";
-        [SerializeField] private string moveAnimationName = "move";
-        [SerializeField] private string dashAnimationName = "dash";
-        [SerializeField] private string deathAnimationName = "death";
+        [SerializeField] private string idleAnimationName = "Idle";
+        [SerializeField] private string jumpAnimationName = "Jump";
+        [SerializeField] private string fallAnimationName = "Fall";
+        [SerializeField] private string moveAnimationName = "Move";
+        [SerializeField] private string dashAnimationName = "Dash";
+        [SerializeField] private string wallGrabAnimationName = "WallGrab";
+        [SerializeField] private string wallJumpAnimationName = "WallJump";
+        [SerializeField] private string deathAnimationName = "Death";
 
-        [field: SerializeField, ReadOnly]
-        public string CurrentStateName { get; set; } = "None";
+        [field: SerializeField, ReadOnly] public string CurrentStateName { get; set; } = "None";
+
+        #endregion
+
+        #region Private Variables
+
+        private float _dashCooldownTimer;
+
+        #endregion
         
-        // Properties
+        #region Events
+
+        public Action OnDashStart;
+        public Action OnDashEnd;
+        public Action OnWallGrabEnd;
+        public Action OnWallGrabStart;
+        public Action OnWallJump;
+
+        #endregion
+
+        #region Properties
+
+        
         public PlayerStatsSO Stats => _stats;
         public InputReader InputReader => _inputReader;
         public Vector2 MoveInput { get; private set; }
@@ -62,14 +84,37 @@ namespace PetalsOfHope.Gameplay.Player
         public CapsuleCollider2D Collider { get; private set; }
         public StateMachine StateMachine { get; private set; }
         public CoreAnimation AnimationController { get; private set; }
+        public int RemainingJumps { get; set; }
+        
+        public bool IsDashing { get; set; }
+        public DashSO DashData => _dashData;
+        
+        public bool IsTouchingWall { get; private set; }
+        public bool IsWallSliding { get;  set; }
+        public float LastWallTouchTime { get;  set; }
+        public int WallSide { get;  set; } // -1 for left, 1 for right
+        public bool IsWallGrabInput => (WallSide == 1 && MoveInput.x > 0.1f) || 
+                                       (WallSide == -1 && MoveInput.x < -0.1f);
 
-        // State Instances
+        public int MaxJumps => _doubleJumpData.MaxJumps;
+        public float DoubleJumpForceMultiplier => _doubleJumpData.doubleJumpForceMultiplier;
+        #endregion
+
+        #region State Instances
+
         public IdleState IdleState { get; private set; }
         public MovingState MovingState { get; private set; }
         public JumpingState JumpingState { get; private set; }
         public FallingState FallingState { get; private set; }
         public DashState DashState { get; private set; }
         public DeathState DeathState { get; private set; }
+
+        public WallGrabState WallGrabState { get; private set; }
+        public WallJumpState WallJumpState { get; private set; }
+        
+
+        #endregion
+        
 
         private void Awake()
         {
@@ -86,7 +131,9 @@ namespace PetalsOfHope.Gameplay.Player
             FallingState = new FallingState(this, StateMachine, fallAnimationName);
             DashState = new DashState(this, StateMachine, dashAnimationName, DashData);
             DeathState = new DeathState(this, StateMachine, deathAnimationName);
-            
+            WallGrabState = new WallGrabState(this, StateMachine, wallGrabAnimationName, _wallGrabData);
+            WallJumpState = new WallJumpState(this, StateMachine, wallJumpAnimationName, _wallJumpData);
+
         }
 
         private void Start()
@@ -132,6 +179,7 @@ namespace PetalsOfHope.Gameplay.Player
         private void Update()
         {
             CheckIfGrounded();
+            CheckWallCollision();
             
             if (_dashCooldownTimer > 0f)
             {
@@ -152,6 +200,12 @@ namespace PetalsOfHope.Gameplay.Player
 
             if (!wasGrounded && IsGrounded)
             {
+                // Reset jumps when grounded
+                RemainingJumps = MaxJumps;
+                
+                // Reset jump input flags when landing
+                ResetJumpInputFlags();
+                
                 _playerLandedEventSO?.Raise();
             }
         }
@@ -167,15 +221,6 @@ namespace PetalsOfHope.Gameplay.Player
             JumpInputReleased = false;
         }
 
-        private void OnDrawGizmosSelected()
-        {
-            if (_groundCheckPoint != null)
-            {
-                Gizmos.color = Color.cyan;
-                Gizmos.DrawWireSphere(_groundCheckPoint.position, _groundCheckRadius);
-            }
-        }
-        
         public bool TryStartDash()
         {
             if (_dashCooldownTimer > 0f) return false;
@@ -189,6 +234,82 @@ namespace PetalsOfHope.Gameplay.Player
         private void HandlePlayerDeath()
         {
             StateMachine.ChangeState(DeathState);
+        }
+        
+        private void CheckWallCollision()
+        {
+            if (_wallGrabData == null) return;
+
+            IsTouchingWall = false;
+            
+            // Calculate the check position based on the player's facing direction and offset
+            var checkPosition = (Vector2)transform.position + 
+                                new Vector2(
+                                    _wallGrabData.wallCheckOffset.x * transform.localScale.x, 
+                                    _wallGrabData.wallCheckOffset.y
+                                );
+
+            // Check for wall collision using OverlapBox
+            var wallHit = Physics2D.OverlapBox(
+                checkPosition, 
+                _wallGrabData.wallCheckSize, 
+                0f, 
+                _wallGrabData.wallLayer
+            );
+
+            // Update wall collision status
+            if (wallHit == null) return;
+            IsTouchingWall = true;
+            LastWallTouchTime = Time.time;
+            // Determine wall side based on hit normal or position
+            WallSide = wallHit.transform.position.x > transform.position.x ? 1 : -1;
+        }
+        
+       public bool CanWallGrab()
+        {
+            if (_wallGrabData == null) return false;
+            
+            return IsTouchingWall && 
+                   !IsGrounded && 
+                   IsWallGrabInput && 
+                   Time.time < LastWallTouchTime + _wallGrabData.wallGrabTime;
+        }
+        
+        public bool CanWallJump()
+        {
+            if (_wallJumpData == null) return false;
+            
+            return (IsTouchingWall || Time.time < LastWallTouchTime + _wallJumpData.coyoteWallTime) && 
+                   !IsGrounded && 
+                   JumpInputPressed;
+        }
+        
+        private void OnDrawGizmos()
+        {
+            if (_wallGrabData == null) return;
+            
+            // Draw wall check box
+            Gizmos.color = IsTouchingWall ? Color.green : Color.yellow;
+            Vector2 checkPosition = (Vector2)transform.position + 
+                                    new Vector2(
+                                        _wallGrabData.wallCheckOffset.x * transform.localScale.x, 
+                                        _wallGrabData.wallCheckOffset.y
+                                    );
+            Gizmos.DrawWireCube(checkPosition, _wallGrabData.wallCheckSize);
+            
+            // Draw direction indicator
+            if (IsTouchingWall)
+            {
+                Gizmos.color = Color.red;
+                Vector3 dir = WallSide > 0 ? Vector3.right : Vector3.left;
+                Gizmos.DrawRay(transform.position, dir);
+            }
+            
+            if (_groundCheckPoint != null)
+            {
+                Gizmos.color = Color.cyan;
+                Gizmos.DrawWireSphere(_groundCheckPoint.position, _groundCheckRadius);
+            }
         }
     }
 }
