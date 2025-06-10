@@ -1,3 +1,4 @@
+using _Project.Scripts.Gameplay.Character;
 using UnityEngine;
 using PetalsOfHope.Core.StateMachine;
 using PetalsOfHope.Data.Abilities.Types;
@@ -6,17 +7,17 @@ namespace PetalsOfHope.Gameplay.Player.States
 {
     public class WallGrabState : BaseState
     {
-        private readonly PlayerController _player;
+        private readonly CharacterControllerBase _characterController;
         private readonly string _animationName;
         private readonly WallGrabSO _wallGrabData;
         private float _wallGrabStartTime;
         private bool _isWallSliding;
         private int _wallSide;
 
-        public WallGrabState(PlayerController player, StateMachine stateMachine, string animationName, WallGrabSO wallGrabData) 
+        public WallGrabState(CharacterControllerBase characterController, StateMachine stateMachine, string animationName, WallGrabSO wallGrabData) 
             : base(stateMachine)
         {
-            _player = player;
+            _characterController = characterController;
             _animationName = animationName;
             _wallGrabData = wallGrabData;
         }
@@ -25,16 +26,16 @@ namespace PetalsOfHope.Gameplay.Player.States
         {
             _wallGrabStartTime = Time.time;
             _isWallSliding = false;
-            _wallSide = _player.WallSide;
-            _player.AnimationController.Play(_animationName);
-            _player.OnWallGrabStart?.Invoke();
+            _wallSide = _characterController.WallSide;
+            _characterController.AnimationController.Play(_animationName);
+            _characterController.OnWallGrabStart?.Invoke();
         }
 
         public override void Exit()
         {
-            _player.IsWallSliding = false;
-            _player.OnWallGrabEnd?.Invoke();
-            _player.ResetJumpInputFlags();
+            _characterController.IsWallSliding = false;
+            _characterController.OnWallGrabEnd?.Invoke();
+            _characterController.ResetJumpInputFlags();
         }
 
         public override void Update()
@@ -43,41 +44,41 @@ namespace PetalsOfHope.Gameplay.Player.States
             if (!_isWallSliding && Time.time > _wallGrabStartTime + _wallGrabData.wallGrabTime)
             {
                 _isWallSliding = true;
-                _player.IsWallSliding = true;
+                _characterController.IsWallSliding = true;
             }
 
             // Check for wall jump input
-            if (_player.JumpInputPressed)
+            if (_characterController.JumpInputPressed)
             {
-                _stateMachine.ChangeState(_player.WallJumpState);
+                _stateMachine.ChangeState(_characterController.WallJumpState);
                 return;
             }
 
             // Check if we should release from wall
-            if (!_player.IsTouchingWall || !_player.IsWallGrabInput || _player.IsGrounded)
+            if (!_characterController.IsTouchingWall || !_characterController.IsWallGrabInput || _characterController.IsGrounded)
             {
-                _stateMachine.ChangeState(_player.FallingState);
+                _stateMachine.ChangeState(_characterController.FallingState);
                 return;
             }
         }
 
         public override void FixedUpdate()
         {
-            if (_player.Rigidbody == null) return;
+            if (_characterController.Rigidbody == null) return;
 
             // Apply wall slide velocity if sliding
             if (_isWallSliding)
             {
-                var velocity = _player.Rigidbody.linearVelocity;
+                var velocity = _characterController.Rigidbody.linearVelocity;
                 velocity.y = Mathf.Max(velocity.y, -_wallGrabData.wallSlideSpeed);
-                _player.Rigidbody.linearVelocity = velocity;
+                _characterController.Rigidbody.linearVelocity = velocity;
             }
             else
             {
                 // Stick to wall while grabbing
-                var velocity = _player.Rigidbody.linearVelocity;
+                var velocity = _characterController.Rigidbody.linearVelocity;
                 velocity.y = 0f;
-                _player.Rigidbody.linearVelocity = velocity;
+                _characterController.Rigidbody.linearVelocity = velocity;
             }
         }
     }

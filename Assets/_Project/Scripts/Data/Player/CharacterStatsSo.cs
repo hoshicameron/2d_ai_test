@@ -4,7 +4,7 @@ using PetalsOfHope.Core.Data.Stats;
 namespace PetalsOfHope.Data.Player
 {
     [CreateAssetMenu(menuName = "Petals of Hope/Data/Stats/Player Stats", fileName = "NewPlayerStatsSO")]
-    public class PlayerStatsSO : EntityStatsSO
+    public class CharacterStatsSo : EntityStatsSO
     {
         [Header("Player Specific Stats")]
         [Min(0f)]

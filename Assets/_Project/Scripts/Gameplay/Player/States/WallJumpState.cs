@@ -1,3 +1,4 @@
+using _Project.Scripts.Gameplay.Character;
 using UnityEngine;
 using PetalsOfHope.Core.StateMachine;
 using PetalsOfHope.Data.Abilities.Types;
@@ -6,7 +7,7 @@ namespace PetalsOfHope.Gameplay.Player.States
 {
     public class WallJumpState : BaseState
     {
-        private readonly PlayerController _player;
+        private readonly CharacterControllerBase _characterController;
         private readonly string _animationName;
         private readonly WallJumpSO _wallJumpData;
         private float _wallJumpStartTime;
@@ -14,10 +15,10 @@ namespace PetalsOfHope.Gameplay.Player.States
         private int _wallJumpDirection;
         private bool _canMove;
 
-        public WallJumpState(PlayerController player, StateMachine stateMachine, string animationName, WallJumpSO wallJumpData) 
+        public WallJumpState(CharacterControllerBase characterController, StateMachine stateMachine, string animationName, WallJumpSO wallJumpData) 
             : base(stateMachine)
         {
-            _player = player;
+            _characterController = characterController;
             _animationName = animationName;
             _wallJumpData = wallJumpData;
         }
@@ -27,15 +28,15 @@ namespace PetalsOfHope.Gameplay.Player.States
             _wallJumpStartTime = Time.time;
             _hasWallJumped = false;
             _canMove = false;
-            _wallJumpDirection = -_player.WallSide; // Jump away from wall
+            _wallJumpDirection = -_characterController.WallSide; // Jump away from wall
             
-            _player.AnimationController.Play(_animationName);
-            _player.OnWallJump?.Invoke();
+            _characterController.AnimationController.Play(_animationName);
+            _characterController.OnWallJump?.Invoke();
         }
 
         public override void Exit()
         {
-            _player.ResetJumpInputFlags();
+            _characterController.ResetJumpInputFlags();
         }
 
         public override void Update()
@@ -47,23 +48,23 @@ namespace PetalsOfHope.Gameplay.Player.States
             }
 
             // Check if we should transition to falling
-            if (_player.Rigidbody != null && _player.Rigidbody.linearVelocity.y <= 0)
+            if (_characterController.Rigidbody != null && _characterController.Rigidbody.linearVelocity.y <= 0)
             {
-                _stateMachine.ChangeState(_player.FallingState);
+                _stateMachine.ChangeState(_characterController.FallingState);
                 return;
             }
 
             // If we somehow touch the ground
-            if (_player.IsGrounded)
+            if (_characterController.IsGrounded)
             {
-                _stateMachine.ChangeState(Mathf.Abs(_player.MoveInput.x) > 0.1f ? 
-                    _player.MovingState : _player.IdleState);
+                _stateMachine.ChangeState(Mathf.Abs(_characterController.MoveInput.x) > 0.1f ? 
+                    _characterController.MovingState : _characterController.IdleState);
             }
         }
 
         public override void FixedUpdate()
         {
-            if (_player.Rigidbody == null) return;
+            if (_characterController.Rigidbody == null) return;
 
             // Apply wall jump force on first FixedUpdate
             if (!_hasWallJumped)
@@ -73,14 +74,14 @@ namespace PetalsOfHope.Gameplay.Player.States
                     _wallJumpDirection * _wallJumpData.wallJumpHorizontalForce,
                     _wallJumpData.wallJumpForce
                 );
-                _player.Rigidbody.linearVelocity = jumpForce;
+                _characterController.Rigidbody.linearVelocity = jumpForce;
             }
             // Apply movement input after the initial jump
             else if (_canMove)
             {
-                var velocity = _player.Rigidbody.linearVelocity;
-                velocity.x = _player.MoveInput.x * _player.Stats.movementSpeed;
-                _player.Rigidbody.linearVelocity = velocity;
+                var velocity = _characterController.Rigidbody.linearVelocity;
+                velocity.x = _characterController.MoveInput.x * _characterController.Stats.movementSpeed;
+                _characterController.Rigidbody.linearVelocity = velocity;
             }
         }
     }

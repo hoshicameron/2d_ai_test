@@ -14,7 +14,7 @@ namespace PetalsOfHope.Gameplay.Player
     {
         [Header("Data Dependencies")]
         [Tooltip("Player's statistics, including max health.")]
-        [SerializeField] private PlayerStatsSO _stats;
+        [SerializeField] private CharacterStatsSo _stats;
 
         [Header("Health Events")]
         [Tooltip("Event raised when the player dies.")]

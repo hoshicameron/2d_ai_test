@@ -1,3 +1,4 @@
+using _Project.Scripts.Gameplay.Character;
 using UnityEngine;
 using PetalsOfHope.Core.StateMachine;
 
@@ -5,46 +6,46 @@ namespace PetalsOfHope.Gameplay.Player.States
 {
     public class MovingState : BaseState
     {
-        private readonly PlayerController _player;
+        private readonly CharacterControllerBase _characterController;
         private readonly string _moveAnimationName;
 
-        public MovingState(PlayerController player, StateMachine stateMachine, string moveAnimationName) 
+        public MovingState(CharacterControllerBase characterController, StateMachine stateMachine, string moveAnimationName) 
             : base(stateMachine)
         {
-            _player = player;
+            _characterController = characterController;
             _moveAnimationName = moveAnimationName;
         }
 
         public override void Enter()
         {
-            _player.CurrentStateName = _stateMachine.CurrentState.GetType().Name;
-            _player.AnimationController.Play(_moveAnimationName);
-            _player.ResetJumpInputFlags();
+            _characterController.CurrentStateName = _stateMachine.CurrentState.GetType().Name;
+            _characterController.AnimationController.Play(_moveAnimationName);
+            _characterController.ResetJumpInputFlags();
         }
 
         public override void Update()
         {
-            if (_player.CanClimb && Mathf.Abs(_player.ClimbInput) > 0f)
+            if (_characterController.CanClimb && Mathf.Abs(_characterController.ClimbInput) > 0f)
             {
-                _stateMachine.ChangeState(_player.ClimbState);
+                _stateMachine.ChangeState(_characterController.ClimbState);
                 return;
             }
             
-            if (_player.JumpInputPressed && _player.IsGrounded)
+            if (_characterController.JumpInputPressed && _characterController.IsGrounded)
             {
-                _stateMachine.ChangeState(_player.JumpingState);
+                _stateMachine.ChangeState(_characterController.JumpingState);
                 return;
             }
 
-            if (Mathf.Abs(_player.MoveInput.x) < Mathf.Epsilon)
+            if (Mathf.Abs(_characterController.MoveInput.x) < Mathf.Epsilon)
             {
-                _stateMachine.ChangeState(_player.IdleState);
+                _stateMachine.ChangeState(_characterController.IdleState);
                 return;
             }
 
-            if (!_player.IsGrounded)
+            if (!_characterController.IsGrounded)
             {
-                _stateMachine.ChangeState(_player.FallingState);
+                _stateMachine.ChangeState(_characterController.FallingState);
                 return;
             }
 
@@ -53,8 +54,8 @@ namespace PetalsOfHope.Gameplay.Player.States
 
         public override void FixedUpdate()
         {
-            float targetVelocityX = _player.MoveInput.x * _player.Stats.movementSpeed;
-            _player.Rigidbody.linearVelocity = new Vector2(targetVelocityX, _player.Rigidbody.linearVelocity.y);
+            float targetVelocityX = _characterController.MoveInput.x * _characterController.Stats.movementSpeed;
+            _characterController.Rigidbody.linearVelocity = new Vector2(targetVelocityX, _characterController.Rigidbody.linearVelocity.y);
         }
 
         public override void Exit()
@@ -64,15 +65,15 @@ namespace PetalsOfHope.Gameplay.Player.States
 
         private void FlipSprite()
         {
-            _player.transform.localScale = _player.MoveInput.x switch
+            _characterController.transform.localScale = _characterController.MoveInput.x switch
             {
-                > 0.01f when _player.transform.localScale.x < 0f => new Vector3(
-                    Mathf.Abs(_player.transform.localScale.x), _player.transform.localScale.y,
-                    _player.transform.localScale.z),
-                < -0.01f when _player.transform.localScale.x > 0f => new Vector3(
-                    -Mathf.Abs(_player.transform.localScale.x), _player.transform.localScale.y,
-                    _player.transform.localScale.z),
-                _ => _player.transform.localScale
+                > 0.01f when _characterController.transform.localScale.x < 0f => new Vector3(
+                    Mathf.Abs(_characterController.transform.localScale.x), _characterController.transform.localScale.y,
+                    _characterController.transform.localScale.z),
+                < -0.01f when _characterController.transform.localScale.x > 0f => new Vector3(
+                    -Mathf.Abs(_characterController.transform.localScale.x), _characterController.transform.localScale.y,
+                    _characterController.transform.localScale.z),
+                _ => _characterController.transform.localScale
             };
         }
     }

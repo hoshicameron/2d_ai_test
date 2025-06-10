@@ -1,3 +1,4 @@
+using _Project.Scripts.Gameplay.Character;
 using UnityEngine;
 using PetalsOfHope.Core.StateMachine;
 
@@ -5,26 +6,26 @@ namespace PetalsOfHope.Gameplay.Player.States
 {
     public class IdleState : BaseState
     {
-        private readonly PlayerController _player;
+        private readonly CharacterControllerBase _characterController;
         private readonly string _idleAnimationName;
 
-        public IdleState(PlayerController player, StateMachine stateMachine, string idleAnimationName) 
+        public IdleState(CharacterControllerBase characterController, StateMachine stateMachine, string idleAnimationName) 
             : base(stateMachine)
         {
-            _player = player;
+            _characterController = characterController;
             _idleAnimationName = idleAnimationName;
         }
 
         public override void Enter()
         {
-            _player.CurrentStateName = _stateMachine.CurrentState.GetType().Name;
-            _player.AnimationController.Play(_idleAnimationName);
+            _characterController.CurrentStateName = _stateMachine.CurrentState.GetType().Name;
+            _characterController.AnimationController.Play(_idleAnimationName);
             
-            if (_player.Rigidbody.linearVelocity.x != 0)
+            if (_characterController.Rigidbody.linearVelocity.x != 0)
             {
-                _player.Rigidbody.linearVelocity = new Vector2(0, _player.Rigidbody.linearVelocity.y);
+                _characterController.Rigidbody.linearVelocity = new Vector2(0, _characterController.Rigidbody.linearVelocity.y);
             }
-            _player.ResetJumpInputFlags();
+            _characterController.ResetJumpInputFlags();
         }
 
         public override void Exit()
@@ -34,27 +35,27 @@ namespace PetalsOfHope.Gameplay.Player.States
 
         public override void Update()
         {
-            if (_player.CanClimb && Mathf.Abs(_player.ClimbInput) > 0f)
+            if (_characterController.CanClimb && Mathf.Abs(_characterController.ClimbInput) > 0f)
             {
-                _stateMachine.ChangeState(_player.ClimbState);
+                _stateMachine.ChangeState(_characterController.ClimbState);
                 return;
             }
             
-            if (_player.JumpInputPressed && _player.IsGrounded)
+            if (_characterController.JumpInputPressed && _characterController.IsGrounded)
             {
-                _stateMachine.ChangeState(_player.JumpingState);
+                _stateMachine.ChangeState(_characterController.JumpingState);
                 return;
             }
 
-            if (Mathf.Abs(_player.MoveInput.x) > Mathf.Epsilon)
+            if (Mathf.Abs(_characterController.MoveInput.x) > Mathf.Epsilon)
             {
-                _stateMachine.ChangeState(_player.MovingState);
+                _stateMachine.ChangeState(_characterController.MovingState);
                 return;
             }
 
-            if (!_player.IsGrounded)
+            if (!_characterController.IsGrounded)
             {
-                _stateMachine.ChangeState(_player.FallingState);
+                _stateMachine.ChangeState(_characterController.FallingState);
             }
             
             
