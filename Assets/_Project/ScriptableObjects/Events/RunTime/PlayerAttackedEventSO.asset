@@ -9,11 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a89b427db4ea4c14db0c00907383765e, type: 3}
-  m_Name: PlayerStatsSO
+  m_Script: {fileID: 11500000, guid: 58d97d5e6083c6141a489be86bd6dbef, type: 3}
+  m_Name: PlayerAttackedEventSO
   m_EditorClassIdentifier: 
-  maxHealth: 100
-  movementSpeed: 7
-  jumpForce: 15
-  airControlFactor: 0.8
-  gravityScale: 1
+  _developerDescription: Raised when the player jumps.

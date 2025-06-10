@@ -14,6 +14,7 @@ namespace PetalsOfHope.Core.Input
         public GameEventSO JumpCancelledEvent;          // For jump released (variable jump height)
         public GameEventSO DashEvent;                   // For dash pressed
         public GameEventSO InteractEvent;               // For interact pressed
+        public GameEventSO AttackEvent;
 
         // UI Events
         [Header("UI Input Events")]
@@ -90,6 +91,12 @@ namespace PetalsOfHope.Core.Input
         {
             if (context.phase == InputActionPhase.Performed)
                 InteractEvent?.Raise();
+        }
+
+        public void OnAttack(InputAction.CallbackContext context)
+        {
+            if (context.phase == InputActionPhase.Performed)
+                AttackEvent?.Raise();
         }
 
         // IUIActions Implementation

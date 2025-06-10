@@ -22,7 +22,7 @@ MonoBehaviour:
   climbableLayer:
     serializedVersion: 2
     m_Bits: 128
-  ladderCheckSize: {x: 0.5, y: 0.1}
+  ladderCheckSize: {x: 0.5, y: 1.87}
   ladderTopOffset: 0.2
   horizontalSnapDistance: 0.1
   minVerticalInputThreshold: 0.1
