@@ -17,6 +17,7 @@ MonoBehaviour:
   JumpCancelledEvent: {fileID: 11400000, guid: fd0d180261acb804d8f93b40970876cb, type: 2}
   DashEvent: {fileID: 11400000, guid: 3aca6e8fa7fa9ed44a2e67d833837ae3, type: 2}
   InteractEvent: {fileID: 11400000, guid: 2d2ff2dbf71fa344bb110cf975cd7af9, type: 2}
+  AttackEvent: {fileID: 11400000, guid: abcfad0d2db1a004a848b6058693cd76, type: 2}
   UINavigateEvent: {fileID: 11400000, guid: 29b417c410dc0764fbbdc814711eb8c7, type: 2}
   UISubmitEvent: {fileID: 11400000, guid: db4f51cbb87a1224aaa3db61fcf6753c, type: 2}
   UICancelEvent: {fileID: 11400000, guid: b8fc8e540be9eba40a98281d8eac3384, type: 2}
