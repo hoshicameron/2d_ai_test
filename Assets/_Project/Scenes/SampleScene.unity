@@ -253,11 +253,29 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!1 &1416760376 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1821344402836837637, guid: 52888f11d23a3df4482ae247ef0c1e46, type: 3}
+  m_PrefabInstance: {fileID: 2361491383224310516}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1538715496 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3272877192306150292, guid: 52888f11d23a3df4482ae247ef0c1e46, type: 3}
   m_PrefabInstance: {fileID: 2361491383224310516}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1538715497
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1416760376}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fcb1018709a6465f93b6ef6c00db74c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _inputReader: {fileID: 11400000, guid: cfad060087a0d65439c1d9d4ecdc0335, type: 2}
 --- !u!1 &1738512399
 GameObject:
   m_ObjectHideFlags: 0
@@ -451,7 +469,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1821344402836837637, guid: 52888f11d23a3df4482ae247ef0c1e46, type: 3}
+      insertIndex: 7
+      addedObject: {fileID: 1538715497}
   m_SourcePrefab: {fileID: 100100000, guid: 52888f11d23a3df4482ae247ef0c1e46, type: 3}
 --- !u!1001 &9211768950883067721
 PrefabInstance:

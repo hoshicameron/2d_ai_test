@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 5879132871626028930}
   - component: {fileID: 8936845108012114422}
   - component: {fileID: 6759359621137061535}
+  - component: {fileID: 1725043701226227571}
   - component: {fileID: 747051337734881239}
   - component: {fileID: 7189908605111981953}
   m_Layer: 6
@@ -205,6 +206,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f609c34fe913c044c98ee155a265dce4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1725043701226227571
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1821344402836837637}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fcb1018709a6465f93b6ef6c00db74c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _inputReader: {fileID: 11400000, guid: cfad060087a0d65439c1d9d4ecdc0335, type: 2}
 --- !u!114 &747051337734881239
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -217,10 +231,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64fe91bc060449b42bd3df139160a053, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _playerDiedEventSO: {fileID: 11400000, guid: eb6a3dfb1b0077648892d9c5941e6d2d, type: 2}
   _stats: {fileID: 11400000, guid: 4ed19b76704060143a1fe26f5fda7426, type: 2}
-  _inputReader: {fileID: 11400000, guid: cfad060087a0d65439c1d9d4ecdc0335, type: 2}
-  _playerLandedEventSO: {fileID: 11400000, guid: cb3d76579b36a7942bc3562d1b876781, type: 2}
   _groundCheckPoint: {fileID: 7696364811979205763}
   _groundCheckRadius: 0.2
   _groundLayer:
@@ -230,6 +241,7 @@ MonoBehaviour:
   _wallGrabData: {fileID: 11400000, guid: 3682986883c9f104894f93273f115e77, type: 2}
   _wallJumpData: {fileID: 11400000, guid: f1c91f1de12181c49bf7090dbf7c7fb5, type: 2}
   _doubleJumpData: {fileID: 11400000, guid: d390d854b2781ff48aba24d6b437932d, type: 2}
+  _climbData: {fileID: 11400000, guid: e59bbaf9c76e5734698627a1bc210c10, type: 2}
   idleAnimationName: Idle
   jumpAnimationName: Jump
   fallAnimationName: Fall
@@ -238,7 +250,12 @@ MonoBehaviour:
   wallGrabAnimationName: WallGrab
   wallJumpAnimationName: WallJump
   deathAnimationName: Death
+  climbUpAnimationName: ClimbUp
+  climbDownAnimationName: ClimbDown
+  climbIdleAnimationName: ClimbIdle
   <CurrentStateName>k__BackingField: None
+  _playerDiedEventSO: {fileID: 11400000, guid: eb6a3dfb1b0077648892d9c5941e6d2d, type: 2}
+  _playerLandedEventSO: {fileID: 11400000, guid: cb3d76579b36a7942bc3562d1b876781, type: 2}
 --- !u!114 &7189908605111981953
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -1,3 +1,4 @@
+using _Project.Scripts.Gameplay.Character;
 using UnityEngine;
 using PetalsOfHope.Core.StateMachine;
 
@@ -5,63 +6,63 @@ namespace PetalsOfHope.Gameplay.Player.States
 {
     public class FallingState : BaseState
     {
-        private readonly PlayerController _player;
+        private readonly CharacterControllerBase _characterController;
         private readonly string _fallAnimationName;
 
-        public FallingState(PlayerController player, StateMachine stateMachine, string fallAnimationName) 
+        public FallingState(CharacterControllerBase characterController, StateMachine stateMachine, string fallAnimationName) 
             : base(stateMachine)
         {
-            _player = player;
+            _characterController = characterController;
             _fallAnimationName = fallAnimationName;
         }
 
         public override void Enter()
         {
-            _player.CurrentStateName = _stateMachine.CurrentState.GetType().Name;
-            _player.AnimationController.Play(_fallAnimationName);
-            _player.ResetJumpInputFlags();
+            _characterController.CurrentStateName = _stateMachine.CurrentState.GetType().Name;
+            _characterController.AnimationController.Play(_fallAnimationName);
+            _characterController.ResetJumpInputFlags();
         }
 
         public override void Update()
         {
             
-            if (_player.CanClimb && Mathf.Abs(_player.ClimbInput) > 0f)
+            if (_characterController.CanClimb && Mathf.Abs(_characterController.ClimbInput) > 0f)
             {
-                _stateMachine.ChangeState(_player.ClimbState);
+                _stateMachine.ChangeState(_characterController.ClimbState);
                 return;
             }
             
             // Check for double jump input
-            if (_player.JumpInputPressed && _player.RemainingJumps > 0)
+            if (_characterController.JumpInputPressed && _characterController.RemainingJumps > 0)
             {
-                _stateMachine.ChangeState(_player.JumpingState);
+                _stateMachine.ChangeState(_characterController.JumpingState);
                 return;
             }
 
             // Check for wall grab transition (only when falling or at apex)
-            if (_player.CanWallGrab())
+            if (_characterController.CanWallGrab())
             {
-                _stateMachine.ChangeState(_player.WallGrabState);
+                _stateMachine.ChangeState(_characterController.WallGrabState);
                 return;
             }
 
             // Check for wall jump from falling (coyote wall jump)
-            if (_player.CanWallJump())
+            if (_characterController.CanWallJump())
             {
-                _stateMachine.ChangeState(_player.WallJumpState);
+                _stateMachine.ChangeState(_characterController.WallJumpState);
                 return;
             }
 
             // Handle normal ground landing
-            if (_player.IsGrounded)
+            if (_characterController.IsGrounded)
             {
-                if (Mathf.Abs(_player.MoveInput.x) > Mathf.Epsilon)
+                if (Mathf.Abs(_characterController.MoveInput.x) > Mathf.Epsilon)
                 {
-                    _stateMachine.ChangeState(_player.MovingState);
+                    _stateMachine.ChangeState(_characterController.MovingState);
                 }
                 else
                 {
-                    _stateMachine.ChangeState(_player.IdleState);
+                    _stateMachine.ChangeState(_characterController.IdleState);
                 }
                 return;
             }
@@ -71,29 +72,29 @@ namespace PetalsOfHope.Gameplay.Player.States
 
         public override void FixedUpdate()
         {
-            float airControlFactor = _player.Stats.airControlFactor;
-            float targetVelocityX = _player.MoveInput.x * _player.Stats.movementSpeed * airControlFactor;
-            _player.Rigidbody.linearVelocity = new Vector2(targetVelocityX, _player.Rigidbody.linearVelocity.y);
+            float airControlFactor = _characterController.Stats.airControlFactor;
+            float targetVelocityX = _characterController.MoveInput.x * _characterController.Stats.movementSpeed * airControlFactor;
+            _characterController.Rigidbody.linearVelocity = new Vector2(targetVelocityX, _characterController.Rigidbody.linearVelocity.y);
         }
 
         public override void Exit()
         {
-            _player.ResetJumpInputFlags();
+            _characterController.ResetJumpInputFlags();
         }
         
         private void FlipSprite()
         {
-            if (Mathf.Abs(_player.MoveInput.x) > 0.01f)
+            if (Mathf.Abs(_characterController.MoveInput.x) > 0.01f)
             {
-                _player.transform.localScale = _player.MoveInput.x switch
+                _characterController.transform.localScale = _characterController.MoveInput.x switch
                 {
-                    > 0.01f when _player.transform.localScale.x < 0f => new Vector3(
-                        Mathf.Abs(_player.transform.localScale.x), _player.transform.localScale.y,
-                        _player.transform.localScale.z),
-                    < -0.01f when _player.transform.localScale.x > 0f => new Vector3(
-                        -Mathf.Abs(_player.transform.localScale.x), _player.transform.localScale.y,
-                        _player.transform.localScale.z),
-                    _ => _player.transform.localScale
+                    > 0.01f when _characterController.transform.localScale.x < 0f => new Vector3(
+                        Mathf.Abs(_characterController.transform.localScale.x), _characterController.transform.localScale.y,
+                        _characterController.transform.localScale.z),
+                    < -0.01f when _characterController.transform.localScale.x > 0f => new Vector3(
+                        -Mathf.Abs(_characterController.transform.localScale.x), _characterController.transform.localScale.y,
+                        _characterController.transform.localScale.z),
+                    _ => _characterController.transform.localScale
                 };
             }
         }

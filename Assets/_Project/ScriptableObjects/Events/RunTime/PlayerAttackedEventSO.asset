@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58d97d5e6083c6141a489be86bd6dbef, type: 3}
   m_Name: PlayerAttackedEventSO
   m_EditorClassIdentifier: 
-  _developerDescription: Raised when the player jumps.
+  _developerDescription: Raised when the player attacks.

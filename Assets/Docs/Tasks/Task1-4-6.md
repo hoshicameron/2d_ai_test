@@ -1,7 +1,7 @@
 # Task ID: 1.4.6
 # Parent Task ID: 1.4
 # Title: (Placeholder) Implement ISaveable on Key Game Systems
-# Status: pending
+# Status: completed
 # Dependencies: 1.4.5 # SaveLoadManager and ISaveable interface
 # Priority: high # Will become critical when those systems exist
 # Estimated Effort: M (per system)

@@ -1,3 +1,4 @@
+using _Project.Scripts.Gameplay.Character;
 using UnityEngine;
 using PetalsOfHope.Core.StateMachine;
 
@@ -5,35 +6,35 @@ namespace PetalsOfHope.Gameplay.Player.States
 {
     public class JumpingState : BaseState
     {
-        private readonly PlayerController _player;
+        private readonly CharacterControllerBase _characterController;
         private readonly string _jumpAnimationName;
         private bool _jumpCutoffApplied = false;
 
-        public JumpingState(PlayerController player, StateMachine stateMachine, string jumpAnimationName) 
+        public JumpingState(CharacterControllerBase characterController, StateMachine stateMachine, string jumpAnimationName) 
             : base(stateMachine)
         {
-            _player = player;
+            _characterController = characterController;
             _jumpAnimationName = jumpAnimationName;
         }
 
         public override void Enter()
         {
-            _player.CurrentStateName = _stateMachine.CurrentState.GetType().Name;
-            _player.AnimationController.Play(_jumpAnimationName);
+            _characterController.CurrentStateName = _stateMachine.CurrentState.GetType().Name;
+            _characterController.AnimationController.Play(_jumpAnimationName);
             
             // Calculate jump force (normal jump or double jump)
-            var isDoubleJump = _player.RemainingJumps < _player.MaxJumps;
-            var  jumpForce = isDoubleJump ? _player.Stats.jumpForce * _player.DoubleJumpForceMultiplier 
-                                            : _player.Stats.jumpForce;
+            var isDoubleJump = _characterController.RemainingJumps < _characterController.MaxJumps;
+            var  jumpForce = isDoubleJump ? _characterController.Stats.jumpForce * _characterController.DoubleJumpForceMultiplier 
+                                            : _characterController.Stats.jumpForce;
             
             // Apply jump force
-            _player.Rigidbody.linearVelocity = new Vector2(_player.Rigidbody.linearVelocity.x, 0f);
-            _player.Rigidbody.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+            _characterController.Rigidbody.linearVelocity = new Vector2(_characterController.Rigidbody.linearVelocity.x, 0f);
+            _characterController.Rigidbody.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
             
             // Consume a jump
-            _player.RemainingJumps--;
+            _characterController.RemainingJumps--;
             
-            _player.ResetJumpInputFlags();
+            _characterController.ResetJumpInputFlags();
             _jumpCutoffApplied = false;
         }
 
@@ -41,25 +42,25 @@ namespace PetalsOfHope.Gameplay.Player.States
         {
             // Clean up any state-specific logic here when exiting JumpingState
             _jumpCutoffApplied = false;
-            _player.ResetJumpInputFlags();
+            _characterController.ResetJumpInputFlags();
         }
 
         public override void Update()
         {
-            if (_player.Rigidbody.linearVelocity.y <= 0f)
+            if (_characterController.Rigidbody.linearVelocity.y <= 0f)
             {
-                _stateMachine.ChangeState(_player.FallingState);
+                _stateMachine.ChangeState(_characterController.FallingState);
                 return;
             }
 
-            if (_player.JumpInputReleased && !_jumpCutoffApplied)
+            if (_characterController.JumpInputReleased && !_jumpCutoffApplied)
             {
-                if (_player.Rigidbody.linearVelocity.y > 0)
+                if (_characterController.Rigidbody.linearVelocity.y > 0)
                 {
-                    _player.Rigidbody.linearVelocity = new Vector2(_player.Rigidbody.linearVelocity.x, _player.Rigidbody.linearVelocity.y * 0.5f);
+                    _characterController.Rigidbody.linearVelocity = new Vector2(_characterController.Rigidbody.linearVelocity.x, _characterController.Rigidbody.linearVelocity.y * 0.5f);
                 }
                 _jumpCutoffApplied = true;
-                _player.ResetJumpInputFlags();
+                _characterController.ResetJumpInputFlags();
             }
 
             FlipSprite();
@@ -67,24 +68,24 @@ namespace PetalsOfHope.Gameplay.Player.States
 
         public override void FixedUpdate()
         {
-            float airControlFactor = _player.Stats.airControlFactor;
-            float targetVelocityX = _player.MoveInput.x * _player.Stats.movementSpeed * airControlFactor;
-            _player.Rigidbody.linearVelocity = new Vector2(targetVelocityX, _player.Rigidbody.linearVelocity.y);
+            float airControlFactor = _characterController.Stats.airControlFactor;
+            float targetVelocityX = _characterController.MoveInput.x * _characterController.Stats.movementSpeed * airControlFactor;
+            _characterController.Rigidbody.linearVelocity = new Vector2(targetVelocityX, _characterController.Rigidbody.linearVelocity.y);
         }
         
         private void FlipSprite()
         {
-            if (Mathf.Abs(_player.MoveInput.x) > 0.01f)
+            if (Mathf.Abs(_characterController.MoveInput.x) > 0.01f)
             {
-                _player.transform.localScale = _player.MoveInput.x switch
+                _characterController.transform.localScale = _characterController.MoveInput.x switch
                 {
-                    > 0.01f when _player.transform.localScale.x < 0f => new Vector3(
-                        Mathf.Abs(_player.transform.localScale.x), _player.transform.localScale.y,
-                        _player.transform.localScale.z),
-                    < -0.01f when _player.transform.localScale.x > 0f => new Vector3(
-                        -Mathf.Abs(_player.transform.localScale.x), _player.transform.localScale.y,
-                        _player.transform.localScale.z),
-                    _ => _player.transform.localScale
+                    > 0.01f when _characterController.transform.localScale.x < 0f => new Vector3(
+                        Mathf.Abs(_characterController.transform.localScale.x), _characterController.transform.localScale.y,
+                        _characterController.transform.localScale.z),
+                    < -0.01f when _characterController.transform.localScale.x > 0f => new Vector3(
+                        -Mathf.Abs(_characterController.transform.localScale.x), _characterController.transform.localScale.y,
+                        _characterController.transform.localScale.z),
+                    _ => _characterController.transform.localScale
                 };
             }
         }

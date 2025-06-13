@@ -1,7 +1,7 @@
 # Task ID: 3.1.1
 # Parent Task ID: 3.1
 # Title: Define IDamageable Interface
-# Status: pending
+# Status: completed
 # Dependencies: 1.1.2, 1.1.4 # Folder structure and namespace
 # Priority: critical
 # Estimated Effort: S

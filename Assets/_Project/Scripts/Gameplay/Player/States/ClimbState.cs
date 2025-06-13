@@ -1,4 +1,5 @@
-﻿using PetalsOfHope.Core.StateMachine;
+﻿using _Project.Scripts.Gameplay.Character;
+using PetalsOfHope.Core.StateMachine;
 using PetalsOfHope.Data.Abilities.Types;
 using UnityEngine;
 
@@ -6,7 +7,7 @@ namespace PetalsOfHope.Gameplay.Player.States
 {
     public class ClimbState : BaseState
     {
-        private readonly PlayerController _player;
+        private readonly CharacterControllerBase _characterController;
         private readonly string _climbIdleAnimationName;
         private readonly string _climbDownAnimationName;
         private readonly string _climbUpAnimationName;
@@ -17,12 +18,12 @@ namespace PetalsOfHope.Gameplay.Player.States
         
         
 
-        public ClimbState(PlayerController player, StateMachine stateMachine, 
+        public ClimbState(CharacterControllerBase characterController, StateMachine stateMachine, 
             string climbIdleAnimationName, string climbDownAnimationName, string climbUpAnimationName,
             ClimbSO climbData)
             : base(stateMachine)
         {
-            _player = player;
+            _characterController = characterController;
             _climbIdleAnimationName = climbIdleAnimationName;
             _climbDownAnimationName = climbDownAnimationName;
             _climbUpAnimationName = climbUpAnimationName;
@@ -31,33 +32,33 @@ namespace PetalsOfHope.Gameplay.Player.States
 
         public override void Enter()
         {
-            _player.CurrentStateName = _stateMachine.CurrentState.GetType().Name;
-            _player.AnimationController.Play(_climbIdleAnimationName);
-            _player.Rigidbody.gravityScale = 0f;
-            _player.Rigidbody.linearVelocity = Vector2.zero;
+            _characterController.CurrentStateName = _stateMachine.CurrentState.GetType().Name;
+            _characterController.AnimationController.Play(_climbIdleAnimationName);
+            _characterController.Rigidbody.gravityScale = 0f;
+            _characterController.Rigidbody.linearVelocity = Vector2.zero;
             SnapToLadder();
         }
 
         public override void Update()
         {
             // Check for jump input to dismount
-            if (_player.JumpInputPressed)
+            if (_characterController.JumpInputPressed)
             {
-                _stateMachine.ChangeState(_player.JumpingState);
+                _stateMachine.ChangeState(_characterController.JumpingState);
                 return;
             }
 
             // Check if still on ladder
-            if (!_player.IsTouchingLadder || _player.CurrentLadder == null)
+            if (!_characterController.IsTouchingLadder || _characterController.CurrentLadder == null)
             {
-                _stateMachine.ChangeState(_player.FallingState);
+                _stateMachine.ChangeState(_characterController.FallingState);
                 return;
             }
 
             // Check for ground when moving down at bottom of ladder
-            if (_player.IsGrounded && _player.ClimbInput < -0.1f)
+            if (_characterController.IsGrounded && _characterController.ClimbInput < -0.1f)
             {
-                _stateMachine.ChangeState(_player.IdleState);
+                _stateMachine.ChangeState(_characterController.IdleState);
                 return;
             }
 
@@ -68,33 +69,33 @@ namespace PetalsOfHope.Gameplay.Player.States
         {
             // Apply vertical movement
             var targetVelocity = new Vector2(
-                _player.Rigidbody.linearVelocity.x,
+                _characterController.Rigidbody.linearVelocity.x,
                 _verticalVelocity * _climbData.climbSpeed
             );
 
-            _player.Rigidbody.linearVelocity = targetVelocity;
+            _characterController.Rigidbody.linearVelocity = targetVelocity;
         }
 
         public override void Exit()
         {
-            _player.Rigidbody.gravityScale = _player.Stats.gravityScale;
+            _characterController.Rigidbody.gravityScale = _characterController.Stats.gravityScale;
             _verticalVelocity = 0f;
         }
 
         private void SnapToLadder()
         {
-            if (_player.CurrentLadder == null) return;
+            if (_characterController.CurrentLadder == null) return;
 
-            var position = _player.transform.position;
-            var ladderPosition = _player.CurrentLadder.transform.position.x;
+            var position = _characterController.transform.position;
+            var ladderPosition = _characterController.CurrentLadder.transform.position.x;
             position.x = Mathf.Lerp(position.x, ladderPosition, _climbData.horizontalSnapDistance);
-            _player.transform.position = position;
+            _characterController.transform.position = position;
         }
 
         private void UpdateClimbing()
         {
             // Get raw input for more responsive controls
-            float targetVelocity = _player.ClimbInput;
+            float targetVelocity = _characterController.ClimbInput;
 
             // Apply acceleration/deceleration
             if (Mathf.Abs(targetVelocity) > 0.1f)
@@ -117,12 +118,12 @@ namespace PetalsOfHope.Gameplay.Player.States
             // Update animation based on movement
             if (Mathf.Abs(_verticalVelocity) > 0.1f)
             {
-                _player.AnimationController.Play(Mathf.Sign(_verticalVelocity) > 0 ?
+                _characterController.AnimationController.Play(Mathf.Sign(_verticalVelocity) > 0 ?
                     _climbUpAnimationName : _climbDownAnimationName);
             }
             else
             {
-                _player.AnimationController.Play(_climbIdleAnimationName);
+                _characterController.AnimationController.Play(_climbIdleAnimationName);
             }
         }
     }

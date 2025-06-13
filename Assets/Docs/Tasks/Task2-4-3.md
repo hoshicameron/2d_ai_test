@@ -1,7 +1,7 @@
 # Task ID: 2.4.3
 # Parent Task ID: 2.4
 # Title: Implement Player MovingState
-# Status: pending
+# Status: completed
 # Dependencies: 2.4.1 # PlayerController structure and BaseState
 # Priority: critical
 # Estimated Effort: M
