@@ -1,7 +1,7 @@
 # Task ID: 3.1.2
 # Parent Task ID: 3.1
 # Title: Implement EnemyBase Abstract Class
-# Status: pending
+# Status: completed
 # Dependencies: 3.1.1, 2.2, 1.3.1, 1.2.8 # IDamageable, AnimationController, EnemyStatsSO, EventSO assets
 # Priority: critical
 # Estimated Effort: M

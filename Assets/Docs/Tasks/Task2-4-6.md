@@ -1,7 +1,7 @@
 # Task ID: 2.4.6
 # Parent Task ID: 2.4
 # Title: Integrate Player States with PlayerController and Test Basic Loop
-# Status: pending
+# Status: completed
 # Dependencies: 2.4.1, 2.4.2, 2.4.3, 2.4.4, 2.4.5 # PlayerController and all implemented states
 # Priority: critical
 # Estimated Effort: M
