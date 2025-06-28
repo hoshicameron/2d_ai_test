@@ -20,13 +20,13 @@ namespace PetalsOfHope.Gameplay.Player
         protected override void OnEnable()
         {
             base.OnEnable();
-            _playerDiedEventSO.RegisterListener(HandlePlayerDeath);
+            _playerDiedEventSO.RegisterListener(HandleCharacterDeath);
         }
 
         protected override void OnDisable()
         {
             base.OnDisable();
-            _playerDiedEventSO.UnregisterListener(HandlePlayerDeath);
+            _playerDiedEventSO.UnregisterListener(HandleCharacterDeath);
         }
 
         protected override void HandleCharacterLanded()
@@ -37,11 +37,5 @@ namespace PetalsOfHope.Gameplay.Player
                 _playerLandedEventSO?.Raise();
             }
         }
-
-        private void HandlePlayerDeath()
-        {
-            StateMachine.ChangeState(DeathState);
-        }
-        
     }
 }

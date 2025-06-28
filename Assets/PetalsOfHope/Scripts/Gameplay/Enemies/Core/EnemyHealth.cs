@@ -12,34 +12,19 @@ namespace PetalsOfHope.Gameplay.Enemies.Core
     [RequireComponent(typeof(Collider2D))]
     public class EnemyHealth : MonoBehaviour, IDamageable
     {
-        [Header("Dependencies")]
-        [Tooltip("Enemy stats containing max health and other attributes.")]
-        [SerializeField] private EnemyStatsSO _stats;
-
-        [Header("Events")]
-        [Tooltip("Event raised when this enemy dies.")]
-        [SerializeField] private GameEventSO _onDeathEvent;
-
-        [Header("State")]
-        [SerializeField] private int _currentHealth;
+        private int _currentHealth;
         private bool _isDead;
 
         public event Action<int> OnHealthChanged;
         public event Action OnDeath;
 
         public int CurrentHealth => _currentHealth;
-        public int MaxHealth => _stats != null ? _stats.maxHealth : 100;
+        public int MaxHealth { get; set; }
         public bool IsDead => _isDead;
 
-        private void Awake()
+        public void Initialize(int maxHealth)
         {
-            if (_stats == null)
-            {
-                Debug.LogError($"{name}: EnemyStatsSO not assigned to EnemyHealth!", this);
-                enabled = false;
-                return;
-            }
-            
+            MaxHealth = maxHealth;
             ResetHealth();
         }
 
@@ -79,11 +64,6 @@ namespace PetalsOfHope.Gameplay.Enemies.Core
 
             _isDead = true;
             OnDeath?.Invoke();
-            _onDeathEvent?.Raise();
-            
-            // Disable collider to prevent further interactions
-            var collider = GetComponent<Collider2D>();
-            if (collider != null) collider.enabled = false;
         }
     }
 }

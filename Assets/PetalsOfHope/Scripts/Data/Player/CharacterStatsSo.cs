@@ -3,7 +3,7 @@ using PetalsOfHope.Core.Data.Stats;
 
 namespace PetalsOfHope.Data.Player
 {
-    [CreateAssetMenu(menuName = "Petals of Hope/Data/Stats/Player Stats", fileName = "NewPlayerStatsSO")]
+    [CreateAssetMenu(menuName = "Petals of Hope/Data/Stats/Character Stats")]
     public class CharacterStatsSo : EntityStatsSO
     {
         [Header("Player Specific Stats")]

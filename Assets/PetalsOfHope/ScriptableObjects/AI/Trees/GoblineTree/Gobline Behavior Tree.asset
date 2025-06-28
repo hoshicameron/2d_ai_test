@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d85cfee02794939a1e6efbb4f54e96e, type: 3}
   m_Name: Gobline Behavior Tree
   m_EditorClassIdentifier: 
-  rootNode: {fileID: 0}
+  rootNode: {fileID: 11400000, guid: 0565c18a68cf9024284a5dd72f88d915, type: 2}

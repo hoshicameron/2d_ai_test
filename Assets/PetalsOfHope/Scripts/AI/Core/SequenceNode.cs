@@ -8,22 +8,38 @@ namespace PetalsOfHope.AI.Core
     [CreateAssetMenu(menuName = "AI/Behavior Tree/Nodes/Composites/Sequence")]
     public class SequenceNode : CompositeNode
     {
-        [System.NonSerialized] private int currentChildIndex = 0;
-        protected override void OnStart(AIContext context) => currentChildIndex = 0;
+        // A stateful index is not needed here because the sequence must
+        // re-validate all preceding conditions every frame.
+        
+        protected override void OnStart(AIContext context) { }
+        protected override void OnStop(AIContext context) { }
 
+        /// <summary>
+        /// Evaluates the children of the Sequence node.
+        /// The loop now correctly starts from the first child (index 0) every time
+        // to ensure all conditions are still valid before continuing an action.
+        /// </summary>
         protected override NodeState OnUpdate(AIContext context)
         {
-            for (int i = currentChildIndex; i < children.Count; ++i)
+            // The loop MUST start from 0 to re-validate the entire sequence.
+            for (int i = 0; i < children.Count; ++i)
             {
-                currentChildIndex = i;
-                var child = children[currentChildIndex];
+                var child = children[i];
                 switch (child.Evaluate(context))
                 {
-                    case NodeState.Running: return NodeState.Running;
-                    case NodeState.Failure: return NodeState.Failure;
-                    case NodeState.Success: continue;
+                    case NodeState.Running:
+                        // If a child is running, the sequence is also running.
+                        return NodeState.Running;
+                    case NodeState.Failure:
+                        // If any child fails, the entire sequence fails immediately.
+                        return NodeState.Failure;
+                    case NodeState.Success:
+                        // If a child succeeds, continue to the next one.
+                        continue;
                 }
             }
+            
+            // If the loop completes, it means all children succeeded.
             return NodeState.Success;
         }
     }

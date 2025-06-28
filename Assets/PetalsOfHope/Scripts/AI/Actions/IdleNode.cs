@@ -38,6 +38,7 @@ namespace PetalsOfHope.AI.Actions
 
         protected override NodeState OnUpdate(AIContext context)
         {
+            context.InputSource.SetMoveInput(Vector2.zero);
             if (Time.time - startTime > duration)
             {
                 return NodeState.Success;

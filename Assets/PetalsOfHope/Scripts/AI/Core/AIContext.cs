@@ -1,5 +1,6 @@
 ﻿using _Project.Scripts.Gameplay.Character;
 using PetalsOfHope.AI.Data;
+using PetalsOfHope.Scripts.AI.Data;
 using UnityEngine;
 
 namespace PetalsOfHope.AI.Core
@@ -34,6 +35,12 @@ namespace PetalsOfHope.AI.Core
         // public float CurrentHealth;
         // public bool IsInCover;
         // public Vector3 LastKnownPlayerPosition;
+        
+        /// <summary>
+        /// A reference to the node that is currently in the 'Running' state.
+        /// This is updated every frame by the Behavior Tree.
+        /// </summary>
+        public Node CurrentRunningNode;
 
         // Constructor updated to accept PatrolDataSO
         public AIContext(GameObject agent, CharacterControllerBase controller, AIInputSource input,IdleDataSO idleData, PatrolDataSO patrolData, ChaseDataSO chaseData, AttackDataSO attackData)

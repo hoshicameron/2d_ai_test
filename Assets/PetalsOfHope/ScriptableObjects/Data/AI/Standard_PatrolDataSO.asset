@@ -18,6 +18,7 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 8
-  wallCheckDistance: 0.5
-  ledgeCheckForwardDistance: 0.5
-  ledgeCheckDownwardDistance: 1
+  wallCheckBoxSize: {x: 0.89, y: 0.22}
+  wallCheckBoxOffset: {x: 0.48, y: 0.02}
+  ledgeCheckBoxSize: {x: 0.33, y: 0.87}
+  ledgeCheckBoxOffset: {x: 0.69, y: -1}

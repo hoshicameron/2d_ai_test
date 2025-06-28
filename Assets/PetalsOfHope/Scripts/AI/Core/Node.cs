@@ -25,6 +25,12 @@ namespace PetalsOfHope.AI.Core
             }
 
             state = OnUpdate(context);
+            
+            // If this node is running, it reports itself to the context.
+            if (state == NodeState.Running && this is ActionNode)
+            {
+                context.CurrentRunningNode = this;
+            }
 
             if (state != NodeState.Running)
             {

@@ -1,6 +1,8 @@
 ﻿using _Project.Scripts.Gameplay.Character;
 using PetalsOfHope.AI.Core;
 using PetalsOfHope.AI.Data;
+using PetalsOfHope.Scripts.AI.Data;
+using UnityEditor;
 using UnityEngine;
 
 namespace PetalsOfHope.AI
@@ -23,7 +25,14 @@ namespace PetalsOfHope.AI
         
         [Tooltip("The data asset that defines the parameters for attack behavior.")]
         public AttackDataSO attackData; // Field for the designer to assign the chase data
+        
+        /// <summary>
+        /// A public property to easily see the name of the currently running action node.
+        /// Returns "None" if the AI is between actions (e.g., just finished one).
+        /// </summary>
+        public string CurrentActionNodeName => context?.CurrentRunningNode?.name ?? "None";
 
+        public string RuningNodeName;
         // --- Runtime References ---
         private Node runtimeTree;
         private AIContext context;
@@ -55,6 +64,11 @@ namespace PetalsOfHope.AI
             // --- POPULATE THE CONTEXT ---
             // This is where you update the AI's "senses" every frame.
             UpdateContext();
+            
+            // At the start of each frame, we clear the running state.
+            // This ensures that if a node is interrupted, it doesn't stay stuck
+            // as the "current" node.
+            context.CurrentRunningNode = null;
 
             // --- TICK THE TREE ---
             // The tree runs its logic based on the fresh context data.
@@ -76,7 +90,9 @@ namespace PetalsOfHope.AI
                     context.PlayerTransform = player.transform;
                 }
             }
-            
+
+            RuningNodeName = CurrentActionNodeName;
+
             // Add other updates here, e.g.:
             // context.CurrentHealth = healthComponent.Health;
             // context.LastKnownPlayerPosition = perceptionSystem.GetPlayerPosition();
@@ -95,6 +111,14 @@ namespace PetalsOfHope.AI
             
             // Start the recursive drawing process from the root node.
             TraverseAndDraw(runtimeTree);
+            
+            // --- New Label Drawing (Wrapped for safety) ---
+            // The code that uses the Handles class is now wrapped in a preprocessor directive.
+#if UNITY_EDITOR
+            string label = $"Current Action: {CurrentActionNodeName}";
+            Handles.color = Color.white;
+            Handles.Label(transform.position + Vector3.up * 1.0f, label);
+#endif
         }
 
         /// <summary>

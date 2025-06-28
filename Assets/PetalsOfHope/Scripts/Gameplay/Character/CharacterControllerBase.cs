@@ -29,7 +29,7 @@ namespace _Project.Scripts.Gameplay.Character
 
         [Header("Data Dependencies")]
         // Consider creating a generic CharacterStatsSO to be used by both players and enemies
-        [SerializeField] private CharacterStatsSo _stats; 
+        [SerializeField] protected CharacterStatsSo _stats; 
         
         [Header("Ground Check")]
         [SerializeField] private Transform _groundCheckPoint;
@@ -255,10 +255,6 @@ namespace _Project.Scripts.Gameplay.Character
             StateMachine.ChangeState(DashState);
         }
         
-        private void HandleCharacterDeath()
-        {
-            StateMachine.ChangeState(DeathState);
-        }
         
         private void CheckWallCollision()
         {
@@ -352,6 +348,11 @@ namespace _Project.Scripts.Gameplay.Character
                 Gizmos.color = _isTouchingLadder ? Color.green : Color.yellow;
                 Gizmos.DrawWireCube(transform.position, _climbData.ladderCheckSize);
             }
+        }
+        
+        protected void HandleCharacterDeath()
+        {
+            StateMachine.ChangeState(DeathState);
         }
     }
 }
