@@ -19,6 +19,7 @@ GameObject:
   - component: {fileID: 1725043701226227571}
   - component: {fileID: 747051337734881239}
   - component: {fileID: 7189908605111981953}
+  - component: {fileID: 903343241901785518}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -285,6 +286,20 @@ MonoBehaviour:
   _stats: {fileID: 11400000, guid: 4ed19b76704060143a1fe26f5fda7426, type: 2}
   _playerDiedEventSO: {fileID: 11400000, guid: eb6a3dfb1b0077648892d9c5941e6d2d, type: 2}
   _playerHealthChangedEventSO: {fileID: 11400000, guid: be511a8c38a190541bc19a4fb62308a9, type: 2}
+--- !u!114 &903343241901785518
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1821344402836837637}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c29cff538c195c249b69c6f2236de67b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Library: []
+  m_SpriteLibraryAsset: {fileID: 0}
 --- !u!1 &3270930040625937334
 GameObject:
   m_ObjectHideFlags: 0
