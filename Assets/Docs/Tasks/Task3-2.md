@@ -1,7 +1,7 @@
 # Task ID: 3.2
 # Parent Task ID: 3
 # Title: AI System (State Machine based) Implementation
-# Status: ~~pending~~
+# Status: completed
 # Dependencies: 2.3, 3.1.2, 1.2 # StateMachine System, EnemyBase, Event Bus
 # Priority: critical
 # Estimated Effort: XL (aggregate of subtasks)

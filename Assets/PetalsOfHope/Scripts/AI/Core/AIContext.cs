@@ -28,8 +28,12 @@ namespace PetalsOfHope.AI.Core
         public Transform PlayerTransform; // Will be updated by the runner
         
         // --- Runtime AI State ---
-        public int PatrolDirection = 1; // 1 for right, -1 for left
+        public int CurrentFacingDirection = 1;
         public bool IsInitialized = false;
+        
+        // --- Memory ---
+        public Vector3 LastKnownPlayerPosition;
+        public float TimeLastSeenPlayer = -99f;
 
         // --- Add any other data your AI might need ---
         // public float CurrentHealth;

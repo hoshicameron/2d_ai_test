@@ -1,7 +1,7 @@
 # Task ID: 3.2.4
 # Parent Task ID: 3.2
 # Title: Implement Concrete AI States (ChaseState)
-# Status: pending
+# Status: completed
 # Dependencies: 3.2.1, 3.2.2, 1.2.8 # AI.Core.State, AI.StateMachine, EventSO assets
 # Priority: critical
 # Estimated Effort: L

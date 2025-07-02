@@ -19,7 +19,7 @@ namespace PetalsOfHope.AI
             Debug.Log($"Wall Layer Mask Binary: {Convert.ToString(context.PatrolData.wallLayer, 2)}");
             
             // The center of the box is calculated based on the agent's position, patrol direction, and offset.
-            Vector2 boxCenter = (Vector2)context.AgentTransform.position + new Vector2(context.PatrolData.wallCheckBoxOffset.x * context.PatrolDirection, context.PatrolData.wallCheckBoxOffset.y);
+            Vector2 boxCenter = (Vector2)context.AgentTransform.position + new Vector2(context.PatrolData.wallCheckBoxOffset.x * context.CurrentFacingDirection, context.PatrolData.wallCheckBoxOffset.y);
             
             
             // ADD THIS DEBUG:
@@ -38,7 +38,7 @@ namespace PetalsOfHope.AI
         {
             if (context?.PatrolData == null) return;
 
-            Vector2 boxCenter = (Vector2)context.AgentTransform.position + new Vector2(context.PatrolData.wallCheckBoxOffset.x * context.PatrolDirection, context.PatrolData.wallCheckBoxOffset.y);
+            Vector2 boxCenter = (Vector2)context.AgentTransform.position + new Vector2(context.PatrolData.wallCheckBoxOffset.x * context.CurrentFacingDirection, context.PatrolData.wallCheckBoxOffset.y);
             
             // Set color to GREEN if a wall is detected, RED otherwise.
             Gizmos.color = _isFacingWall ? Color.green : Color.red;
