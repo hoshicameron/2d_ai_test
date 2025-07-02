@@ -19,6 +19,7 @@ namespace PetalsOfHope.AI.BehaviourTree
         {
             // Send the attack command.
             context.InputSource.TriggerAttack();
+            context.InputSource.SetMoveInput(Vector2.zero);
             
             // Immediately return Success as requested.
             return NodeState.Success;

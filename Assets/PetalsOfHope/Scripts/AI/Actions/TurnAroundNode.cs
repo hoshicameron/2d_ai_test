@@ -20,7 +20,7 @@ namespace PetalsOfHope.AI.BehaviourTree
         /// </summary>
         protected override NodeState OnUpdate(AIContext context)
         {
-            context.PatrolDirection *= -1;
+            context.CurrentFacingDirection *= -1;
             return NodeState.Success;
         }
     }

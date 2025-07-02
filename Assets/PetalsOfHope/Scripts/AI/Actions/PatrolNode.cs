@@ -28,7 +28,7 @@ namespace PetalsOfHope.AI.BehaviourTree
         /// </summary>
         protected override NodeState OnUpdate(AIContext context)
         {
-            var moveVector = new Vector2(context.PatrolDirection, 0);
+            var moveVector = new Vector2(context.CurrentFacingDirection, 0);
             context.InputSource.SetMoveInput(moveVector);
             
             // This action never completes on its own; it runs until a parent node

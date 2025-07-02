@@ -34,6 +34,11 @@ namespace PetalsOfHope.AI.Actions
                 // If there's no player, we can't move towards them.
                 return NodeState.Failure;
             }
+            
+            // If this node is running, it means we can see the player.
+            // Update the AI's memory of the player's last known position and time.
+            context.LastKnownPlayerPosition = context.PlayerTransform.position;
+            context.TimeLastSeenPlayer = Time.time;
 
             // Calculate the horizontal direction to the player.
             float directionX = context.PlayerTransform.position.x - context.AgentTransform.position.x;
@@ -41,6 +46,11 @@ namespace PetalsOfHope.AI.Actions
             // Normalize the direction to get a value of 1 or -1 (or 0 if directly above/below).
             // This ensures consistent movement speed.
             float horizontalInput = Mathf.Sign(directionX);
+            
+            if (Mathf.Abs(horizontalInput) > 0.1f)
+            {
+                context.CurrentFacingDirection = (int)horizontalInput;
+            }
 
             // Command the character to move.
             context.InputSource.SetMoveInput(new Vector2(horizontalInput, 0));

@@ -9,11 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a89b427db4ea4c14db0c00907383765e, type: 3}
-  m_Name: EnemyStats So
+  m_Script: {fileID: 11500000, guid: 173a413fb88e48f9ac60c2cdee6a3aca, type: 3}
+  m_Name: Selector_SearchAction
   m_EditorClassIdentifier: 
-  maxHealth: 50
-  movementSpeed: 5
-  jumpForce: 10
-  airControlFactor: 0.8
-  gravityScale: 1
+  guid: 
+  description: 
+  children:
+  - {fileID: 11400000, guid: a158e22235a8391478cb63a439b4fb74, type: 2}
+  - {fileID: 11400000, guid: dd393b52a393a1d4db3e27bb1904d805, type: 2}

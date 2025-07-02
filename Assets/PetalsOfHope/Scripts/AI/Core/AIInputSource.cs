@@ -31,5 +31,10 @@ namespace PetalsOfHope.AI.Core
         {
             AttackEvent?.Invoke();
         }
+
+        public void TriggerJump()
+        {
+            JumpEvent?.Invoke();
+        }
     }
 }
