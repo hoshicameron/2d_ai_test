@@ -67,7 +67,7 @@ PrefabInstance:
     - target: {fileID: 7219309244571862652, guid: 52888f11d23a3df4482ae247ef0c1e46, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 482379126287382239, guid: 3b35f2a8327645a409db6a65aa185255, type: 3}
+      objectReference: {fileID: 9223084950482534279, guid: 3b35f2a8327645a409db6a65aa185255, type: 3}
     - target: {fileID: 7219309244571862652, guid: 52888f11d23a3df4482ae247ef0c1e46, type: 3}
       propertyPath: m_WasSpriteAssigned
       value: 1
@@ -97,7 +97,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed8b1ae4e4e52b34ea557c1c11e076fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_CategoryHash: 0
-  m_labelHash: 0
+  m_CategoryHash: 0.009161512
+  m_labelHash: 7.3235566e-14
   m_SpriteKey: 0
-  m_SpriteHash: 1063013743
+  m_SpriteHash: 232506163
