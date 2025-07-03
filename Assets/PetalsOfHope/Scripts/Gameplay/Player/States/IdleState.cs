@@ -57,8 +57,6 @@ namespace PetalsOfHope.Gameplay.Player.States
             {
                 _stateMachine.ChangeState(_characterController.FallingState);
             }
-            
-            
         }
 
         public override void FixedUpdate()
