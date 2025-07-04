@@ -85,15 +85,15 @@ namespace _Project.Scripts.Gameplay.Character
         
         // This is now generic, so it could be PlayerStatsSO or EnemyStatsSO if they share a base class
         public CharacterStatsSo Stats => _stats;
-        public Vector2 MoveInput { get; private set; }
-        public bool JumpInputPressed { get; private set; }
-        public bool JumpInputReleased { get; private set; }
+        public Vector2 MoveInput { get; protected set; }
+        public bool JumpInputPressed { get; protected set; }
+        public bool JumpInputReleased { get; protected set; }
         public bool DashInputPressed { get; private set; }
-        public bool IsGrounded { get; private set; }
+        public bool IsGrounded { get; protected set; }
         public Rigidbody2D Rigidbody { get; private set; }
         public CapsuleCollider2D Collider { get; private set; }
-        public StateMachine StateMachine { get; private set; }
-        public CoreAnimation AnimationController { get; private set; }
+        public StateMachine StateMachine { get; protected set; }
+        public CoreAnimation AnimationController { get; protected set; }
         public int RemainingJumps { get; set; }
         
         public bool IsDashing { get; set; }
@@ -227,6 +227,11 @@ namespace _Project.Scripts.Gameplay.Character
                 CurrentStateName = StateMachine.CurrentState.GetType().Name;
             }
             Debug.Log($"[CharacterController] Scale updated to: {transform.localScale}");
+        }
+
+        protected virtual void FixedUpdate()
+        {
+            
         }
         
         public void ResetJumpInputFlags()
