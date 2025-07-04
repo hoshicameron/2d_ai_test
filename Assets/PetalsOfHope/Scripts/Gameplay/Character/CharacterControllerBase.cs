@@ -226,6 +226,7 @@ namespace _Project.Scripts.Gameplay.Character
             {
                 CurrentStateName = StateMachine.CurrentState.GetType().Name;
             }
+            Debug.Log($"[CharacterController] Scale updated to: {transform.localScale}");
         }
         
         public void ResetJumpInputFlags()
