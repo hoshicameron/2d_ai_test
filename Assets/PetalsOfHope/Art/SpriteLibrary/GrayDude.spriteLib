@@ -21,7 +21,7 @@ MonoBehaviour:
       m_Hash: 698673518
       m_Sprite: {fileID: 482379126287382239, guid: 3b35f2a8327645a409db6a65aa185255, type: 3}
       m_FromMain: 1
-      m_SpriteOverride: {fileID: -6708041380587495879, guid: 3b35f2a8327645a409db6a65aa185255, type: 3}
+      m_SpriteOverride: {fileID: -144443187003585436, guid: 3b35f2a8327645a409db6a65aa185255, type: 3}
     m_FromMain: 1
     m_EntryOverrideCount: 1
   - m_Name: Jump
@@ -32,7 +32,7 @@ MonoBehaviour:
       m_Hash: 150008042
       m_Sprite: {fileID: -789098660515651329, guid: 3b35f2a8327645a409db6a65aa185255, type: 3}
       m_FromMain: 1
-      m_SpriteOverride: {fileID: -2157860780944187724, guid: 3b35f2a8327645a409db6a65aa185255, type: 3}
+      m_SpriteOverride: {fileID: -7559621544552133252, guid: 3b35f2a8327645a409db6a65aa185255, type: 3}
     m_FromMain: 1
     m_EntryOverrideCount: 1
   - m_Name: Fall
@@ -43,7 +43,7 @@ MonoBehaviour:
       m_Hash: 129066541
       m_Sprite: {fileID: 5283247947156715593, guid: 3b35f2a8327645a409db6a65aa185255, type: 3}
       m_FromMain: 1
-      m_SpriteOverride: {fileID: 6615913174781221374, guid: 3b35f2a8327645a409db6a65aa185255, type: 3}
+      m_SpriteOverride: {fileID: 311056923896743930, guid: 3b35f2a8327645a409db6a65aa185255, type: 3}
     m_FromMain: 1
     m_EntryOverrideCount: 1
   - m_Name: Move
@@ -54,19 +54,19 @@ MonoBehaviour:
       m_Hash: 522332514
       m_Sprite: {fileID: 9223084950482534279, guid: 3b35f2a8327645a409db6a65aa185255, type: 3}
       m_FromMain: 1
-      m_SpriteOverride: {fileID: 6298738383321826139, guid: 3b35f2a8327645a409db6a65aa185255, type: 3}
+      m_SpriteOverride: {fileID: 9223084950482534279, guid: 3b35f2a8327645a409db6a65aa185255, type: 3}
     - m_Name: spritesheet-characters-default_21
       m_Hash: 1072013447
       m_Sprite: {fileID: -917536899050956344, guid: 3b35f2a8327645a409db6a65aa185255, type: 3}
       m_FromMain: 1
-      m_SpriteOverride: {fileID: -6981895161831041823, guid: 3b35f2a8327645a409db6a65aa185255, type: 3}
+      m_SpriteOverride: {fileID: -2896451398360180185, guid: 3b35f2a8327645a409db6a65aa185255, type: 3}
     - m_Name: spritesheet-characters-default_27
       m_Hash: 377882034
       m_Sprite: {fileID: -6287901631135702188, guid: 3b35f2a8327645a409db6a65aa185255, type: 3}
       m_FromMain: 1
-      m_SpriteOverride: {fileID: -4456421153385321519, guid: 3b35f2a8327645a409db6a65aa185255, type: 3}
+      m_SpriteOverride: {fileID: 2145364229992885617, guid: 3b35f2a8327645a409db6a65aa185255, type: 3}
     m_FromMain: 1
-    m_EntryOverrideCount: 3
+    m_EntryOverrideCount: 2
   - m_Name: Death
     m_Hash: 646380074
     m_CategoryList: []
@@ -75,7 +75,7 @@ MonoBehaviour:
       m_Hash: 600818642
       m_Sprite: {fileID: 6144715408443906559, guid: 3b35f2a8327645a409db6a65aa185255, type: 3}
       m_FromMain: 1
-      m_SpriteOverride: {fileID: 8219190902827597996, guid: 3b35f2a8327645a409db6a65aa185255, type: 3}
+      m_SpriteOverride: {fileID: -3317945877700360556, guid: 3b35f2a8327645a409db6a65aa185255, type: 3}
     m_FromMain: 1
     m_EntryOverrideCount: 1
   - m_Name: WallGrab
@@ -86,7 +86,7 @@ MonoBehaviour:
       m_Hash: 150008042
       m_Sprite: {fileID: -789098660515651329, guid: 3b35f2a8327645a409db6a65aa185255, type: 3}
       m_FromMain: 1
-      m_SpriteOverride: {fileID: -2157860780944187724, guid: 3b35f2a8327645a409db6a65aa185255, type: 3}
+      m_SpriteOverride: {fileID: -7559621544552133252, guid: 3b35f2a8327645a409db6a65aa185255, type: 3}
     m_FromMain: 1
     m_EntryOverrideCount: 1
   - m_Name: WallJump
@@ -97,7 +97,7 @@ MonoBehaviour:
       m_Hash: 150008042
       m_Sprite: {fileID: -789098660515651329, guid: 3b35f2a8327645a409db6a65aa185255, type: 3}
       m_FromMain: 1
-      m_SpriteOverride: {fileID: -2157860780944187724, guid: 3b35f2a8327645a409db6a65aa185255, type: 3}
+      m_SpriteOverride: {fileID: -7559621544552133252, guid: 3b35f2a8327645a409db6a65aa185255, type: 3}
     m_FromMain: 1
     m_EntryOverrideCount: 1
   - m_Name: Dash
@@ -108,7 +108,7 @@ MonoBehaviour:
       m_Hash: 150008042
       m_Sprite: {fileID: -789098660515651329, guid: 3b35f2a8327645a409db6a65aa185255, type: 3}
       m_FromMain: 1
-      m_SpriteOverride: {fileID: -2157860780944187724, guid: 3b35f2a8327645a409db6a65aa185255, type: 3}
+      m_SpriteOverride: {fileID: -7559621544552133252, guid: 3b35f2a8327645a409db6a65aa185255, type: 3}
     m_FromMain: 1
     m_EntryOverrideCount: 1
   - m_Name: ClimbIdle
@@ -119,7 +119,7 @@ MonoBehaviour:
       m_Hash: 179070695
       m_Sprite: {fileID: 608529117585639455, guid: 3b35f2a8327645a409db6a65aa185255, type: 3}
       m_FromMain: 1
-      m_SpriteOverride: {fileID: -6475856772366320131, guid: 3b35f2a8327645a409db6a65aa185255, type: 3}
+      m_SpriteOverride: {fileID: -8774799074876459727, guid: 3b35f2a8327645a409db6a65aa185255, type: 3}
     m_FromMain: 1
     m_EntryOverrideCount: 1
   - m_Name: ClimbDown
@@ -130,12 +130,12 @@ MonoBehaviour:
       m_Hash: 179070695
       m_Sprite: {fileID: 608529117585639455, guid: 3b35f2a8327645a409db6a65aa185255, type: 3}
       m_FromMain: 1
-      m_SpriteOverride: {fileID: -2796077757022282674, guid: 3b35f2a8327645a409db6a65aa185255, type: 3}
+      m_SpriteOverride: {fileID: 8630821001075620710, guid: 3b35f2a8327645a409db6a65aa185255, type: 3}
     - m_Name: spritesheet-characters-default_22
       m_Hash: 653062461
       m_Sprite: {fileID: -1186157906941791191, guid: 3b35f2a8327645a409db6a65aa185255, type: 3}
       m_FromMain: 1
-      m_SpriteOverride: {fileID: -6475856772366320131, guid: 3b35f2a8327645a409db6a65aa185255, type: 3}
+      m_SpriteOverride: {fileID: -8774799074876459727, guid: 3b35f2a8327645a409db6a65aa185255, type: 3}
     m_FromMain: 1
     m_EntryOverrideCount: 2
   - m_Name: ClimbUp
@@ -146,14 +146,14 @@ MonoBehaviour:
       m_Hash: 653062461
       m_Sprite: {fileID: -1186157906941791191, guid: 3b35f2a8327645a409db6a65aa185255, type: 3}
       m_FromMain: 1
-      m_SpriteOverride: {fileID: -6475856772366320131, guid: 3b35f2a8327645a409db6a65aa185255, type: 3}
+      m_SpriteOverride: {fileID: -8774799074876459727, guid: 3b35f2a8327645a409db6a65aa185255, type: 3}
     - m_Name: spritesheet-characters-default_16
       m_Hash: 179070695
       m_Sprite: {fileID: 608529117585639455, guid: 3b35f2a8327645a409db6a65aa185255, type: 3}
       m_FromMain: 1
-      m_SpriteOverride: {fileID: -2796077757022282674, guid: 3b35f2a8327645a409db6a65aa185255, type: 3}
+      m_SpriteOverride: {fileID: 8630821001075620710, guid: 3b35f2a8327645a409db6a65aa185255, type: 3}
     m_FromMain: 1
     m_EntryOverrideCount: 2
   m_PrimaryLibraryGUID: 4499dfa575ba47f43bd4ae67a982c5d1
-  m_ModificationHash: 638872327632381642
+  m_ModificationHash: 638872329077865573
   m_Version: 1
