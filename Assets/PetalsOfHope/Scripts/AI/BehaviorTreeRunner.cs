@@ -1,13 +1,13 @@
-﻿using _Project.Scripts.Gameplay.Character;
-using PetalsOfHope.AI.Core;
+﻿using PetalsOfHope.AI.Core;
 using PetalsOfHope.AI.Data;
+using PetalsOfHope.Interfaces;
 using PetalsOfHope.Scripts.AI.Data;
 using UnityEditor;
 using UnityEngine;
 
 namespace PetalsOfHope.AI
 {
-    [RequireComponent(typeof(CharacterControllerBase))]
+    [RequireComponent(typeof(ICharacterController))]
     [RequireComponent(typeof(AIInputSource))]
     public class BehaviorTreeRunner : MonoBehaviour
     {
@@ -40,7 +40,7 @@ namespace PetalsOfHope.AI
         private void Start()
         {
             // Find necessary components
-            var characterController = GetComponent<CharacterControllerBase>();
+            var characterController = GetComponent<ICharacterController>();
             var aiInputSource = GetComponent<AIInputSource>();
             
             // Create the context that the tree will use to read/write data

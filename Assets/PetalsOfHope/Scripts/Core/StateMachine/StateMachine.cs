@@ -68,13 +68,13 @@ namespace PetalsOfHope.Core.StateMachine
             _currentState.Enter();
         }
 
-        private void Update()
+        public void UpdateState()
         {
             if (!_isInitialized || _currentState == null) return;
             _currentState.Update();
         }
 
-        private void FixedUpdate()
+        public void FixedUpdateState()
         {
             if (!_isInitialized || _currentState == null) return;
             _currentState.FixedUpdate();

@@ -1,8 +1,8 @@
-using _Project.Scripts.Gameplay.Character;
+using PetalOfHope.Gameplay.Character;
 using UnityEngine;
 using PetalsOfHope.Core.StateMachine;
 
-namespace PetalsOfHope.Gameplay.Player.States
+namespace PetalsOfHope.Gameplay.States
 {
     public class MovingState : BaseState
     {

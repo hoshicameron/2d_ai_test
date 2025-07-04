@@ -1,5 +1,5 @@
-﻿using _Project.Scripts.Gameplay.Character;
-using PetalsOfHope.AI.Data;
+﻿using PetalsOfHope.AI.Data;
+using PetalsOfHope.Interfaces;
 using PetalsOfHope.Scripts.AI.Data;
 using UnityEngine;
 
@@ -15,7 +15,7 @@ namespace PetalsOfHope.AI.Core
         // --- Core References ---
         public readonly GameObject Agent;
         public readonly Transform AgentTransform;
-        public readonly CharacterControllerBase CharacterController; // To read stats like IsGrounded
+        public readonly ICharacterController CharacterController; // To read stats like IsGrounded
         public readonly AIInputSource InputSource;
         
         // --- Configuration Data ---
@@ -47,7 +47,7 @@ namespace PetalsOfHope.AI.Core
         public Node CurrentRunningNode;
 
         // Constructor updated to accept PatrolDataSO
-        public AIContext(GameObject agent, CharacterControllerBase controller, AIInputSource input,IdleDataSO idleData, PatrolDataSO patrolData, ChaseDataSO chaseData, AttackDataSO attackData)
+        public AIContext(GameObject agent, ICharacterController controller, AIInputSource input,IdleDataSO idleData, PatrolDataSO patrolData, ChaseDataSO chaseData, AttackDataSO attackData)
         {
             Agent = agent;
             AgentTransform = agent.transform;

@@ -1,4 +1,4 @@
-﻿using _Project.Scripts.Gameplay.Character;
+﻿using PetalOfHope.Gameplay.Character;
 using UnityEngine;
 
 namespace PetalsOfHope.Gameplay.Enemies.Core
