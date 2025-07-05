@@ -68,6 +68,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3499761134963079764, guid: 1b2ee9bd119974647909647fa201841d, type: 3}
+      propertyPath: _stats
+      value: 
+      objectReference: {fileID: 11400000, guid: b891982dc4de1a64bb479262ac98bf98, type: 2}
     - target: {fileID: 4002757745371217092, guid: 1b2ee9bd119974647909647fa201841d, type: 3}
       propertyPath: m_Name
       value: Bee

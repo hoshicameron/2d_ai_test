@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a89b427db4ea4c14db0c00907383765e, type: 3}
-  m_Name: EnemyStats So
+  m_Name: BlueFish
   m_EditorClassIdentifier: 
-  maxHealth: 50
-  movementSpeed: 5
-  jumpForce: 10
-  airControlFactor: 0.8
+  maxHealth: 80
+  movementSpeed: 5.5
+  jumpForce: 0
+  airControlFactor: 0.9
   gravityScale: 1
