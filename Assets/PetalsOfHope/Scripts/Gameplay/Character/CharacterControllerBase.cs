@@ -2,21 +2,22 @@
 using PetalsOfHope.Core.StateMachine;
 using PetalsOfHope.Data.Abilities.Types;
 using PetalsOfHope.Data.Player;
-using PetalsOfHope.Gameplay.Player.States;
+using PetalsOfHope.Gameplay.States;
 using PetalsOfHope.Interfaces;
 using PetalsOfHope.Utilities;
 using UnityEngine;
 using CoreAnimation = PetalsOfHope.Core.Animation.AnimationController;
 
-namespace _Project.Scripts.Gameplay.Character
+namespace PetalOfHope.Gameplay.Character
 {
     [RequireComponent(typeof(Rigidbody2D))]
     [RequireComponent(typeof(CapsuleCollider2D))]
     [RequireComponent(typeof(StateMachine))]
     [RequireComponent(typeof(CoreAnimation))]
     [RequireComponent(typeof(ICharacterInputSource))] 
-    public abstract class CharacterControllerBase : MonoBehaviour
+    public abstract class CharacterControllerBase : MonoBehaviour, ICharacterController
     {
+        
         #region Input Source
         
         // The source of the character's actions (player, AI, etc.)
@@ -85,15 +86,21 @@ namespace _Project.Scripts.Gameplay.Character
         
         // This is now generic, so it could be PlayerStatsSO or EnemyStatsSO if they share a base class
         public CharacterStatsSo Stats => _stats;
-        public Vector2 MoveInput { get; private set; }
-        public bool JumpInputPressed { get; private set; }
-        public bool JumpInputReleased { get; private set; }
+        public Vector2 MoveInput { get; protected set; }
+        public float MovementSpeed =>_stats != null ? _stats.movementSpeed : 0f;
+        public float JumpForce => _stats != null ? _stats.jumpForce : 0f;
+        public float AirControlFactor => _stats != null ? _stats.airControlFactor : 1f;
+        public float DashForce => _dashData != null ? _dashData.dashSpeed : 0f;
+        public bool JumpInputPressed { get; protected set; }
+        public bool JumpInputReleased { get; protected set; }
         public bool DashInputPressed { get; private set; }
-        public bool IsGrounded { get; private set; }
+        public bool IsGrounded { get; protected set; }
+        public GameObject GameObject => gameObject;
+        public Transform Transform => transform;
         public Rigidbody2D Rigidbody { get; private set; }
         public CapsuleCollider2D Collider { get; private set; }
-        public StateMachine StateMachine { get; private set; }
-        public CoreAnimation AnimationController { get; private set; }
+        public StateMachine StateMachine { get; protected set; }
+        public CoreAnimation AnimationController { get; protected set; }
         public int RemainingJumps { get; set; }
         
         public bool IsDashing { get; set; }
@@ -140,12 +147,14 @@ namespace _Project.Scripts.Gameplay.Character
                 Debug.LogError("CharacterControllerBase requires a component that implements ICharacterInputSource!", this);
             }
             
+            
             // Get Core Components
             Rigidbody = GetComponent<Rigidbody2D>();
             Collider = GetComponent<CapsuleCollider2D>();
             StateMachine = GetComponent<StateMachine>();
             AnimationController = GetComponent<CoreAnimation>();
 
+            
             // Initialize states
             // NOTE: You will need to update the constructors of these State classes
             // to accept the ICharacterInputSource so they can call ConsumeJumpInput() etc.
@@ -208,6 +217,7 @@ namespace _Project.Scripts.Gameplay.Character
 
         protected virtual void Update()
         {
+            StateMachine.UpdateState();
             // Universal physics and environment checks
             CheckIfGrounded();
             HandleCharacterLanded();
@@ -227,6 +237,11 @@ namespace _Project.Scripts.Gameplay.Character
                 CurrentStateName = StateMachine.CurrentState.GetType().Name;
             }
             Debug.Log($"[CharacterController] Scale updated to: {transform.localScale}");
+        }
+
+        protected virtual void FixedUpdate()
+        {
+            StateMachine.FixedUpdateState();
         }
         
         public void ResetJumpInputFlags()

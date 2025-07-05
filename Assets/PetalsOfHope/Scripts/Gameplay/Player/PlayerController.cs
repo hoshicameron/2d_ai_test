@@ -1,4 +1,4 @@
-using _Project.Scripts.Gameplay.Character;
+using PetalOfHope.Gameplay.Character;
 using PetalsOfHope.Core.Events;
 using PetalsOfHope.Core.StateMachine;
 using UnityEngine;

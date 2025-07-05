@@ -1,9 +1,9 @@
-using _Project.Scripts.Gameplay.Character;
+using PetalOfHope.Gameplay.Character;
 using UnityEngine;
 using PetalsOfHope.Core.StateMachine;
 using PetalsOfHope.Data.Abilities.Types;
 
-namespace PetalsOfHope.Gameplay.Player.States
+namespace PetalsOfHope.Gameplay.States
 {
     public class WallGrabState : BaseState
     {

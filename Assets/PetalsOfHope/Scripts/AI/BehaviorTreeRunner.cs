@@ -1,18 +1,23 @@
-﻿using _Project.Scripts.Gameplay.Character;
-using PetalsOfHope.AI.Core;
+﻿using PetalsOfHope.AI.Core;
 using PetalsOfHope.AI.Data;
+using PetalsOfHope.AI.Path;
+using PetalsOfHope.Interfaces;
 using PetalsOfHope.Scripts.AI.Data;
 using UnityEditor;
 using UnityEngine;
 
 namespace PetalsOfHope.AI
 {
-    [RequireComponent(typeof(CharacterControllerBase))]
+    [RequireComponent(typeof(ICharacterController))]
     [RequireComponent(typeof(AIInputSource))]
     public class BehaviorTreeRunner : MonoBehaviour
     {
         [Tooltip("The Behavior Tree asset to run for this agent.")]
         public BehaviorTree treeAsset;
+        
+        [Header("Scene References")]
+        [Tooltip("The specific PatrolPath this AI should follow. Drag a PatrolPath object from the scene here.")]
+        public PatrolPath patrolPath; // Field for the designer to assign the path
         
         [Tooltip("The data asset that defines the parameters for patrol behavior.")]
         public PatrolDataSO patrolData; // Field for the designer to assign the data
@@ -40,11 +45,11 @@ namespace PetalsOfHope.AI
         private void Start()
         {
             // Find necessary components
-            var characterController = GetComponent<CharacterControllerBase>();
+            var characterController = GetComponent<ICharacterController>();
             var aiInputSource = GetComponent<AIInputSource>();
             
             // Create the context that the tree will use to read/write data
-            context = new AIContext(gameObject, characterController, aiInputSource,idleData, patrolData, chaseData, attackData);
+            context = new AIContext(gameObject, characterController, aiInputSource,patrolPath, idleData, patrolData, chaseData, attackData);
 
             // Clone the Behavior Tree asset to create a unique, stateful instance for this agent.
             if (treeAsset != null)

@@ -1,9 +1,9 @@
-﻿using _Project.Scripts.Gameplay.Character;
+﻿using PetalOfHope.Gameplay.Character;
 using PetalsOfHope.Core.StateMachine;
 using PetalsOfHope.Data.Abilities.Types;
 using UnityEngine;
 
-namespace PetalsOfHope.Gameplay.Player.States
+namespace PetalsOfHope.Gameplay.States
 {
     public class ClimbState : BaseState
     {
