@@ -17,7 +17,7 @@ namespace PetalsOfHope.Scripts.AI.Actions
         protected override NodeState OnUpdate(AIContext context)
         {
             // The AI must be grounded to be able to jump.
-            if (!context.CharacterController.IsGrounded)
+            if (!context.Character.IsGrounded)
             {
                 return NodeState.Failure;
             }
