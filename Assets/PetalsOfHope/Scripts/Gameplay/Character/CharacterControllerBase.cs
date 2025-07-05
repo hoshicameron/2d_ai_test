@@ -11,7 +11,6 @@ using CoreAnimation = PetalsOfHope.Core.Animation.AnimationController;
 namespace PetalOfHope.Gameplay.Character
 {
     [RequireComponent(typeof(Rigidbody2D))]
-    [RequireComponent(typeof(CapsuleCollider2D))]
     [RequireComponent(typeof(StateMachine))]
     [RequireComponent(typeof(CoreAnimation))]
     [RequireComponent(typeof(ICharacterInputSource))] 
@@ -98,7 +97,7 @@ namespace PetalOfHope.Gameplay.Character
         public GameObject GameObject => gameObject;
         public Transform Transform => transform;
         public Rigidbody2D Rigidbody { get; private set; }
-        public CapsuleCollider2D Collider { get; private set; }
+        public Collider2D Collider { get; private set; }
         public StateMachine StateMachine { get; protected set; }
         public CoreAnimation AnimationController { get; protected set; }
         public int RemainingJumps { get; set; }
@@ -150,7 +149,7 @@ namespace PetalOfHope.Gameplay.Character
             
             // Get Core Components
             Rigidbody = GetComponent<Rigidbody2D>();
-            Collider = GetComponent<CapsuleCollider2D>();
+            Collider = GetComponent<Collider2D>();
             StateMachine = GetComponent<StateMachine>();
             AnimationController = GetComponent<CoreAnimation>();
 

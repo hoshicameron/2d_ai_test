@@ -1,15 +1,12 @@
 using UnityEngine;
 using System;
 using PetalsOfHope.Interfaces;
-using PetalsOfHope.Data.Enemies;
-using PetalsOfHope.Core.Events;
 
 namespace PetalsOfHope.Gameplay.Enemies.Core
 {
     /// <summary>
     /// Handles health management for enemies, implementing IDamageable interface.
     /// </summary>
-    [RequireComponent(typeof(Collider2D))]
     public class EnemyHealth : MonoBehaviour, IDamageable
     {
         private int _currentHealth;
