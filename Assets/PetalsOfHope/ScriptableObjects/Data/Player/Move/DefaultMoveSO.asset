@@ -9,11 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c48792e32cf76584dafb0f9af65d796f, type: 3}
-  m_Name: DefaultDoubleJumpAbilitySO
+  m_Script: {fileID: 11500000, guid: 1f4331e2279647cd8e27c06b633f413c, type: 3}
+  m_Name: DefaultMoveSO
   m_EditorClassIdentifier: 
-  abilityName: Double Jump
+  abilityName: New Ability
   icon: {fileID: 0}
-  cooldown: 0
-  description: Allows the player to perform an additional jump in mid-air.
-  doubleJumpForceMultiplier: 0.8
+  description: 
+  movementSpeed: 5

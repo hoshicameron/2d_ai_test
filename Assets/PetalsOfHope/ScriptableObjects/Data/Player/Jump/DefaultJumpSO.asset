@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c48792e32cf76584dafb0f9af65d796f, type: 3}
+  m_Name: DefaultJumpSO
+  m_EditorClassIdentifier: 
+  abilityName: Double Jump
+  icon: {fileID: 0}
+  cooldown: 0
+  description: Allows the player to perform an additional jump in mid-air.
+  doubleJumpForceMultiplier: 0.8

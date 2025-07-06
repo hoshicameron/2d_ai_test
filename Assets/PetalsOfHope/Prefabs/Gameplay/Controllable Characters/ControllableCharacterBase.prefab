@@ -176,17 +176,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64fe91bc060449b42bd3df139160a053, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _stats: {fileID: 11400000, guid: 4ed19b76704060143a1fe26f5fda7426, type: 2}
   _groundCheckPoint: {fileID: 7696364811979205763}
   _groundCheckRadius: 0.2
   _groundLayer:
     serializedVersion: 2
     m_Bits: 8
-  _dashData: {fileID: 11400000, guid: b52ff8e9853128347824203ebddc025c, type: 2}
-  _wallGrabData: {fileID: 11400000, guid: 3682986883c9f104894f93273f115e77, type: 2}
-  _wallJumpData: {fileID: 11400000, guid: f1c91f1de12181c49bf7090dbf7c7fb5, type: 2}
-  _doubleJumpData: {fileID: 11400000, guid: d390d854b2781ff48aba24d6b437932d, type: 2}
-  _climbData: {fileID: 11400000, guid: e59bbaf9c76e5734698627a1bc210c10, type: 2}
+  dashData: {fileID: 11400000, guid: b52ff8e9853128347824203ebddc025c, type: 2}
+  wallGrabData: {fileID: 11400000, guid: 3682986883c9f104894f93273f115e77, type: 2}
+  wallJumpData: {fileID: 11400000, guid: f1c91f1de12181c49bf7090dbf7c7fb5, type: 2}
+  jumpData: {fileID: 11400000, guid: d390d854b2781ff48aba24d6b437932d, type: 2}
+  climbData: {fileID: 11400000, guid: e59bbaf9c76e5734698627a1bc210c10, type: 2}
+  moveData: {fileID: 11400000, guid: 3a04e0a9c14ac684791313ee13d0243a, type: 2}
+  fallData: {fileID: 11400000, guid: d6637c3c220950e418ad2a1f2d0fe9b9, type: 2}
   idleAnimationName: Idle
   jumpAnimationName: Jump
   fallAnimationName: Fall
