@@ -1,12 +1,10 @@
 ﻿using System;
 using PetalsOfHope.Core.StateMachine;
-using PetalsOfHope.Data.Abilities.Types;
-using PetalsOfHope.Data.Player;
+using PetalsOfHope.Data.Abilities;
 using PetalsOfHope.Gameplay.States;
 using PetalsOfHope.Interfaces;
 using PetalsOfHope.Utilities;
 using UnityEngine;
-using UnityEngine.Serialization;
 using CoreAnimation = PetalsOfHope.Core.Animation.AnimationController;
 
 namespace PetalOfHope.Gameplay.Character
@@ -32,17 +30,9 @@ namespace PetalOfHope.Gameplay.Character
         [SerializeField] private Transform _groundCheckPoint;
         [SerializeField] private float _groundCheckRadius = 0.2f;
         [SerializeField] private LayerMask _groundLayer;
-        
-        [Space]
-        [Header("Abilities Data")]
-        [Header("Assign data to activate ability")]
-        [SerializeField] private DashSO dashData;
-        [SerializeField] private WallGrabSO wallGrabData;
-        [SerializeField] private WallJumpSO wallJumpData;
-        [SerializeField] private JumpSO jumpData;
-        [SerializeField] private ClimbSO climbData;
-        [SerializeField] private MoveSO moveData;
-        [SerializeField] private FallSO fallData;
+
+        [Space] [Header("Abilities Data")] 
+        [SerializeField] private AbilitySheetSO _abilitySheetData;
         
         
         [Header("Animation")]
@@ -84,14 +74,7 @@ namespace PetalOfHope.Gameplay.Character
 
         #region Properties
         
-        public MoveSO MoveData => moveData;
-        public FallSO FallData => fallData;
-        public JumpSO JumpData => jumpData;
         public Vector2 MoveInput { get; protected set; }
-        public float MovementSpeed => moveData != null ? moveData.movementSpeed : 0f;
-        public float JumpForce => jumpData != null ? jumpData.jumpForce : 0f;
-        public float AirControlFactor => jumpData != null ? jumpData.airControlFactor : 1f;
-        public float DashForce => dashData != null ? dashData.dashSpeed : 0f;
         public bool JumpInputPressed { get; protected set; }
         public bool JumpInputReleased { get; protected set; }
         public bool DashInputPressed { get; private set; }
@@ -105,7 +88,6 @@ namespace PetalOfHope.Gameplay.Character
         public int RemainingJumps { get; set; }
         
         public bool IsDashing { get; set; }
-        public DashSO DashData => dashData;
         
         public bool IsTouchingWall { get; private set; }
         public bool IsWallSliding { get;  set; }
@@ -114,14 +96,13 @@ namespace PetalOfHope.Gameplay.Character
         public bool IsWallGrabInput => (WallSide == 1 && MoveInput.x > 0.1f) || 
                                        (WallSide == -1 && MoveInput.x < -0.1f);
 
-        public int MaxJumps => jumpData.MaxJumps;
-        public float DoubleJumpForceMultiplier => jumpData.doubleJumpForceMultiplier;
-        
         public bool IsTouchingLadder => _isTouchingLadder;
         public bool CanClimb => _isTouchingLadder && Mathf.Abs(_climbInput) > 0.1f;
-        public ClimbSO ClimbData => climbData;
         public Collider2D CurrentLadder => _currentLadder;
         public float ClimbInput => _climbInput;
+
+        public AbilitySheetSO AbilitySheetData => _abilitySheetData;
+        
         #endregion
 
         #region State Instances
@@ -162,24 +143,24 @@ namespace PetalOfHope.Gameplay.Character
             IdleState = new IdleState(this, StateMachine, idleAnimationName);
             
             //Optional States
-            if(moveData!= null)
+            if(_abilitySheetData.moveData.isEnabled)
                 MovingState = new MovingState(this, StateMachine, moveAnimationName);
-            if(jumpData!= null)
+            if(_abilitySheetData.jumpData.isEnabled)
                 JumpingState = new JumpingState(this, StateMachine, jumpAnimationName);
-            if(dashData!= null)
-                DashState = new DashState(this, StateMachine, dashAnimationName, DashData);
-            if(wallGrabData!= null)
-                WallGrabState = new WallGrabState(this, StateMachine, wallGrabAnimationName, wallGrabData);
-            if(wallJumpData!= null)
-                WallJumpState = new WallJumpState(this, StateMachine, wallJumpAnimationName, wallJumpData);
-            if(climbData!= null)
+            if(_abilitySheetData.dashData.isEnabled)
+                DashState = new DashState(this, StateMachine, dashAnimationName, _abilitySheetData.dashData);
+            if(_abilitySheetData.wallGrabData.isEnabled)
+                WallGrabState = new WallGrabState(this, StateMachine, wallGrabAnimationName, _abilitySheetData.wallGrabData);
+            if(_abilitySheetData.wallJumpData.isEnabled)
+                WallJumpState = new WallJumpState(this, StateMachine, wallJumpAnimationName, _abilitySheetData.wallJumpData);
+            if(_abilitySheetData.climbData.isEnabled)
                 ClimbState = new ClimbState(this, StateMachine, climbIdleAnimationName, climbDownAnimationName,
-                climbUpAnimationName, climbData);
+                climbUpAnimationName, _abilitySheetData.climbData);
 
-            if (fallData != null && fallData.gravityScale != 0)
+            if (_abilitySheetData.fallData.isEnabled)
             {
                 FallingState = new FallingState(this, StateMachine, fallAnimationName);
-                Rigidbody.gravityScale = fallData.gravityScale;
+                Rigidbody.gravityScale = _abilitySheetData.fallData.gravityScale;
             }
             else
             {
@@ -283,7 +264,7 @@ namespace PetalOfHope.Gameplay.Character
         {
             if (_dashCooldownTimer > 0f || !DashInputPressed) return ;
     
-            _dashCooldownTimer = dashData.cooldown;
+            _dashCooldownTimer = _abilitySheetData.dashData.cooldown;
             IsDashing = true;
             StateMachine.ChangeState(DashState);
         }
@@ -291,21 +272,21 @@ namespace PetalOfHope.Gameplay.Character
         
         private void CheckWallCollision()
         {
-            if (wallGrabData == null) return;
+            if (_abilitySheetData.wallGrabData == null) return;
 
             IsTouchingWall = false;
             
             var checkPosition = (Vector2)transform.position + 
                                 new Vector2(
-                                    wallGrabData.wallCheckOffset.x * transform.localScale.x, 
-                                    wallGrabData.wallCheckOffset.y
+                                    _abilitySheetData.wallGrabData.wallCheckOffset.x * transform.localScale.x, 
+                                    _abilitySheetData.wallGrabData.wallCheckOffset.y
                                 );
 
             var wallHit = Physics2D.OverlapBox(
                 checkPosition, 
-                wallGrabData.wallCheckSize, 
+                _abilitySheetData.wallGrabData.wallCheckSize, 
                 0f, 
-                wallGrabData.wallLayer
+                _abilitySheetData.wallGrabData.wallLayer
             );
 
             if (wallHit == null) return;
@@ -316,33 +297,33 @@ namespace PetalOfHope.Gameplay.Character
         
        public bool CanWallGrab()
         {
-            if (wallGrabData == null) return false;
+            if (_abilitySheetData.wallGrabData == null) return false;
             
             return IsTouchingWall && 
                    !IsGrounded && 
                    IsWallGrabInput && 
-                   Time.time < LastWallTouchTime + wallGrabData.wallGrabTime;
+                   Time.time < LastWallTouchTime + _abilitySheetData.wallGrabData.wallGrabTime;
         }
         
         public bool CanWallJump()
         {
-            if (wallJumpData == null) return false;
+            if (_abilitySheetData.wallJumpData == null) return false;
             
             // Note: We check JumpInputPressed directly from the property
-            return (IsTouchingWall || Time.time < LastWallTouchTime + wallJumpData.coyoteWallTime) && 
+            return (IsTouchingWall || Time.time < LastWallTouchTime + _abilitySheetData.wallJumpData.coyoteWallTime) && 
                    !IsGrounded && 
                    JumpInputPressed;
         }
         
         private void CheckLadder()
         {
-            if (climbData == null) return;
+            if (_abilitySheetData.climbData == null) return;
 
             var hit = Physics2D.OverlapBox(
                 transform.position,
-                climbData.ladderCheckSize,
+                _abilitySheetData.climbData.ladderCheckSize,
                 0f,
-                climbData.climbableLayer
+                _abilitySheetData.climbData.climbableLayer
             );
 
             _isTouchingLadder = hit != null;
@@ -364,22 +345,22 @@ namespace PetalOfHope.Gameplay.Character
             }
 
             // Draw Wall Check
-            if (wallGrabData != null)
+            if (_abilitySheetData.wallGrabData != null)
             {
                 Gizmos.color = IsTouchingWall ? Color.green : Color.yellow;
                 Vector2 checkPosition = (Vector2)transform.position + 
                                         new Vector2(
-                                            wallGrabData.wallCheckOffset.x * transform.localScale.x, 
-                                            wallGrabData.wallCheckOffset.y
+                                            _abilitySheetData.wallGrabData.wallCheckOffset.x * transform.localScale.x, 
+                                            _abilitySheetData.wallGrabData.wallCheckOffset.y
                                         );
-                Gizmos.DrawWireCube(checkPosition, wallGrabData.wallCheckSize);
+                Gizmos.DrawWireCube(checkPosition, _abilitySheetData.wallGrabData.wallCheckSize);
             }
             
             // Draw Ladder Check
-            if (climbData != null)
+            if (_abilitySheetData.climbData != null)
             {
                 Gizmos.color = _isTouchingLadder ? Color.green : Color.yellow;
-                Gizmos.DrawWireCube(transform.position, climbData.ladderCheckSize);
+                Gizmos.DrawWireCube(transform.position, _abilitySheetData.climbData.ladderCheckSize);
             }
         }
         

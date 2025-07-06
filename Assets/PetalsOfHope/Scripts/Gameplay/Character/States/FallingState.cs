@@ -78,8 +78,8 @@ namespace PetalsOfHope.Gameplay.States
 
         public override void FixedUpdate()
         {
-            float airControlFactor = _characterController.JumpData.airControlFactor;
-            float targetVelocityX = _characterController.MoveInput.x * _characterController.MoveData.movementSpeed * airControlFactor;
+            float airControlFactor = _characterController.AbilitySheetData.jumpData.airControlFactor;
+            float targetVelocityX = _characterController.MoveInput.x * _characterController.AbilitySheetData.moveData.movementSpeed * airControlFactor;
             _characterController.Rigidbody.linearVelocity = new Vector2(targetVelocityX, _characterController.Rigidbody.linearVelocity.y);
         }
 

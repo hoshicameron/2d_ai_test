@@ -1,24 +1,29 @@
 ﻿using PetalOfHope.Gameplay.Character;
-using PetalsOfHope.Data.Player;
 using UnityEngine;
 
 namespace PetalsOfHope.Gameplay.Enemies.Core
 {
+    [RequireComponent(typeof(EnemyHealth))]
     public class EnemyController : CharacterControllerBase
     {
-        [Header("Health")]
-        [SerializeField] private EnemyHealth enemyHealth;
+        private EnemyHealth _enemyHealth;
+
+        protected override void Awake()
+        {
+            base.Awake();
+            _enemyHealth = GetComponent<EnemyHealth>();
+        }
 
         protected override void OnEnable()
         {
             base.OnEnable();
-            enemyHealth.OnDeath += HandleCharacterDeath;
+            _enemyHealth.OnDeath += HandleCharacterDeath;
         }
 
         protected override void OnDisable()
         {
             base.OnDisable();
-            enemyHealth.OnDeath -= HandleCharacterDeath;
+            _enemyHealth.OnDeath -= HandleCharacterDeath;
         }
     }
 }

@@ -1,7 +1,7 @@
 using PetalOfHope.Gameplay.Character;
 using UnityEngine;
 using PetalsOfHope.Core.StateMachine;
-using PetalsOfHope.Data.Abilities.Types;
+using PetalsOfHope.Data.Abilities;
 
 namespace PetalsOfHope.Gameplay.States
 {
@@ -9,11 +9,11 @@ namespace PetalsOfHope.Gameplay.States
     {
         private readonly CharacterControllerBase _characterController;
         private readonly string _dashAnimationName;
-        private readonly DashSO _dashData;
+        private readonly DashData _dashData;
         private float _dashTimer;
         private Vector2 _dashDirection;
 
-        public DashState(CharacterControllerBase characterController, StateMachine stateMachine, string dashAnimationName, DashSO dashData) 
+        public DashState(CharacterControllerBase characterController, StateMachine stateMachine, string dashAnimationName, DashData dashData) 
             : base(stateMachine)
         {
             _characterController = characterController;

@@ -33,7 +33,7 @@ namespace PetalsOfHope.Gameplay.Player
         {
             if (!wasGrounded && IsGrounded)
             {
-                RemainingJumps = MaxJumps;
+                RemainingJumps = AbilitySheetData.jumpData.maxJumps;
                 _playerLandedEventSO?.Raise();
             }
         }

@@ -1,7 +1,7 @@
 using PetalOfHope.Gameplay.Character;
 using UnityEngine;
 using PetalsOfHope.Core.StateMachine;
-using PetalsOfHope.Data.Abilities.Types;
+using PetalsOfHope.Data.Abilities;
 
 namespace PetalsOfHope.Gameplay.States
 {
@@ -9,12 +9,12 @@ namespace PetalsOfHope.Gameplay.States
     {
         private readonly CharacterControllerBase _characterController;
         private readonly string _animationName;
-        private readonly WallGrabSO _wallGrabData;
+        private readonly WallGrabData _wallGrabData;
         private float _wallGrabStartTime;
         private bool _isWallSliding;
         private int _wallSide;
 
-        public WallGrabState(CharacterControllerBase characterController, StateMachine stateMachine, string animationName, WallGrabSO wallGrabData) 
+        public WallGrabState(CharacterControllerBase characterController, StateMachine stateMachine, string animationName, WallGrabData wallGrabData) 
             : base(stateMachine)
         {
             _characterController = characterController;

@@ -1,7 +1,7 @@
 using PetalOfHope.Gameplay.Character;
 using UnityEngine;
 using PetalsOfHope.Core.StateMachine;
-using PetalsOfHope.Data.Abilities.Types;
+using PetalsOfHope.Data.Abilities;
 
 namespace PetalsOfHope.Gameplay.States
 {
@@ -9,13 +9,13 @@ namespace PetalsOfHope.Gameplay.States
     {
         private readonly CharacterControllerBase _characterController;
         private readonly string _animationName;
-        private readonly WallJumpSO _wallJumpData;
+        private readonly WallJumpData _wallJumpData;
         private float _wallJumpStartTime;
         private bool _hasWallJumped;
         private int _wallJumpDirection;
         private bool _canMove;
 
-        public WallJumpState(CharacterControllerBase characterController, StateMachine stateMachine, string animationName, WallJumpSO wallJumpData) 
+        public WallJumpState(CharacterControllerBase characterController, StateMachine stateMachine, string animationName, WallJumpData wallJumpData) 
             : base(stateMachine)
         {
             _characterController = characterController;
@@ -85,7 +85,7 @@ namespace PetalsOfHope.Gameplay.States
             else if (_canMove)
             {
                 var velocity = _characterController.Rigidbody.linearVelocity;
-                velocity.x = _characterController.MoveInput.x * _characterController.MoveData.movementSpeed;
+                velocity.x = _characterController.MoveInput.x * _characterController.AbilitySheetData.moveData.movementSpeed;
                 _characterController.Rigidbody.linearVelocity = velocity;
             }
         }

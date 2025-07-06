@@ -16,15 +16,6 @@ namespace PetalsOfHope.Interfaces
 
         // State Properties
         bool IsGrounded { get; }
-        int RemainingJumps { get; }
-        int MaxJumps { get; }
-        Vector2 MoveInput { get; }
-
-        // Data Properties
-        float MovementSpeed { get; }
-        float JumpForce { get; }
-        float AirControlFactor { get; }
-        float DashForce { get; }
-        float DoubleJumpForceMultiplier { get; }
+        
     }
 }

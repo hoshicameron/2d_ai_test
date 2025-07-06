@@ -1,6 +1,6 @@
 ﻿using PetalOfHope.Gameplay.Character;
 using PetalsOfHope.Core.StateMachine;
-using PetalsOfHope.Data.Abilities.Types;
+using PetalsOfHope.Data.Abilities;
 using UnityEngine;
 
 namespace PetalsOfHope.Gameplay.States
@@ -11,14 +11,14 @@ namespace PetalsOfHope.Gameplay.States
         private readonly string _climbIdleAnimationName;
         private readonly string _climbDownAnimationName;
         private readonly string _climbUpAnimationName;
-        private readonly ClimbSO _climbData;
+        private readonly ClimbData _climbData;
         private float _verticalVelocity;
         private bool _isAtTop;
         private bool _isAtBottom;
 
         public ClimbState(CharacterControllerBase characterController, StateMachine stateMachine, 
             string climbIdleAnimationName, string climbDownAnimationName, string climbUpAnimationName,
-            ClimbSO climbData)
+            ClimbData climbData)
             : base(stateMachine)
         {
             _characterController = characterController;
@@ -77,7 +77,7 @@ namespace PetalsOfHope.Gameplay.States
 
         public override void Exit()
         {
-            _characterController.Rigidbody.gravityScale = _characterController.FallData.gravityScale;
+            _characterController.Rigidbody.gravityScale = _characterController.AbilitySheetData.fallData.gravityScale;
             _verticalVelocity = 0f;
         }
 
