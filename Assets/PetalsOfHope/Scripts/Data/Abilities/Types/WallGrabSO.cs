@@ -3,7 +3,7 @@ using PetalsOfHope.Data.Abilities;
 
 namespace PetalsOfHope.Data.Abilities.Types
 {
-    [CreateAssetMenu(menuName = "Petals of Hope/Data/Abilities/Wall Grab", fileName = "NewWallGrabSO")]
+    [CreateAssetMenu(menuName = "Petals of Hope/Data/Abilities/Wall Grab")]
     public class WallGrabSO : AbilitySO
     {
         [Header("Wall Grab Settings")]
@@ -25,7 +25,6 @@ namespace PetalsOfHope.Data.Abilities.Types
         public WallGrabSO()
         {
             abilityName = "WallGrab";
-            cooldown = 0.5f;
             description = "Allows the player to grab and slide down walls.";
         }
     }

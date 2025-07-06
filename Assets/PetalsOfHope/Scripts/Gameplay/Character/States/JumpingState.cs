@@ -24,8 +24,8 @@ namespace PetalsOfHope.Gameplay.States
             
             // Calculate jump force (normal jump or double jump)
             var isDoubleJump = _characterController.RemainingJumps < _characterController.MaxJumps;
-            var  jumpForce = isDoubleJump ? _characterController.Stats.jumpForce * _characterController.DoubleJumpForceMultiplier 
-                                            : _characterController.Stats.jumpForce;
+            var  jumpForce = isDoubleJump ? _characterController.JumpData.jumpForce * _characterController.DoubleJumpForceMultiplier 
+                                            : _characterController.JumpData.jumpForce;
             
             // Apply jump force
             _characterController.Rigidbody.linearVelocity = new Vector2(_characterController.Rigidbody.linearVelocity.x, 0f);
@@ -47,7 +47,7 @@ namespace PetalsOfHope.Gameplay.States
 
         public override void Update()
         {
-            if (_characterController.Rigidbody.linearVelocity.y <= 0f)
+            if (_characterController.FallingState != null && _characterController.Rigidbody.linearVelocity.y <= 0f)
             {
                 _stateMachine.ChangeState(_characterController.FallingState);
                 return;
@@ -68,8 +68,8 @@ namespace PetalsOfHope.Gameplay.States
 
         public override void FixedUpdate()
         {
-            float airControlFactor = _characterController.Stats.airControlFactor;
-            float targetVelocityX = _characterController.MoveInput.x * _characterController.Stats.movementSpeed * airControlFactor;
+            float airControlFactor = _characterController.JumpData.airControlFactor;
+            float targetVelocityX = _characterController.MoveInput.x * _characterController.MoveData.movementSpeed * airControlFactor;
             _characterController.Rigidbody.linearVelocity = new Vector2(targetVelocityX, _characterController.Rigidbody.linearVelocity.y);
         }
         

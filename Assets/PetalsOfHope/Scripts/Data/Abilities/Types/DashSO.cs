@@ -3,7 +3,7 @@ using PetalsOfHope.Data.Abilities;
 
 namespace PetalsOfHope.Data.Abilities.Types
 {
-    [CreateAssetMenu(menuName = "Petals of Hope/Data/Abilities/Dash", fileName = "NewDashAbilitySO")]
+    [CreateAssetMenu(menuName = "Petals of Hope/Data/Abilities/Dash")]
     public class DashSO : AbilitySO
     {
         [Header("Dash Specifics")]
@@ -14,6 +14,10 @@ namespace PetalsOfHope.Data.Abilities.Types
         [Min(0.05f)]
         [Tooltip("Duration of the dash in seconds.")]
         public float dashDuration = 0.2f;
+        
+        [Min(0f)]
+        [Tooltip("Cooldown time in seconds before the ability can be used again.")]
+        public float cooldown = 1.5f;
 
         public DashSO()
         {

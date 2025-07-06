@@ -62,11 +62,11 @@ namespace PetalsOfHope.Gameplay.States
             if (_dashTimer <= 0f)
             {
                 // Return to appropriate state based on conditions
-                if (!_characterController.IsGrounded)
+                if (_characterController.FallingState != null && !_characterController.IsGrounded)
                 {
                     _stateMachine.ChangeState(_characterController.FallingState);
                 }
-                else if (Mathf.Abs(_characterController.MoveInput.x) > 0.1f)
+                else if (_characterController.MovingState != null && Mathf.Abs(_characterController.MoveInput.x) > 0.1f)
                 {
                     _stateMachine.ChangeState(_characterController.MovingState);
                 }

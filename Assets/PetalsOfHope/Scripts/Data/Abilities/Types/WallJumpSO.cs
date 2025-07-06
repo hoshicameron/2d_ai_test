@@ -1,9 +1,8 @@
 using UnityEngine;
-using PetalsOfHope.Data.Abilities;
 
 namespace PetalsOfHope.Data.Abilities.Types
 {
-    [CreateAssetMenu(menuName = "Petals of Hope/Data/Abilities/Wall Jump", fileName = "NewWallJumpSO")]
+    [CreateAssetMenu(menuName = "Petals of Hope/Data/Abilities/Wall Jump")]
     public class WallJumpSO : AbilitySO
     {
         [Header("Wall Jump Settings")]
@@ -22,7 +21,6 @@ namespace PetalsOfHope.Data.Abilities.Types
         public WallJumpSO()
         {
             abilityName = "WallJump";
-            cooldown = 0.1f;
             description = "Allows the player to jump off walls.";
         }
     }

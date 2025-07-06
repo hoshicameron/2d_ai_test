@@ -35,25 +35,32 @@ namespace PetalsOfHope.Gameplay.States
 
         public override void Update()
         {
-            if (_characterController.CanClimb && Mathf.Abs(_characterController.ClimbInput) > 0f)
+            if (_characterController.ClimbState != null 
+                && _characterController.CanClimb 
+                && Mathf.Abs(_characterController.ClimbInput) > 0f)
+                
             {
                 _stateMachine.ChangeState(_characterController.ClimbState);
                 return;
             }
             
-            if (_characterController.JumpInputPressed && _characterController.IsGrounded)
+            if (_characterController.JumpingState != null 
+                && _characterController.JumpInputPressed 
+                && _characterController.IsGrounded)
             {
                 _stateMachine.ChangeState(_characterController.JumpingState);
                 return;
             }
 
-            if (Mathf.Abs(_characterController.MoveInput.x) > Mathf.Epsilon)
+            if (_characterController.MovingState != null 
+                && Mathf.Abs(_characterController.MoveInput.x) > Mathf.Epsilon)
             {
                 _stateMachine.ChangeState(_characterController.MovingState);
                 return;
             }
 
-            if (!_characterController.IsGrounded)
+            if (_characterController.FallingState != null && 
+                !_characterController.IsGrounded)
             {
                 _stateMachine.ChangeState(_characterController.FallingState);
             }

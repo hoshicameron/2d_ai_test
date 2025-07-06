@@ -1,4 +1,5 @@
 ﻿using PetalOfHope.Gameplay.Character;
+using PetalsOfHope.Data.Player;
 using UnityEngine;
 
 namespace PetalsOfHope.Gameplay.Enemies.Core
@@ -7,12 +8,6 @@ namespace PetalsOfHope.Gameplay.Enemies.Core
     {
         [Header("Health")]
         [SerializeField] private EnemyHealth enemyHealth;
-
-        protected override void Awake()
-        {
-            base.Awake();
-            enemyHealth.Initialize(_stats.maxHealth);
-        }
 
         protected override void OnEnable()
         {

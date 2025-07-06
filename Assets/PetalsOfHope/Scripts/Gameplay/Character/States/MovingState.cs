@@ -25,13 +25,17 @@ namespace PetalsOfHope.Gameplay.States
 
         public override void Update()
         {
-            if (_characterController.CanClimb && Mathf.Abs(_characterController.ClimbInput) > 0f)
+            if (_characterController.ClimbState != null 
+                && _characterController.CanClimb 
+                && Mathf.Abs(_characterController.ClimbInput) > 0f)
             {
                 _stateMachine.ChangeState(_characterController.ClimbState);
                 return;
             }
             
-            if (_characterController.JumpInputPressed && _characterController.IsGrounded)
+            if (_characterController.JumpingState != null 
+                && _characterController.JumpInputPressed 
+                && _characterController.IsGrounded)
             {
                 _stateMachine.ChangeState(_characterController.JumpingState);
                 return;
@@ -43,7 +47,7 @@ namespace PetalsOfHope.Gameplay.States
                 return;
             }
 
-            if (!_characterController.IsGrounded)
+            if (_characterController.FallingState != null && !_characterController.IsGrounded)
             {
                 _stateMachine.ChangeState(_characterController.FallingState);
                 return;
@@ -54,7 +58,7 @@ namespace PetalsOfHope.Gameplay.States
 
         public override void FixedUpdate()
         {
-            float targetVelocityX = _characterController.MoveInput.x * _characterController.Stats.movementSpeed;
+            float targetVelocityX = _characterController.MoveInput.x * _characterController.MoveData.movementSpeed;
             _characterController.Rigidbody.linearVelocity = new Vector2(targetVelocityX, _characterController.Rigidbody.linearVelocity.y);
         }
 

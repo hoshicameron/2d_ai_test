@@ -2,7 +2,7 @@
 
 namespace PetalsOfHope.Data.Abilities.Types
 {
-    [CreateAssetMenu(fileName = "NewClimbData", menuName = "Petals of Hope/Data/Abilities/Climb")]
+    [CreateAssetMenu(menuName = "Petals of Hope/Data/Abilities/Climb")]
     public class ClimbSO : AbilitySO
     {
         [Header("Climb Settings")] [Min(0.1f), Tooltip("Speed at which the player climbs up/down the ladder")]

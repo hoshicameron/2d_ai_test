@@ -26,37 +26,43 @@ namespace PetalsOfHope.Gameplay.States
         public override void Update()
         {
             
-            if (_characterController.CanClimb && Mathf.Abs(_characterController.ClimbInput) > 0f)
+            if (_characterController.ClimbState != null 
+                && _characterController.CanClimb
+                && Mathf.Abs(_characterController.ClimbInput) > 0f)
             {
                 _stateMachine.ChangeState(_characterController.ClimbState);
                 return;
             }
             
             // Check for double jump input
-            if (_characterController.JumpInputPressed && _characterController.RemainingJumps > 0)
+            if (_characterController.JumpingState != null 
+                && _characterController.JumpInputPressed 
+                && _characterController.RemainingJumps > 0)
+                
             {
                 _stateMachine.ChangeState(_characterController.JumpingState);
                 return;
             }
 
             // Check for wall grab transition (only when falling or at apex)
-            if (_characterController.CanWallGrab())
+            if ( _characterController.WallGrabState != null && _characterController.CanWallGrab())
             {
                 _stateMachine.ChangeState(_characterController.WallGrabState);
                 return;
             }
 
             // Check for wall jump from falling (coyote wall jump)
-            if (_characterController.CanWallJump())
+            if (_characterController.WallJumpState != null && _characterController.CanWallJump())
             {
                 _stateMachine.ChangeState(_characterController.WallJumpState);
                 return;
             }
 
             // Handle normal ground landing
-            if (_characterController.IsGrounded)
+            if ( _characterController.IsGrounded)
             {
-                if (Mathf.Abs(_characterController.MoveInput.x) > Mathf.Epsilon)
+                if ( _characterController.MovingState != null 
+                     && Mathf.Abs(_characterController.MoveInput.x) > Mathf.Epsilon)
                 {
                     _stateMachine.ChangeState(_characterController.MovingState);
                 }
@@ -72,8 +78,8 @@ namespace PetalsOfHope.Gameplay.States
 
         public override void FixedUpdate()
         {
-            float airControlFactor = _characterController.Stats.airControlFactor;
-            float targetVelocityX = _characterController.MoveInput.x * _characterController.Stats.movementSpeed * airControlFactor;
+            float airControlFactor = _characterController.JumpData.airControlFactor;
+            float targetVelocityX = _characterController.MoveInput.x * _characterController.MoveData.movementSpeed * airControlFactor;
             _characterController.Rigidbody.linearVelocity = new Vector2(targetVelocityX, _characterController.Rigidbody.linearVelocity.y);
         }
 

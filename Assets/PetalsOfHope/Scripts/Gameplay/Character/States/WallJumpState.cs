@@ -48,7 +48,8 @@ namespace PetalsOfHope.Gameplay.States
             }
 
             // Check if we should transition to falling
-            if (_characterController.Rigidbody != null && _characterController.Rigidbody.linearVelocity.y <= 0)
+            if (_characterController.FallingState != null && 
+                (_characterController.Rigidbody != null && _characterController.Rigidbody.linearVelocity.y <= 0))
             {
                 _stateMachine.ChangeState(_characterController.FallingState);
                 return;
@@ -57,8 +58,12 @@ namespace PetalsOfHope.Gameplay.States
             // If we somehow touch the ground
             if (_characterController.IsGrounded)
             {
-                _stateMachine.ChangeState(Mathf.Abs(_characterController.MoveInput.x) > 0.1f ? 
-                    _characterController.MovingState : _characterController.IdleState);
+                if (_characterController.MovingState != null && Mathf.Abs(_characterController.MoveInput.x) > 0.1f)
+                {
+                    _stateMachine.ChangeState(_characterController.MovingState);
+                    return;
+                }
+                _stateMachine.ChangeState(_characterController.IdleState);
             }
         }
 
@@ -80,7 +85,7 @@ namespace PetalsOfHope.Gameplay.States
             else if (_canMove)
             {
                 var velocity = _characterController.Rigidbody.linearVelocity;
-                velocity.x = _characterController.MoveInput.x * _characterController.Stats.movementSpeed;
+                velocity.x = _characterController.MoveInput.x * _characterController.MoveData.movementSpeed;
                 _characterController.Rigidbody.linearVelocity = velocity;
             }
         }

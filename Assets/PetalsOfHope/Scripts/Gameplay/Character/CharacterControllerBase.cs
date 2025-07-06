@@ -6,6 +6,7 @@ using PetalsOfHope.Gameplay.States;
 using PetalsOfHope.Interfaces;
 using PetalsOfHope.Utilities;
 using UnityEngine;
+using UnityEngine.Serialization;
 using CoreAnimation = PetalsOfHope.Core.Animation.AnimationController;
 
 namespace PetalOfHope.Gameplay.Character
@@ -27,21 +28,21 @@ namespace PetalOfHope.Gameplay.Character
         
         #region Serialized Variables
 
-        [Header("Data Dependencies")]
-        // Consider creating a generic CharacterStatsSO to be used by both players and enemies
-        [SerializeField] protected CharacterStatsSo _stats; 
-        
         [Header("Ground Check")]
         [SerializeField] private Transform _groundCheckPoint;
         [SerializeField] private float _groundCheckRadius = 0.2f;
         [SerializeField] private LayerMask _groundLayer;
         
+        [Space]
         [Header("Abilities Data")]
-        [SerializeField] private DashSO _dashData;
-        [SerializeField] private WallGrabSO _wallGrabData;
-        [SerializeField] private WallJumpSO _wallJumpData;
-        [SerializeField] private DoubleJumpSO _doubleJumpData;
-        [SerializeField] private ClimbSO _climbData;
+        [Header("Assign data to activate ability")]
+        [SerializeField] private DashSO dashData;
+        [SerializeField] private WallGrabSO wallGrabData;
+        [SerializeField] private WallJumpSO wallJumpData;
+        [SerializeField] private JumpSO jumpData;
+        [SerializeField] private ClimbSO climbData;
+        [SerializeField] private MoveSO moveData;
+        [SerializeField] private FallSO fallData;
         
         
         [Header("Animation")]
@@ -83,13 +84,14 @@ namespace PetalOfHope.Gameplay.Character
 
         #region Properties
         
-        // This is now generic, so it could be PlayerStatsSO or EnemyStatsSO if they share a base class
-        public CharacterStatsSo Stats => _stats;
+        public MoveSO MoveData => moveData;
+        public FallSO FallData => fallData;
+        public JumpSO JumpData => jumpData;
         public Vector2 MoveInput { get; protected set; }
-        public float MovementSpeed =>_stats != null ? _stats.movementSpeed : 0f;
-        public float JumpForce => _stats != null ? _stats.jumpForce : 0f;
-        public float AirControlFactor => _stats != null ? _stats.airControlFactor : 1f;
-        public float DashForce => _dashData != null ? _dashData.dashSpeed : 0f;
+        public float MovementSpeed => moveData != null ? moveData.movementSpeed : 0f;
+        public float JumpForce => jumpData != null ? jumpData.jumpForce : 0f;
+        public float AirControlFactor => jumpData != null ? jumpData.airControlFactor : 1f;
+        public float DashForce => dashData != null ? dashData.dashSpeed : 0f;
         public bool JumpInputPressed { get; protected set; }
         public bool JumpInputReleased { get; protected set; }
         public bool DashInputPressed { get; private set; }
@@ -103,7 +105,7 @@ namespace PetalOfHope.Gameplay.Character
         public int RemainingJumps { get; set; }
         
         public bool IsDashing { get; set; }
-        public DashSO DashData => _dashData;
+        public DashSO DashData => dashData;
         
         public bool IsTouchingWall { get; private set; }
         public bool IsWallSliding { get;  set; }
@@ -112,12 +114,12 @@ namespace PetalOfHope.Gameplay.Character
         public bool IsWallGrabInput => (WallSide == 1 && MoveInput.x > 0.1f) || 
                                        (WallSide == -1 && MoveInput.x < -0.1f);
 
-        public int MaxJumps => _doubleJumpData.MaxJumps;
-        public float DoubleJumpForceMultiplier => _doubleJumpData.doubleJumpForceMultiplier;
+        public int MaxJumps => jumpData.MaxJumps;
+        public float DoubleJumpForceMultiplier => jumpData.doubleJumpForceMultiplier;
         
         public bool IsTouchingLadder => _isTouchingLadder;
         public bool CanClimb => _isTouchingLadder && Mathf.Abs(_climbInput) > 0.1f;
-        public ClimbSO ClimbData => _climbData;
+        public ClimbSO ClimbData => climbData;
         public Collider2D CurrentLadder => _currentLadder;
         public float ClimbInput => _climbInput;
         #endregion
@@ -134,6 +136,7 @@ namespace PetalOfHope.Gameplay.Character
         public WallJumpState WallJumpState { get; private set; }
         public ClimbState ClimbState { get; private set; }
         
+
         #endregion
         
         // Awake is now protected and virtual, allowing child classes to extend it if needed.
@@ -153,20 +156,35 @@ namespace PetalOfHope.Gameplay.Character
             StateMachine = GetComponent<StateMachine>();
             AnimationController = GetComponent<CoreAnimation>();
 
-            
             // Initialize states
-            // NOTE: You will need to update the constructors of these State classes
-            // to accept the ICharacterInputSource so they can call ConsumeJumpInput() etc.
-            IdleState = new IdleState(this, StateMachine, idleAnimationName);
-            MovingState = new MovingState(this, StateMachine, moveAnimationName);
-            JumpingState = new JumpingState(this, StateMachine, jumpAnimationName);
-            FallingState = new FallingState(this, StateMachine, fallAnimationName);
-            DashState = new DashState(this, StateMachine, dashAnimationName, DashData);
+            //Persistant States
             DeathState = new DeathState(this, StateMachine, deathAnimationName);
-            WallGrabState = new WallGrabState(this, StateMachine, wallGrabAnimationName, _wallGrabData);
-            WallJumpState = new WallJumpState(this, StateMachine, wallJumpAnimationName, _wallJumpData);
-            ClimbState = new ClimbState(this, StateMachine, climbIdleAnimationName, climbDownAnimationName,
-                climbUpAnimationName, _climbData);
+            IdleState = new IdleState(this, StateMachine, idleAnimationName);
+            
+            //Optional States
+            if(moveData!= null)
+                MovingState = new MovingState(this, StateMachine, moveAnimationName);
+            if(jumpData!= null)
+                JumpingState = new JumpingState(this, StateMachine, jumpAnimationName);
+            if(dashData!= null)
+                DashState = new DashState(this, StateMachine, dashAnimationName, DashData);
+            if(wallGrabData!= null)
+                WallGrabState = new WallGrabState(this, StateMachine, wallGrabAnimationName, wallGrabData);
+            if(wallJumpData!= null)
+                WallJumpState = new WallJumpState(this, StateMachine, wallJumpAnimationName, wallJumpData);
+            if(climbData!= null)
+                ClimbState = new ClimbState(this, StateMachine, climbIdleAnimationName, climbDownAnimationName,
+                climbUpAnimationName, climbData);
+
+            if (fallData != null && fallData.gravityScale != 0)
+            {
+                FallingState = new FallingState(this, StateMachine, fallAnimationName);
+                Rigidbody.gravityScale = fallData.gravityScale;
+            }
+            else
+            {
+                Rigidbody.gravityScale = 0;
+            }
         }
 
         protected virtual void Start()
@@ -265,7 +283,7 @@ namespace PetalOfHope.Gameplay.Character
         {
             if (_dashCooldownTimer > 0f || !DashInputPressed) return ;
     
-            _dashCooldownTimer = _dashData.cooldown;
+            _dashCooldownTimer = dashData.cooldown;
             IsDashing = true;
             StateMachine.ChangeState(DashState);
         }
@@ -273,21 +291,21 @@ namespace PetalOfHope.Gameplay.Character
         
         private void CheckWallCollision()
         {
-            if (_wallGrabData == null) return;
+            if (wallGrabData == null) return;
 
             IsTouchingWall = false;
             
             var checkPosition = (Vector2)transform.position + 
                                 new Vector2(
-                                    _wallGrabData.wallCheckOffset.x * transform.localScale.x, 
-                                    _wallGrabData.wallCheckOffset.y
+                                    wallGrabData.wallCheckOffset.x * transform.localScale.x, 
+                                    wallGrabData.wallCheckOffset.y
                                 );
 
             var wallHit = Physics2D.OverlapBox(
                 checkPosition, 
-                _wallGrabData.wallCheckSize, 
+                wallGrabData.wallCheckSize, 
                 0f, 
-                _wallGrabData.wallLayer
+                wallGrabData.wallLayer
             );
 
             if (wallHit == null) return;
@@ -298,33 +316,33 @@ namespace PetalOfHope.Gameplay.Character
         
        public bool CanWallGrab()
         {
-            if (_wallGrabData == null) return false;
+            if (wallGrabData == null) return false;
             
             return IsTouchingWall && 
                    !IsGrounded && 
                    IsWallGrabInput && 
-                   Time.time < LastWallTouchTime + _wallGrabData.wallGrabTime;
+                   Time.time < LastWallTouchTime + wallGrabData.wallGrabTime;
         }
         
         public bool CanWallJump()
         {
-            if (_wallJumpData == null) return false;
+            if (wallJumpData == null) return false;
             
             // Note: We check JumpInputPressed directly from the property
-            return (IsTouchingWall || Time.time < LastWallTouchTime + _wallJumpData.coyoteWallTime) && 
+            return (IsTouchingWall || Time.time < LastWallTouchTime + wallJumpData.coyoteWallTime) && 
                    !IsGrounded && 
                    JumpInputPressed;
         }
         
         private void CheckLadder()
         {
-            if (_climbData == null) return;
+            if (climbData == null) return;
 
             var hit = Physics2D.OverlapBox(
                 transform.position,
-                _climbData.ladderCheckSize,
+                climbData.ladderCheckSize,
                 0f,
-                _climbData.climbableLayer
+                climbData.climbableLayer
             );
 
             _isTouchingLadder = hit != null;
@@ -346,22 +364,22 @@ namespace PetalOfHope.Gameplay.Character
             }
 
             // Draw Wall Check
-            if (_wallGrabData != null)
+            if (wallGrabData != null)
             {
                 Gizmos.color = IsTouchingWall ? Color.green : Color.yellow;
                 Vector2 checkPosition = (Vector2)transform.position + 
                                         new Vector2(
-                                            _wallGrabData.wallCheckOffset.x * transform.localScale.x, 
-                                            _wallGrabData.wallCheckOffset.y
+                                            wallGrabData.wallCheckOffset.x * transform.localScale.x, 
+                                            wallGrabData.wallCheckOffset.y
                                         );
-                Gizmos.DrawWireCube(checkPosition, _wallGrabData.wallCheckSize);
+                Gizmos.DrawWireCube(checkPosition, wallGrabData.wallCheckSize);
             }
             
             // Draw Ladder Check
-            if (_climbData != null)
+            if (climbData != null)
             {
                 Gizmos.color = _isTouchingLadder ? Color.green : Color.yellow;
-                Gizmos.DrawWireCube(transform.position, _climbData.ladderCheckSize);
+                Gizmos.DrawWireCube(transform.position, climbData.ladderCheckSize);
             }
         }
         

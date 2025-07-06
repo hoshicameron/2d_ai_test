@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a89b427db4ea4c14db0c00907383765e, type: 3}
   m_Name: Clamp
   m_EditorClassIdentifier: 
-  maxHealth: 100
-  movementSpeed: 6
+  maxHealth: 200
+  movementSpeed: 2.5
   jumpForce: 0
   airControlFactor: 0.8
   gravityScale: 1

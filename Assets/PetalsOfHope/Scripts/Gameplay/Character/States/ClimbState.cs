@@ -15,8 +15,6 @@ namespace PetalsOfHope.Gameplay.States
         private float _verticalVelocity;
         private bool _isAtTop;
         private bool _isAtBottom;
-        
-        
 
         public ClimbState(CharacterControllerBase characterController, StateMachine stateMachine, 
             string climbIdleAnimationName, string climbDownAnimationName, string climbUpAnimationName,
@@ -42,14 +40,15 @@ namespace PetalsOfHope.Gameplay.States
         public override void Update()
         {
             // Check for jump input to dismount
-            if (_characterController.JumpInputPressed)
+            if (_characterController.JumpingState != null && _characterController.JumpInputPressed)
             {
                 _stateMachine.ChangeState(_characterController.JumpingState);
                 return;
             }
 
             // Check if still on ladder
-            if (!_characterController.IsTouchingLadder || _characterController.CurrentLadder == null)
+            if (_characterController.FallingState != null &&
+                (!_characterController.IsTouchingLadder || _characterController.CurrentLadder == null))
             {
                 _stateMachine.ChangeState(_characterController.FallingState);
                 return;
@@ -78,7 +77,7 @@ namespace PetalsOfHope.Gameplay.States
 
         public override void Exit()
         {
-            _characterController.Rigidbody.gravityScale = _characterController.Stats.gravityScale;
+            _characterController.Rigidbody.gravityScale = _characterController.FallData.gravityScale;
             _verticalVelocity = 0f;
         }
 

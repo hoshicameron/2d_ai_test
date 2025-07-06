@@ -48,17 +48,17 @@ namespace PetalsOfHope.Gameplay.States
             }
 
             // Check for wall jump input
-            if (_characterController.JumpInputPressed)
+            if (_characterController.WallJumpState != null && _characterController.JumpInputPressed)
             {
                 _stateMachine.ChangeState(_characterController.WallJumpState);
                 return;
             }
 
             // Check if we should release from wall
-            if (!_characterController.IsTouchingWall || !_characterController.IsWallGrabInput || _characterController.IsGrounded)
+            if (_characterController.FallingState != null &&
+                (!_characterController.IsTouchingWall || !_characterController.IsWallGrabInput || _characterController.IsGrounded))
             {
                 _stateMachine.ChangeState(_characterController.FallingState);
-                return;
             }
         }
 

@@ -1,5 +1,6 @@
 using UnityEngine;
 using System;
+using PetalsOfHope.Data.Player;
 using PetalsOfHope.Interfaces;
 
 namespace PetalsOfHope.Gameplay.Enemies.Core
@@ -9,6 +10,8 @@ namespace PetalsOfHope.Gameplay.Enemies.Core
     /// </summary>
     public class EnemyHealth : MonoBehaviour, IDamageable
     {
+        
+        [SerializeField] private CharacterStatsSo stats;
         private int _currentHealth;
         private bool _isDead;
 
@@ -19,9 +22,9 @@ namespace PetalsOfHope.Gameplay.Enemies.Core
         public int MaxHealth { get; set; }
         public bool IsDead => _isDead;
 
-        public void Initialize(int maxHealth)
+        private void Awake()
         {
-            MaxHealth = maxHealth;
+            MaxHealth = stats.maxHealth;
             ResetHealth();
         }
 
