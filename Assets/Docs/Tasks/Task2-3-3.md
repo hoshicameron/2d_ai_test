@@ -1,7 +1,7 @@
 # Task ID: 2.3.3
 # Parent Task ID: 2.3
 # Title: (Optional) Implement Transition System Base Classes
-# Status: completed
+# Status: pending
 # Dependencies: 2.3.1, 2.3.2 # BaseState and StateMachine
 # Priority: low
 # Estimated Effort: M

@@ -1,7 +1,7 @@
 # Task ID: 1.2.4
 # Parent Task ID: 1.2
 # Title: Implement EventListener (for GameEventSO)
-# Status: completed
+# Status: pending
 # Dependencies: 1.2.2
 # Priority: critical
 # Estimated Effort: M

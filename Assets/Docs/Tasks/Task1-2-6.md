@@ -1,7 +1,7 @@
 # Task ID: 1.2.6
 # Parent Task ID: 1.2
 # Title: Create Editor Tools for Event Debugging
-# Status: completed
+# Status: pending
 # Dependencies: 1.2.2, 1.2.3
 # Priority: medium
 # Estimated Effort: M

@@ -1,7 +1,7 @@
 # Task ID: 2.1.3
 # Parent Task ID: 2.1
 # Title: Create and Configure InputReader SO Asset & Test Input
-# Status: completed
+# Status: pending
 # Dependencies: 2.1.2, 1.2.8 # InputReader script, EventSO assets
 # Priority: critical
 # Estimated Effort: M

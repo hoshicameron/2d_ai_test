@@ -1,7 +1,7 @@
 # Task ID: 1.2.1
 # Parent Task ID: 1.2
 # Title: Implement BaseEventSO
-# Status: completed
+# Status: pending
 # Dependencies: 1.1.2, 1.1.4 # Folder structure and namespace
 # Priority: critical
 # Estimated Effort: S

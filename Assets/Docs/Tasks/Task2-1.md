@@ -1,7 +1,7 @@
 # Task ID: 2.1
 # Parent Task ID: 2
 # Title: Input System Implementation
-# Status: completed
+# Status: pending
 # Dependencies: 1.1.3, 1.2 # Unity Input System Package, Event Bus
 # Priority: critical
 # Estimated Effort: L (aggregate of subtasks)
