@@ -76,6 +76,10 @@ PrefabInstance:
       propertyPath: _stats
       value: 
       objectReference: {fileID: 11400000, guid: 127db4ff6b192d14cac35d5a7f72664d, type: 2}
+    - target: {fileID: 3499761134963079764, guid: 1b2ee9bd119974647909647fa201841d, type: 3}
+      propertyPath: _abilitySheetData
+      value: 
+      objectReference: {fileID: 11400000, guid: 710c1c9127b8b8b4c803045d2d907469, type: 2}
     - target: {fileID: 4002757745371217092, guid: 1b2ee9bd119974647909647fa201841d, type: 3}
       propertyPath: m_Name
       value: Frog

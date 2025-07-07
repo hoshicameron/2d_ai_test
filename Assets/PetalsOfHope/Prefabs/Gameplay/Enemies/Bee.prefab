@@ -76,6 +76,10 @@ PrefabInstance:
       propertyPath: _stats
       value: 
       objectReference: {fileID: 11400000, guid: b891982dc4de1a64bb479262ac98bf98, type: 2}
+    - target: {fileID: 3499761134963079764, guid: 1b2ee9bd119974647909647fa201841d, type: 3}
+      propertyPath: _abilitySheetData
+      value: 
+      objectReference: {fileID: 11400000, guid: 495c12b61084da54cac6a3b1c73d9bde, type: 2}
     - target: {fileID: 4002757745371217092, guid: 1b2ee9bd119974647909647fa201841d, type: 3}
       propertyPath: m_Name
       value: Bee

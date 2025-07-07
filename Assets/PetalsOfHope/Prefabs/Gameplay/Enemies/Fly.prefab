@@ -76,6 +76,10 @@ PrefabInstance:
       propertyPath: _stats
       value: 
       objectReference: {fileID: 11400000, guid: ad9b932436862254b8f1d8408ba62cab, type: 2}
+    - target: {fileID: 3499761134963079764, guid: 1b2ee9bd119974647909647fa201841d, type: 3}
+      propertyPath: _abilitySheetData
+      value: 
+      objectReference: {fileID: 11400000, guid: 7baefdbb0f5b85341bdb1a7345e7a5a0, type: 2}
     - target: {fileID: 4002757745371217092, guid: 1b2ee9bd119974647909647fa201841d, type: 3}
       propertyPath: m_Name
       value: Fly

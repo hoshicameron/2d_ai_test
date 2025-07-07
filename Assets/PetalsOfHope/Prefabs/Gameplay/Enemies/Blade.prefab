@@ -76,6 +76,10 @@ PrefabInstance:
       propertyPath: _stats
       value: 
       objectReference: {fileID: 11400000, guid: 1fe57347121455045afca01f36d9dc59, type: 2}
+    - target: {fileID: 3499761134963079764, guid: 1b2ee9bd119974647909647fa201841d, type: 3}
+      propertyPath: _abilitySheetData
+      value: 
+      objectReference: {fileID: 11400000, guid: bba98e855e6fcee4c8305424421f36b0, type: 2}
     - target: {fileID: 4002757745371217092, guid: 1b2ee9bd119974647909647fa201841d, type: 3}
       propertyPath: m_Name
       value: Blade

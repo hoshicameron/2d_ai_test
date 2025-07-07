@@ -76,6 +76,10 @@ PrefabInstance:
       propertyPath: _stats
       value: 
       objectReference: {fileID: 11400000, guid: 43c650a753d59984f918b8eebbe62c27, type: 2}
+    - target: {fileID: 3499761134963079764, guid: 1b2ee9bd119974647909647fa201841d, type: 3}
+      propertyPath: _abilitySheetData
+      value: 
+      objectReference: {fileID: 11400000, guid: 11384f955e17bdc4e8867ffc7211a3b8, type: 2}
     - target: {fileID: 4002757745371217092, guid: 1b2ee9bd119974647909647fa201841d, type: 3}
       propertyPath: m_Name
       value: AngryTile
