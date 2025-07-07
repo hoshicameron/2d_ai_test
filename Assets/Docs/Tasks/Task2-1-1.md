@@ -1,7 +1,7 @@
 # Task ID: 2.1.1
 # Parent Task ID: 2.1
 # Title: Create PlayerInputActions Asset and Define Actions
-# Status: completed
+# Status: pending
 # Dependencies: 1.1.3 # Input System Package installed
 # Priority: critical
 # Estimated Effort: M

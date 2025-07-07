@@ -1,7 +1,7 @@
 # Task ID: 2.4.5
 # Parent Task ID: 2.4
 # Title: Implement Player FallingState
-# Status: completed
+# Status: pending
 # Dependencies: 2.4.1, 1.2.8 # PlayerController structure, BaseState, PlayerLandedEventSO
 # Priority: critical
 # Estimated Effort: M

@@ -1,7 +1,7 @@
 # Task ID: 1.3.3
 # Parent Task ID: 1.3
 # Title: Implement LevelSettingsSO
-# Status: completed
+# Status: pending
 # Dependencies: 1.1.2, 1.1.4
 # Priority: high
 # Estimated Effort: S
@@ -59,7 +59,6 @@ Implement `LevelSettingsSO.cs`, a ScriptableObject to store level-specific setti
     - Inspect the created asset to ensure all fields are visible and editable.
 
 # Notes/Questions:
-- The `gravityScale` is implemented as a multiplier for `Physics2D.gravity` to affect all physics objects in the level.
-- Added `minBounds`, `maxBounds`, and `defaultPlayerSpawnPosition` for complete level configuration.
-- `backgroundMusic` uses `AudioClip` for simplicity, which can be replaced with an `AudioEventSO` if the audio system is updated later.
-- Implementation completed on 2025-06-03. Level settings are now fully configurable through the Unity Editor.
+- The `gravityScale` here might refer to a global setting for the level (e.g., to adjust `Physics2D.gravity`) or a default for dynamic objects. Player `Rigidbody2D.gravityScale` is usually managed per-entity. This field might be better named `playerGravityScaleMultiplier` if it's meant to affect the player specifically. For now, it's generic.
+- Added `minBounds`, `maxBounds`, and `defaultPlayerSpawnPosition` as potentially useful level-specific settings. These can be adjusted/removed if not needed.
+- `backgroundMusic` uses `AudioClip`. Later, this could be an `AudioEventSO` if the audio system is designed that way. The plan mentions `AudioClip/AudioEventSO` for AudioManager, so `AudioClip` is a safe start.

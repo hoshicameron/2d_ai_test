@@ -1,7 +1,7 @@
 # Task ID: 1.3.1
 # Parent Task ID: 1.3
 # Title: Implement Base EntityStatsSO and Derived Stats SOs
-# Status: completed
+# Status: pending
 # Dependencies: 1.1.2, 1.1.4
 # Priority: critical
 # Estimated Effort: M
@@ -138,4 +138,3 @@ Implement a base abstract `EntityStatsSO.cs` for common entity statistics and de
 - The plan specifies path `_Project/Scripts/Data/Player/` for `PlayerStatsSO`, etc., which are outside `Core`. This is followed.
 - `BossStatsSO` inheriting `EnemyStatsSO` seems reasonable unless boss mechanics diverge significantly.
 - Consider adding `[Range]` or `[Min]` attributes for numeric fields to guide designers and prevent invalid data. Added `[Min]`.
-- Implementation completed on 2025-06-03. All entity stats classes have been implemented with proper inheritance and validation.

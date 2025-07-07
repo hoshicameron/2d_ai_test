@@ -1,7 +1,7 @@
 # Task ID: 3.2.1
 # Parent Task ID: 3.2
 # Title: Define AI State Base Class (ScriptableObject or Class)
-# Status: completed
+# Status: pending
 # Dependencies: 2.3.2 # Core StateMachine (for reference to AI's SM if it derives)
 # Priority: critical
 # Estimated Effort: M

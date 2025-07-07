@@ -1,7 +1,7 @@
 # Task ID: 2.1.2
 # Parent Task ID: 2.1
 # Title: Implement InputReader ScriptableObject
-# Status: completed
+# Status: pending
 # Dependencies: 2.1.1, 1.2.3, 1.2.8 # PlayerInputActions asset, TypedEventSO, Event SO Assets
 # Priority: critical
 # Estimated Effort: L

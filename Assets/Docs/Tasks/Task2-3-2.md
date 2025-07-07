@@ -1,7 +1,7 @@
 # Task ID: 2.3.2
 # Parent Task ID: 2.3
 # Title: Implement StateMachine (MonoBehaviour)
-# Status: completed
+# Status: pending
 # Dependencies: 2.3.1 # BaseState definition
 # Priority: critical
 # Estimated Effort: M

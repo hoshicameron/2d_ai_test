@@ -1,7 +1,7 @@
 # Task ID: 1.4.2
 # Parent Task ID: 1.4
 # Title: Define Save/Load EventSO Assets
-# Status: completed
+# Status: pending
 # Dependencies: 1.2.2, 1.2.8 # GameEventSO definition and asset creation task
 # Priority: high
 # Estimated Effort: S
