@@ -48,7 +48,7 @@ Organize and create a collection of reusable level elements as Prefabs. These pr
         *   `EnemySpawnPointPrefab` (could be an empty GameObject with a script or just a Gizmo).
 4.  **Organize Prefabs for Easy Access:**
     *   Use clear naming conventions.
-    *   Use subfolders within `Assets/_Project/Prefabs/LevelElements/`.
+    *   Use subfolders within `Assets/PetalOfHope/Prefabs/LevelElements/`.
     *   (Optional "Prefab Palette" Tool) If the plan's mention of "Prefab Palettes" implies a custom editor window for quick drag-and-drop, this tool would be developed under `PetalsOfHope.Editor.LevelDesign`. For now, assume it means well-organized project folders.
 5.  **Ensure Prefabs are Scalable and Configurable:**
     *   Expose key parameters as public fields on scripts (e.g., `speed`, `moveDistance` for a moving platform) so designers can customize instances.
