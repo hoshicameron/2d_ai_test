@@ -1,7 +1,7 @@
 # Task ID: 3.1
 # Parent Task ID: 3
 # Title: Implement EnemyBase Class & IDamageable Interface
-# Status: pending
+# Status: completed
 # Dependencies: 2.2, 1.3.1, 1.2.8 # AnimationController, EnemyStatsSO, EventSO assets
 # Priority: critical
 # Estimated Effort: L (aggregate of subtasks)

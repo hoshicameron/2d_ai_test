@@ -1,7 +1,7 @@
 # Task ID: 3.2.7
 # Parent Task ID: 3.2
 # Title: Implement AI Event Raising (e.g., EnemyDetectedPlayerEventSO)
-# Status: pending
+# Status: completed
 # Dependencies: 3.2.3, 1.2.2, 1.2.8 # PatrolState, GameEventSO definition, EventSO assets
 # Priority: medium
 # Estimated Effort: S

@@ -1,0 +1,17 @@
+{
+    "name": "PetalsOfHope.AI",
+    "rootNamespace": "",
+    "references": [
+        "GUID:b13bc5de26a6f044e9ff5f54855e25ec",
+        "GUID:6af51d2a4fd38ee43ad63d715985881e"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

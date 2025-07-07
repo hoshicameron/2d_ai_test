@@ -1,0 +1,159 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &1
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5e6fedc2472449cead18ef23b5cb30d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Library:
+  - m_Name: Idle
+    m_Hash: 1008081451
+    m_CategoryList: []
+    m_OverrideEntries:
+    - m_Name: spritesheet-characters-default_4
+      m_Hash: 698673518
+      m_Sprite: {fileID: 482379126287382239, guid: 3b35f2a8327645a409db6a65aa185255, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: 5080115327060218688, guid: ec2c539ff681d46458fa5fab0b7778ea, type: 3}
+    m_FromMain: 1
+    m_EntryOverrideCount: 1
+  - m_Name: Jump
+    m_Hash: 125937960
+    m_CategoryList: []
+    m_OverrideEntries:
+    - m_Name: spritesheet-characters-default_33
+      m_Hash: 150008042
+      m_Sprite: {fileID: -789098660515651329, guid: 3b35f2a8327645a409db6a65aa185255, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: 8082720308168405817, guid: ec2c539ff681d46458fa5fab0b7778ea, type: 3}
+    m_FromMain: 1
+    m_EntryOverrideCount: 1
+  - m_Name: Fall
+    m_Hash: 459436082
+    m_CategoryList: []
+    m_OverrideEntries:
+    - m_Name: spritesheet-characters-default_43
+      m_Hash: 129066541
+      m_Sprite: {fileID: 5283247947156715593, guid: 3b35f2a8327645a409db6a65aa185255, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: 8082720308168405817, guid: ec2c539ff681d46458fa5fab0b7778ea, type: 3}
+    m_FromMain: 1
+    m_EntryOverrideCount: 1
+  - m_Name: Move
+    m_Hash: 252483654
+    m_CategoryList: []
+    m_OverrideEntries:
+    - m_Name: spritesheet-characters-default_38
+      m_Hash: 522332514
+      m_Sprite: {fileID: 9223084950482534279, guid: 3b35f2a8327645a409db6a65aa185255, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: -1218533490, guid: ec2c539ff681d46458fa5fab0b7778ea, type: 3}
+    - m_Name: spritesheet-characters-default_21
+      m_Hash: 1072013447
+      m_Sprite: {fileID: -917536899050956344, guid: 3b35f2a8327645a409db6a65aa185255, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: 8082720308168405817, guid: ec2c539ff681d46458fa5fab0b7778ea, type: 3}
+    - m_Name: spritesheet-characters-default_27
+      m_Hash: 377882034
+      m_Sprite: {fileID: -6287901631135702188, guid: 3b35f2a8327645a409db6a65aa185255, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: 1400819797, guid: ec2c539ff681d46458fa5fab0b7778ea, type: 3}
+    m_FromMain: 1
+    m_EntryOverrideCount: 3
+  - m_Name: Death
+    m_Hash: 646380074
+    m_CategoryList: []
+    m_OverrideEntries:
+    - m_Name: spritesheet-characters-default_10
+      m_Hash: 600818642
+      m_Sprite: {fileID: 6144715408443906559, guid: 3b35f2a8327645a409db6a65aa185255, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: 8082720308168405817, guid: ec2c539ff681d46458fa5fab0b7778ea, type: 3}
+    m_FromMain: 1
+    m_EntryOverrideCount: 1
+  - m_Name: WallGrab
+    m_Hash: 974696866
+    m_CategoryList: []
+    m_OverrideEntries:
+    - m_Name: spritesheet-characters-default_33
+      m_Hash: 150008042
+      m_Sprite: {fileID: -789098660515651329, guid: 3b35f2a8327645a409db6a65aa185255, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: 8082720308168405817, guid: ec2c539ff681d46458fa5fab0b7778ea, type: 3}
+    m_FromMain: 1
+    m_EntryOverrideCount: 1
+  - m_Name: WallJump
+    m_Hash: 305217982
+    m_CategoryList: []
+    m_OverrideEntries:
+    - m_Name: spritesheet-characters-default_33
+      m_Hash: 150008042
+      m_Sprite: {fileID: -789098660515651329, guid: 3b35f2a8327645a409db6a65aa185255, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: 8082720308168405817, guid: ec2c539ff681d46458fa5fab0b7778ea, type: 3}
+    m_FromMain: 1
+    m_EntryOverrideCount: 1
+  - m_Name: Dash
+    m_Hash: 995914302
+    m_CategoryList: []
+    m_OverrideEntries:
+    - m_Name: spritesheet-characters-default_33
+      m_Hash: 150008042
+      m_Sprite: {fileID: -789098660515651329, guid: 3b35f2a8327645a409db6a65aa185255, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: 8082720308168405817, guid: ec2c539ff681d46458fa5fab0b7778ea, type: 3}
+    m_FromMain: 1
+    m_EntryOverrideCount: 1
+  - m_Name: ClimbIdle
+    m_Hash: 313944624
+    m_CategoryList: []
+    m_OverrideEntries:
+    - m_Name: spritesheet-characters-default_16
+      m_Hash: 179070695
+      m_Sprite: {fileID: 608529117585639455, guid: 3b35f2a8327645a409db6a65aa185255, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: 8082720308168405817, guid: ec2c539ff681d46458fa5fab0b7778ea, type: 3}
+    m_FromMain: 1
+    m_EntryOverrideCount: 1
+  - m_Name: ClimbDown
+    m_Hash: 309153566
+    m_CategoryList: []
+    m_OverrideEntries:
+    - m_Name: spritesheet-characters-default_16
+      m_Hash: 179070695
+      m_Sprite: {fileID: 608529117585639455, guid: 3b35f2a8327645a409db6a65aa185255, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: 8082720308168405817, guid: ec2c539ff681d46458fa5fab0b7778ea, type: 3}
+    - m_Name: spritesheet-characters-default_22
+      m_Hash: 653062461
+      m_Sprite: {fileID: -1186157906941791191, guid: 3b35f2a8327645a409db6a65aa185255, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: 8082720308168405817, guid: ec2c539ff681d46458fa5fab0b7778ea, type: 3}
+    m_FromMain: 1
+    m_EntryOverrideCount: 2
+  - m_Name: ClimbUp
+    m_Hash: 374178362
+    m_CategoryList: []
+    m_OverrideEntries:
+    - m_Name: spritesheet-characters-default_22
+      m_Hash: 653062461
+      m_Sprite: {fileID: -1186157906941791191, guid: 3b35f2a8327645a409db6a65aa185255, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: 8082720308168405817, guid: ec2c539ff681d46458fa5fab0b7778ea, type: 3}
+    - m_Name: spritesheet-characters-default_16
+      m_Hash: 179070695
+      m_Sprite: {fileID: 608529117585639455, guid: 3b35f2a8327645a409db6a65aa185255, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: 8082720308168405817, guid: ec2c539ff681d46458fa5fab0b7778ea, type: 3}
+    m_FromMain: 1
+    m_EntryOverrideCount: 2
+  m_PrimaryLibraryGUID: 4499dfa575ba47f43bd4ae67a982c5d1
+  m_ModificationHash: 638873322410242490
+  m_Version: 1

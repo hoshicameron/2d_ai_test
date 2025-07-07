@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f733182e2d784c45aeee77b9951ab99, type: 3}
+  m_Name: Standard_PatrolDataSO
+  m_EditorClassIdentifier: 
+  wallLayer:
+    serializedVersion: 2
+    m_Bits: 8
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 8
+  wallCheckBoxSize: {x: 0.89, y: 0.22}
+  wallCheckBoxOffset: {x: 0.48, y: 0.02}
+  ledgeCheckBoxSize: {x: 0.33, y: 0.87}
+  ledgeCheckBoxOffset: {x: 0.69, y: -1}
