@@ -1,7 +1,7 @@
 # Task ID: 2.4
 # Parent Task ID: 2
 # Title: Player Controller & States Implementation
-# Status: completed
+# Status: pending
 # Dependencies: 2.1, 2.2, 2.3, 1.3.1 # Input System, AnimationController, StateMachine System, PlayerStatsSO
 # Priority: critical
 # Estimated Effort: XL (aggregate of subtasks)

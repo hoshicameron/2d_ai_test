@@ -1,7 +1,7 @@
 # Task ID: 1.3.4
 # Parent Task ID: 1.3
 # Title: Create Editor Tools for Data Management/Validation (Optional)
-# Status: completed (optional)
+# Status: pending
 # Dependencies: 1.3.1, 1.3.2, 1.3.3 # The SOs to manage/validate
 # Priority: low
 # Estimated Effort: M
@@ -55,7 +55,6 @@ This task is marked as optional in the Implementation Plan. If undertaken:
     - If custom tools are built, test their functionality thoroughly.
 
 # Notes/Questions:
-- Implemented basic validation using `OnValidate()` in the base `EntityStatsSO` class to ensure `maxHealth` is always greater than 0.
-- Added `[Min]` attributes to all numeric fields to prevent invalid values in the Unity Inspector.
-- For more complex validations, consider creating custom editor scripts in the future.
-- Implementation completed on 2025-06-03. Basic validation is in place, with room for expansion if needed.
+- The plan marks this as "optional". The `[Min()]` attribute already handles some basic validation. `OnValidate()` is a good lightweight way to add further self-correction or warnings.
+- For this initial pass, implementing `OnValidate()` for critical fields in the SOs (like ensuring `maxHealth > 0`) is a good first step if this task is pursued.
+- Focus on simple, high-value validations first.

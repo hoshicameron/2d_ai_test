@@ -1,7 +1,7 @@
 # Task ID: 3.2.2
 # Parent Task ID: 3.2
 # Title: Define AI StateMachine MonoBehaviour
-# Status: completed
+# Status: pending
 # Dependencies: 3.1.2, 2.2, 3.2.1 # EnemyBase, AnimationController, AI.Core.State
 # Priority: critical
 # Estimated Effort: M

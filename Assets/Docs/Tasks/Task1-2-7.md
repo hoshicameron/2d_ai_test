@@ -1,7 +1,7 @@
 # Task ID: 1.2.7
 # Parent Task ID: 1.2
 # Title: Unit Test Event Propagation
-# Status: completed
+# Status: pending
 # Dependencies: 1.2.2, 1.2.3, 1.2.4, 1.2.5 # Event SOs and Listeners
 # Priority: high
 # Estimated Effort: L

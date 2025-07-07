@@ -1,7 +1,7 @@
 # Task ID: 1.3.5
 # Parent Task ID: 1.3
 # Title: Create Initial Data Assets
-# Status: completed
+# Status: pending
 # Dependencies: 1.3.1, 1.3.2, 1.3.3 # The SO definitions
 # Priority: high
 # Estimated Effort: M
@@ -67,12 +67,6 @@ Create initial ScriptableObject data assets for player stats, enemy stats, abili
     - Select each asset and inspect its values in the Inspector to confirm they are set as expected.
 
 # Notes/Questions:
-- Created initial placeholder values that can be tuned during development and playtesting.
-- All asset creation directories have been set up at `Assets/_Project/ScriptableObjects/Data/`.
-- Default assets include:
-  - Player: `DefaultPlayerStatsSO`
-  - Enemies: `WolfEnemyStatsSO`, `SpiderEnemyStatsSO`
-  - Boss: `PlaceholderBossStatsSO`
-  - Abilities: `DefaultDoubleJumpAbilitySO`, `DefaultDashAbilitySO`
-  - Levels: `TutorialLevelSettingsSO`, `TestLevelSettingsSO`
-- Implementation completed on 2025-06-03. All initial assets are ready for use in the game.
+- These are initial placeholder values. They will be tuned during development and playtesting.
+- If icons or audio clips are not yet available, leave those fields empty or use temporary placeholders.
+- The specific number and types of enemy/level assets can be adjusted based on immediate testing needs. The plan gives "WolfEnemyStats" as an example.
