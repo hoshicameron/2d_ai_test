@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveData:
     isEnabled: 1
-    movementSpeed: 8
+    movementSpeed: 4
   fallData:
     isEnabled: 0
     gravityScale: 1

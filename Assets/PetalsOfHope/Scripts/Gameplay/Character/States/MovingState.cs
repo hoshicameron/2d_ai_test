@@ -58,8 +58,8 @@ namespace PetalsOfHope.Gameplay.States
 
         public override void FixedUpdate()
         {
-            float targetVelocityX = _characterController.MoveInput.x * _characterController.AbilitySheetData.moveData.movementSpeed;
-            _characterController.Rigidbody.linearVelocity = new Vector2(targetVelocityX, _characterController.Rigidbody.linearVelocity.y);
+            _characterController.Mover.Move(_characterController.MoveInput,
+                _characterController.AbilitySheetData.moveData.movementSpeed);
         }
 
         public override void Exit()

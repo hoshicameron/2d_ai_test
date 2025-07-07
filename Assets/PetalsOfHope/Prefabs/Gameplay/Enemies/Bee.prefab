@@ -28,6 +28,14 @@ PrefabInstance:
       propertyPath: m_WasSpriteAssigned
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 687739299156803520, guid: 1b2ee9bd119974647909647fa201841d, type: 3}
+      propertyPath: treeAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 9ff992ea8f6852640a245a60dd3fe8cc, type: 2}
+    - target: {fileID: 687739299156803520, guid: 1b2ee9bd119974647909647fa201841d, type: 3}
+      propertyPath: patrolPath
+      value: 
+      objectReference: {fileID: 1742590159246188397}
     - target: {fileID: 859071948453769094, guid: 1b2ee9bd119974647909647fa201841d, type: 3}
       propertyPath: stats
       value: 
@@ -73,6 +81,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3499761134963079764, guid: 1b2ee9bd119974647909647fa201841d, type: 3}
+      propertyPath: _mover
+      value: 
+      objectReference: {fileID: 11400000, guid: c1dcae7e1b92e024695895d5e9ca3021, type: 2}
+    - target: {fileID: 3499761134963079764, guid: 1b2ee9bd119974647909647fa201841d, type: 3}
       propertyPath: _stats
       value: 
       objectReference: {fileID: 11400000, guid: b891982dc4de1a64bb479262ac98bf98, type: 2}
@@ -107,6 +119,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4002757745371217092, guid: 1b2ee9bd119974647909647fa201841d, type: 3}
       insertIndex: 2
       addedObject: {fileID: 5195285130064991455}
+    - targetCorrespondingSourceObject: {fileID: 4002757745371217092, guid: 1b2ee9bd119974647909647fa201841d, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1742590159246188397}
   m_SourcePrefab: {fileID: 100100000, guid: 1b2ee9bd119974647909647fa201841d, type: 3}
 --- !u!1 &1704625417363962952 stripped
 GameObject:
@@ -149,3 +164,16 @@ CircleCollider2D:
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
   m_Radius: 0.5
+--- !u!114 &1742590159246188397
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1704625417363962952}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 289b65a4ea9e404c9c1ac07acec3ba7d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <Waypoints>k__BackingField: []

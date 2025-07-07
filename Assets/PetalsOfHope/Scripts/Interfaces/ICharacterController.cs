@@ -16,6 +16,6 @@ namespace PetalsOfHope.Interfaces
 
         // State Properties
         bool IsGrounded { get; }
-        
+        Vector2 MoveInput { get; }
     }
 }

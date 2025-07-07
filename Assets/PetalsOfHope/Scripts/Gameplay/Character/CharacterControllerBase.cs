@@ -1,4 +1,5 @@
 ﻿using System;
+using PetalOfHope.Gameplay.Character.Movement;
 using PetalsOfHope.Core.StateMachine;
 using PetalsOfHope.Data.Abilities;
 using PetalsOfHope.Gameplay.States;
@@ -15,6 +16,12 @@ namespace PetalOfHope.Gameplay.Character
     [RequireComponent(typeof(ICharacterInputSource))] 
     public abstract class CharacterControllerBase : MonoBehaviour, ICharacterController
     {
+        #region Mover Strategy
+        [Header("Movement Strategy")]
+        [Tooltip("The ScriptableObject that defines how this character moves and handles physics.")]
+        [SerializeField] private Mover _mover;
+        public IMover Mover => _mover;
+        #endregion
         
         #region Input Source
         
@@ -130,13 +137,27 @@ namespace PetalOfHope.Gameplay.Character
                 Debug.LogError("CharacterControllerBase requires a component that implements ICharacterInputSource!", this);
             }
             
-            
             // Get Core Components
             Rigidbody = GetComponent<Rigidbody2D>();
             Collider = GetComponent<Collider2D>();
             StateMachine = GetComponent<StateMachine>();
             AnimationController = GetComponent<CoreAnimation>();
 
+            InitializeStates();
+
+            if (_mover != null)
+            {
+                _mover = Instantiate(_mover);
+                _mover.Init(this);
+            }
+            else
+            {
+                Debug.Log("Mover not assigned. please assign a mover in editor.");
+            }
+        }
+
+        private void InitializeStates()
+        {
             // Initialize states
             //Persistant States
             DeathState = new DeathState(this, StateMachine, deathAnimationName);
@@ -155,7 +176,7 @@ namespace PetalOfHope.Gameplay.Character
                 WallJumpState = new WallJumpState(this, StateMachine, wallJumpAnimationName, _abilitySheetData.wallJumpData);
             if(_abilitySheetData.climbData.isEnabled)
                 ClimbState = new ClimbState(this, StateMachine, climbIdleAnimationName, climbDownAnimationName,
-                climbUpAnimationName, _abilitySheetData.climbData);
+                    climbUpAnimationName, _abilitySheetData.climbData);
 
             if (_abilitySheetData.fallData.isEnabled)
             {
@@ -239,6 +260,7 @@ namespace PetalOfHope.Gameplay.Character
 
         protected virtual void FixedUpdate()
         {
+            // The StateMachine decides the logical action (e.g., calling Mover.Move).
             StateMachine.FixedUpdateState();
         }
         

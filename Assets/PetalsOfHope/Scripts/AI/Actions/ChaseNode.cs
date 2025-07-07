@@ -41,11 +41,13 @@ namespace PetalsOfHope.AI.Actions
             context.TimeLastSeenPlayer = Time.time;
 
             // Calculate the horizontal direction to the player.
-            float directionX = context.PlayerTransform.position.x - context.AgentTransform.position.x;
+            Vector2 direction = context.PlayerTransform.position - 
+                               context.AgentTransform.position;
 
             // Normalize the direction to get a value of 1 or -1 (or 0 if directly above/below).
             // This ensures consistent movement speed.
-            float horizontalInput = Mathf.Sign(directionX);
+            var horizontalInput = Mathf.Sign(direction.x);
+            var verticalInput = Mathf.Sign(direction.y);
             
             if (Mathf.Abs(horizontalInput) > 0.1f)
             {
@@ -53,7 +55,7 @@ namespace PetalsOfHope.AI.Actions
             }
 
             // Command the character to move.
-            context.InputSource.SetMoveInput(new Vector2(horizontalInput, 0));
+            context.InputSource.SetMoveInput(new Vector2(horizontalInput, verticalInput));
             
             // This action is always "running" until a parent node stops it.
             return NodeState.Running;

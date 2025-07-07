@@ -73,6 +73,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3499761134963079764, guid: 1b2ee9bd119974647909647fa201841d, type: 3}
+      propertyPath: _mover
+      value: 
+      objectReference: {fileID: 11400000, guid: 6286cccb9ae91194ca397a262da3eb20, type: 2}
+    - target: {fileID: 3499761134963079764, guid: 1b2ee9bd119974647909647fa201841d, type: 3}
       propertyPath: _stats
       value: 
       objectReference: {fileID: 11400000, guid: c896436f9a069274199248179a86da1c, type: 2}

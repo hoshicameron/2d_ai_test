@@ -9,7 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5d85cfee02794939a1e6efbb4f54e96e, type: 3}
-  m_Name: Gobline Behavior Tree
+  m_Script: {fileID: 11500000, guid: 712b68975e264184a9c11607ab293e0f, type: 3}
+  m_Name: Sequence_Chase_Fly
   m_EditorClassIdentifier: 
-  rootNode: {fileID: 11400000, guid: 0565c18a68cf9024284a5dd72f88d915, type: 2}
+  guid: 
+  description: 
+  children:
+  - {fileID: 11400000, guid: 0b1d5ac1eb47a114381180f98ffdea35, type: 2}
+  - {fileID: 11400000, guid: eddfb9b60ed75bc40b019bcd39b7c6aa, type: 2}

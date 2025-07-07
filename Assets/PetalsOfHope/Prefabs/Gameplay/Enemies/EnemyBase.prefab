@@ -77,7 +77,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -257,18 +257,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7a276ec69ab40aebfd04e2ed3def923, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _mover: {fileID: 0}
   _groundCheckPoint: {fileID: 834783405848870552}
   _groundCheckRadius: 0.2
   _groundLayer:
     serializedVersion: 2
     m_Bits: 8
-  dashData: {fileID: 0}
-  wallGrabData: {fileID: 0}
-  wallJumpData: {fileID: 0}
-  jumpData: {fileID: 0}
-  climbData: {fileID: 0}
-  moveData: {fileID: 0}
-  fallData: {fileID: 11400000, guid: d6637c3c220950e418ad2a1f2d0fe9b9, type: 2}
+  _abilitySheetData: {fileID: 0}
   idleAnimationName: Idle
   jumpAnimationName: Jump
   fallAnimationName: Fall
@@ -281,7 +276,6 @@ MonoBehaviour:
   climbDownAnimationName: ClimbDown
   climbIdleAnimationName: ClimbIdle
   <CurrentStateName>k__BackingField: None
-  enemyHealth: {fileID: 859071948453769094}
 --- !u!114 &859071948453769094
 MonoBehaviour:
   m_ObjectHideFlags: 0

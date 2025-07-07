@@ -9,11 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 712b68975e264184a9c11607ab293e0f, type: 3}
-  m_Name: Sequence_Idle
+  m_Script: {fileID: 11500000, guid: 173a413fb88e48f9ac60c2cdee6a3aca, type: 3}
+  m_Name: Selector_PatroPathlRoot
   m_EditorClassIdentifier: 
   guid: 
   description: 
   children:
-  - {fileID: 11400000, guid: 00afcdd9a460ab94f8174f7149e64cba, type: 2}
-  - {fileID: 11400000, guid: 8ca5e47683894eb4bbebe873035944a5, type: 2}
+  - {fileID: 11400000, guid: 22eb65d7428ce7f48ac447c923669382, type: 2}
+  - {fileID: 11400000, guid: e3f603950fd3d1a4a872ef8225e5796b, type: 2}

@@ -176,6 +176,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64fe91bc060449b42bd3df139160a053, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _mover: {fileID: 11400000, guid: 6286cccb9ae91194ca397a262da3eb20, type: 2}
   _groundCheckPoint: {fileID: 7696364811979205763}
   _groundCheckRadius: 0.2
   _groundLayer:

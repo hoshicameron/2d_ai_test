@@ -28,6 +28,10 @@ PrefabInstance:
       propertyPath: m_WasSpriteAssigned
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 687739299156803520, guid: 1b2ee9bd119974647909647fa201841d, type: 3}
+      propertyPath: treeAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 67bd6f096bc915a4297b780fbaebd7d7, type: 2}
     - target: {fileID: 859071948453769094, guid: 1b2ee9bd119974647909647fa201841d, type: 3}
       propertyPath: stats
       value: 
@@ -72,6 +76,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3499761134963079764, guid: 1b2ee9bd119974647909647fa201841d, type: 3}
+      propertyPath: _mover
+      value: 
+      objectReference: {fileID: 11400000, guid: 6286cccb9ae91194ca397a262da3eb20, type: 2}
     - target: {fileID: 3499761134963079764, guid: 1b2ee9bd119974647909647fa201841d, type: 3}
       propertyPath: _stats
       value: 
