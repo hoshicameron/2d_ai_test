@@ -5,8 +5,9 @@ namespace PetalsOfHope.Gameplay.LevelElements
 {
     public class Collectible : MonoBehaviour
     {
-        [SerializeField] private GameEventSO onCollected;
+        [SerializeField] private IntEventSO onCollected;
         [SerializeField] private float rotationSpeed = 50f;
+        [SerializeField] private int value;
 
         private void Update()
         {
@@ -19,7 +20,7 @@ namespace PetalsOfHope.Gameplay.LevelElements
             {
                 if (onCollected != null)
                 {
-                    onCollected.Raise();
+                    onCollected.Raise(value);
                 }
                 // Here you would typically also use an object pool to disable the collectible
                 // For now, we'll just destroy it.
