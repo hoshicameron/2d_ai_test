@@ -27,7 +27,7 @@ namespace PetalsOfHope.Gameplay.States
             _characterController.InputSource.DisableAllInput();
             
             // Stop all movement
-            _characterController.Rigidbody.velocity = Vector2.zero;
+            _characterController.Rigidbody.linearVelocity = Vector2.zero;
             _characterController.Rigidbody.bodyType = RigidbodyType2D.Kinematic;
         }
 
