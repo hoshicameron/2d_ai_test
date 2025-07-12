@@ -197,6 +197,7 @@ MonoBehaviour:
   <CurrentStateName>k__BackingField: None
   _playerDiedEventSO: {fileID: 11400000, guid: eb6a3dfb1b0077648892d9c5941e6d2d, type: 2}
   _playerLandedEventSO: {fileID: 11400000, guid: cb3d76579b36a7942bc3562d1b876781, type: 2}
+  onPlayerRespawnEventSo: {fileID: 11400000, guid: b9f90e9822e3ad546a102a741e16c0dc, type: 2}
 --- !u!114 &7189908605111981953
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -212,6 +213,7 @@ MonoBehaviour:
   _stats: {fileID: 11400000, guid: 4ed19b76704060143a1fe26f5fda7426, type: 2}
   _playerDiedEventSO: {fileID: 11400000, guid: eb6a3dfb1b0077648892d9c5941e6d2d, type: 2}
   _playerHealthChangedEventSO: {fileID: 11400000, guid: be511a8c38a190541bc19a4fb62308a9, type: 2}
+  onPlayerRespawnEventSo: {fileID: 11400000, guid: b9f90e9822e3ad546a102a741e16c0dc, type: 2}
 --- !u!1 &3270930040625937334
 GameObject:
   m_ObjectHideFlags: 0

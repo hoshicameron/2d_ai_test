@@ -16,17 +16,28 @@ namespace PetalsOfHope.Gameplay.Player
         [Tooltip("Listen to the player dies event.")]
         [SerializeField] private GameEventSO _playerDiedEventSO;
         [SerializeField] private GameEventSO _playerLandedEventSO;
+        
+        [SerializeField] private GameEventSO onPlayerRespawnEventSo;
 
         protected override void OnEnable()
         {
             base.OnEnable();
             _playerDiedEventSO.RegisterListener(HandleCharacterDeath);
+            onPlayerRespawnEventSo.RegisterListener(HandlePlayerRespawn);
         }
 
         protected override void OnDisable()
         {
             base.OnDisable();
             _playerDiedEventSO.UnregisterListener(HandleCharacterDeath);
+            onPlayerRespawnEventSo.UnregisterListener(HandlePlayerRespawn);
+        }
+        
+        private void HandlePlayerRespawn()
+        {
+            Rigidbody.linearVelocity = Vector2.zero;
+            InputSource.EnableGameplayInput();
+            StateMachine.ChangeState(IdleState);
         }
 
         protected override void HandleCharacterLanded()

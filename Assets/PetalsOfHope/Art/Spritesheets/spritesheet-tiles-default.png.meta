@@ -4407,7 +4407,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-tiles-default_192
+      name: flag_body
       rect:
         serializedVersion: 2
         x: 896
@@ -7126,6 +7126,7 @@ TextureImporter:
       coin: 1554025910
       crusher: 1127863138
       exit_sign: -12555856
+      flag_body: -1962090365
       gold_coin 0: -1873983281
       gold_coin1: -980319243
       gray_dude: -494266234
@@ -7234,7 +7235,6 @@ TextureImporter:
       spritesheet-tiles-default_189: -901103025
       spritesheet-tiles-default_19: 4567531931847817840
       spritesheet-tiles-default_191: 573032036
-      spritesheet-tiles-default_192: -1962090365
       spritesheet-tiles-default_194: -1402025210
       spritesheet-tiles-default_195: -2103131100
       spritesheet-tiles-default_196: -533102053
