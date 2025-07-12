@@ -6321,7 +6321,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-tiles-default_279
+      name: crusher
       rect:
         serializedVersion: 2
         x: 1024
@@ -7124,6 +7124,7 @@ TextureImporter:
       cactus: 1852473863
       cloud: -1709330463
       coin: 1554025910
+      crusher: 1127863138
       exit_sign: -12555856
       gold_coin 0: -1873983281
       gold_coin1: -980319243
@@ -7309,7 +7310,6 @@ TextureImporter:
       spritesheet-tiles-default_273: 297920889
       spritesheet-tiles-default_276: -967962134
       spritesheet-tiles-default_277: 6115443
-      spritesheet-tiles-default_279: 1127863138
       spritesheet-tiles-default_280: 1625656246
       spritesheet-tiles-default_281: 1048494998
       spritesheet-tiles-default_282: -154069906
