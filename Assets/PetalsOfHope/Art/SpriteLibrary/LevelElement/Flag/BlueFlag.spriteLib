@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &1
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5e6fedc2472449cead18ef23b5cb30d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Library:
+  - m_Name: Idle
+    m_Hash: 1008081451
+    m_CategoryList: []
+    m_OverrideEntries:
+    - m_Name: red_flag0
+      m_Hash: 8660347
+      m_Sprite: {fileID: -919706340, guid: 76e01fe12df0bf94c8aeab0c00e509f8, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: 763169911, guid: 76e01fe12df0bf94c8aeab0c00e509f8, type: 3}
+    - m_Name: red_flag1
+      m_Hash: 931337709
+      m_Sprite: {fileID: 1229021256, guid: 76e01fe12df0bf94c8aeab0c00e509f8, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: -1627899954, guid: 76e01fe12df0bf94c8aeab0c00e509f8, type: 3}
+    m_FromMain: 1
+    m_EntryOverrideCount: 2
+  m_PrimaryLibraryGUID: 48b007b1f7abc07498ed4dd6743aeae6
+  m_ModificationHash: 638879583381868763
+  m_Version: 1

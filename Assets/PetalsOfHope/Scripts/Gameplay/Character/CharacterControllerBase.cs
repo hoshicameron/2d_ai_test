@@ -123,6 +123,7 @@ namespace PetalOfHope.Gameplay.Character
         public WallGrabState WallGrabState { get; private set; }
         public WallJumpState WallJumpState { get; private set; }
         public ClimbState ClimbState { get; private set; }
+        public RespawnState RespawnState { get; private set; }
         
 
         #endregion
@@ -161,6 +162,7 @@ namespace PetalOfHope.Gameplay.Character
             // Initialize states
             //Persistant States
             DeathState = new DeathState(this, StateMachine, deathAnimationName);
+            RespawnState = new RespawnState(this, StateMachine);
             IdleState = new IdleState(this, StateMachine, idleAnimationName);
             
             //Optional States

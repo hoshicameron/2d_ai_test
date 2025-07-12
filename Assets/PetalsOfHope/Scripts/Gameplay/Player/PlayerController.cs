@@ -2,6 +2,7 @@ using PetalOfHope.Gameplay.Character;
 using PetalsOfHope.Core.Events;
 using PetalsOfHope.Core.StateMachine;
 using UnityEngine;
+using UnityEngine.Serialization;
 using CoreAnimation = PetalsOfHope.Core.Animation.AnimationController;
 
 namespace PetalsOfHope.Gameplay.Player
@@ -14,19 +15,28 @@ namespace PetalsOfHope.Gameplay.Player
     {
         [Header("Health Events")]
         [Tooltip("Listen to the player dies event.")]
-        [SerializeField] private GameEventSO _playerDiedEventSO;
-        [SerializeField] private GameEventSO _playerLandedEventSO;
+        [SerializeField] private GameEventSO playerDiedEventSo;
+        [SerializeField] private GameEventSO playerLandedEventSo;
+        
+        [SerializeField] private GameEventSO onPlayerRespawnEventSo;
 
         protected override void OnEnable()
         {
             base.OnEnable();
-            _playerDiedEventSO.RegisterListener(HandleCharacterDeath);
+            playerDiedEventSo.RegisterListener(HandleCharacterDeath);
+            onPlayerRespawnEventSo.RegisterListener(HandlePlayerRespawn);
         }
 
         protected override void OnDisable()
         {
             base.OnDisable();
-            _playerDiedEventSO.UnregisterListener(HandleCharacterDeath);
+            playerDiedEventSo.UnregisterListener(HandleCharacterDeath);
+            onPlayerRespawnEventSo.UnregisterListener(HandlePlayerRespawn);
+        }
+        
+        private void HandlePlayerRespawn()
+        {
+            StateMachine.ChangeState(RespawnState);
         }
 
         protected override void HandleCharacterLanded()
@@ -34,7 +44,7 @@ namespace PetalsOfHope.Gameplay.Player
             if (!wasGrounded && IsGrounded)
             {
                 RemainingJumps = AbilitySheetData.jumpData.maxJumps;
-                _playerLandedEventSO?.Raise();
+                playerLandedEventSo?.Raise();
             }
         }
     }

@@ -1,0 +1,16 @@
+{
+    "name": "PetalOfHope.Systems",
+    "rootNamespace": "",
+    "references": [
+        "GUID:bb71d705545c76744ba2bd04ccc13f15"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

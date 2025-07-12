@@ -14,7 +14,7 @@ TagManager:
   - Player
   - Climbable
   - Enemy
-  - Bounce
+  - Interactables
   - 
   - 
   - 
@@ -40,6 +40,21 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Background
+    uniqueID: 1454928601
+    locked: 0
+  - name: Foreground
+    uniqueID: 3287557587
+    locked: 0
+  - name: BackgroundDetails
+    uniqueID: 3927376109
+    locked: 0
+  - name: Characters
+    uniqueID: 1389593671
+    locked: 0
+  - name: ForegroundDetails
+    uniqueID: 2613362653
     locked: 0
   m_RenderingLayers:
   - Default

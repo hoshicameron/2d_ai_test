@@ -1,7 +1,7 @@
 # Task ID: 4.1.3
 # Parent Task ID: 4.1
 # Title: Implement Basic Hazard Systems (Spikes, Pits)
-# Status: pending
+# Status: completed
 # Dependencies: 3.1.1, 2.5 # IDamageable, PlayerHealth
 # Priority: high
 # Estimated Effort: M

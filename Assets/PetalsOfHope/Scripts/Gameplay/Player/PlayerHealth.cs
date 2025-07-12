@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using PetalsOfHope.Data.Player;
 using PetalsOfHope.Core.Events;
@@ -21,6 +22,7 @@ namespace PetalsOfHope.Gameplay.Player
         [SerializeField] private GameEventSO _playerDiedEventSO;
         [Tooltip("Event raised when player's health changes. Payload: current health (int).")]
         [SerializeField] private IntEventSO _playerHealthChangedEventSO; // Assuming IntEventSO exists from Task 1.2.3
+        [SerializeField] private GameEventSO onPlayerRespawnEventSo;
 
         private int _currentHealth;
         private CoreAnimation _animationController; // To trigger death/hurt animation
@@ -39,6 +41,21 @@ namespace PetalsOfHope.Gameplay.Player
                 // but good for robustness if PlayerHealth could be separated.
                 Debug.LogWarning("PlayerHealth: AnimationController not found. Death/hurt animations might not play.", this);
             }
+        }
+
+        private void OnEnable()
+        {
+            onPlayerRespawnEventSo.RegisterListener(HandlePlayerRespawn);
+        }
+
+        private void OnDisable()
+        {
+            onPlayerRespawnEventSo.UnregisterListener(HandlePlayerRespawn);
+        }
+
+        private void HandlePlayerRespawn()
+        {
+            ResetHealth();
         }
 
 
@@ -108,6 +125,17 @@ namespace PetalsOfHope.Gameplay.Player
             
             // The actual death handling (animation, disabling controls, etc.) 
             // is now handled by the DeathState in the PlayerController
+        }
+
+        /// <summary>
+        /// Resets the player's health to maximum and revives them.
+        /// Called by the PlayerRespawnSystem.
+        /// </summary>
+        public void ResetHealth()
+        {
+            _currentHealth = MaxHealth;
+            _isDead = false;
+            _playerHealthChangedEventSO?.Raise(_currentHealth);
         }
 
         // This method would be part of IDamageable if implemented

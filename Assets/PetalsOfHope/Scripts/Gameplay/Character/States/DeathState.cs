@@ -29,16 +29,6 @@ namespace PetalsOfHope.Gameplay.States
             // Stop all movement
             _characterController.Rigidbody.linearVelocity = Vector2.zero;
             _characterController.Rigidbody.bodyType = RigidbodyType2D.Kinematic;
-            
-            // Disable collider after a short delay to allow death animation to play
-            var collider = _characterController.GetComponent<Collider2D>();
-            if (collider != null)
-            {
-                collider.enabled = false;
-            }
-            
-            // Disable other components that might interfere
-            _characterController.enabled = false;
         }
 
         public override void Exit()
