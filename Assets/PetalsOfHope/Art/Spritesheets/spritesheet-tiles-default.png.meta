@@ -337,7 +337,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tile_jungle_slop
+      name: tile_jungle_12
       rect:
         serializedVersion: 2
         x: 448
@@ -733,7 +733,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-tiles-default_25
+      name: tile_jungle_13
       rect:
         serializedVersion: 2
         x: 448
@@ -1129,7 +1129,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-tiles-default_43
+      name: tile_jungle_14
       rect:
         serializedVersion: 2
         x: 448
@@ -6475,7 +6475,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-tiles-default_286
+      name: tile_jungle_10
       rect:
         serializedVersion: 2
         x: 384
@@ -6849,7 +6849,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-tiles-default_303
+      name: tile_jungle_11
       rect:
         serializedVersion: 2
         x: 384
@@ -7228,7 +7228,6 @@ TextureImporter:
       spritesheet-tiles-default_245: 1045775235
       spritesheet-tiles-default_246: -1240788216
       spritesheet-tiles-default_249: -481700814
-      spritesheet-tiles-default_25: 1729103025
       spritesheet-tiles-default_259: 639265553
       spritesheet-tiles-default_262: 1144557342
       spritesheet-tiles-default_263: 1630798467
@@ -7238,7 +7237,6 @@ TextureImporter:
       spritesheet-tiles-default_277: 6115443
       spritesheet-tiles-default_280: 1625656246
       spritesheet-tiles-default_283: 384580153
-      spritesheet-tiles-default_286: -1910698523
       spritesheet-tiles-default_290: 1096991013
       spritesheet-tiles-default_293: -167243488
       spritesheet-tiles-default_295: 33934643
@@ -7246,7 +7244,6 @@ TextureImporter:
       spritesheet-tiles-default_299: -1715932693
       spritesheet-tiles-default_3: 7202180622392529822
       spritesheet-tiles-default_300: 1684602977
-      spritesheet-tiles-default_303: -615501087
       spritesheet-tiles-default_310: -203319759
       spritesheet-tiles-default_312: 755635781
       spritesheet-tiles-default_313: 1503568481
@@ -7255,7 +7252,6 @@ TextureImporter:
       spritesheet-tiles-default_36: -1919706378
       spritesheet-tiles-default_4: 8643378792194019154
       spritesheet-tiles-default_42: -370410897
-      spritesheet-tiles-default_43: -385495864
       spritesheet-tiles-default_49: -166188743
       spritesheet-tiles-default_52: 664328302
       spritesheet-tiles-default_53: 1970130905
@@ -7313,6 +7309,11 @@ TextureImporter:
       tile_ice_single: 1939106935
       tile_ice_top_mid: 723357496
       tile_jungle_1: 1033075048
+      tile_jungle_10: -1910698523
+      tile_jungle_11: -615501087
+      tile_jungle_12: 1684297740197026296
+      tile_jungle_13: 1729103025
+      tile_jungle_14: -385495864
       tile_jungle_2: 949424431
       tile_jungle_3: 1445829289
       tile_jungle_4: 968381368
@@ -7331,7 +7332,6 @@ TextureImporter:
       tile_jungle_mid_single: -1183549119
       tile_jungle_right: -144656038
       tile_jungle_right_curve: 1491221358
-      tile_jungle_slop: 1684297740197026296
       tile_jungle_top_mid: -1499574747
       tile_jungle_top_middle: 198249500
       tile_pink_1: 1631528829
