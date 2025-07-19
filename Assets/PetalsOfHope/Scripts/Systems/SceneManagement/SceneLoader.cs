@@ -14,6 +14,13 @@ namespace PetalsOfHope.Systems.SceneManagement
         [Tooltip("Listen for requests to reload the current scene.")]
         [SerializeField] private GameEventSO reloadCurrentSceneChannel;
 
+        [Header("Event Raisers")]
+        [Tooltip("Raised when a scene load is about to start (before fade out).")]
+        [SerializeField] private GameEventSO sceneLoadStartedEvent;
+        
+        [Tooltip("Raised when a new scene has finished loading (after fade in).")]
+        [SerializeField] private GameEventSO sceneLoadCompletedEvent;
+
         [Header("Transition Settings")]
         [Tooltip("CanvasGroup used for fade transitions.")]
         [SerializeField] private CanvasGroup fadeCanvasGroup;
@@ -82,6 +89,8 @@ namespace PetalsOfHope.Systems.SceneManagement
         {
             _isLoading = true;
 
+            sceneLoadStartedEvent?.Raise();
+
             yield return StartCoroutine(Fade(1f));
 
             AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(sceneName);
@@ -93,6 +102,8 @@ namespace PetalsOfHope.Systems.SceneManagement
             yield return StartCoroutine(Fade(0f));
 
             _isLoading = false;
+            
+            sceneLoadCompletedEvent?.Raise();
         }
 
         private IEnumerator Fade(float targetAlpha)

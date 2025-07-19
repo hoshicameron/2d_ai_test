@@ -26,6 +26,10 @@ namespace PetalsOfHope.Systems
         [Tooltip("The channel that provides the ability check function.")]
         [SerializeField] private AbilityCheckChannelSO abilityCheckChannel;
 
+        [Header("Event Raisers")]
+        [Tooltip("Raised when progression data changes (e.g., a talisman is collected).")]
+        [SerializeField] private GameEventSO progressionChangedEvent;
+
         private HashSet<string> _collectedTalismanIDs = new();
 
         public string UniqueID => uniqueID;
@@ -63,8 +67,11 @@ namespace PetalsOfHope.Systems
         {
             if (collectible != null && !string.IsNullOrEmpty(collectible.ID))
             {
-                _collectedTalismanIDs.Add(collectible.ID);
-                // Here you would typically raise a "RequestSaveGame" event
+                if (_collectedTalismanIDs.Add(collectible.ID))
+                {
+                    progressionChangedEvent?.Raise();
+                    // Here you would typically raise a "RequestSaveGame" event
+                }
             }
         }
 

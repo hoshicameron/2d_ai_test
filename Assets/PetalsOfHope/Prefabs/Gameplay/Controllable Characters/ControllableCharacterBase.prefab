@@ -183,6 +183,9 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8
   _abilitySheetData: {fileID: 11400000, guid: 538272fa963501f4e8ee4be2bc41ab74, type: 2}
+  abilityCheckChannel: {fileID: 11400000, guid: 7a5fc313ed70e29428b60a6a3268e635, type: 2}
+  sceneLoadCompletedEvent: {fileID: 11400000, guid: 86005b8c0507f8249bc934ec66570193, type: 2}
+  progressionChangedEvent: {fileID: 11400000, guid: 70ed262a771ca3e46944814d24893b06, type: 2}
   idleAnimationName: Idle
   jumpAnimationName: Jump
   fallAnimationName: Fall

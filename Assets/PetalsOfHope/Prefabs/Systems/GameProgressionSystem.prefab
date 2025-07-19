@@ -48,3 +48,4 @@ MonoBehaviour:
   talismanDatabase: {fileID: 11400000, guid: 174b226d7aeed224d932b7f585aae616, type: 2}
   onCollectibleCollected: {fileID: 11400000, guid: e072762171ea83a4bb913b844a97edff, type: 2}
   abilityCheckChannel: {fileID: 11400000, guid: 7a5fc313ed70e29428b60a6a3268e635, type: 2}
+  progressionChangedEvent: {fileID: 11400000, guid: 70ed262a771ca3e46944814d24893b06, type: 2}

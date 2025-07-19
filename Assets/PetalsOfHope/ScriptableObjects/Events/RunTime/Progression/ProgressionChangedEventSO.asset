@@ -9,10 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8934f834c2f0be547bd4866db436092a, type: 3}
-  m_Name: DashTalismanDataSO
+  m_Script: {fileID: 11500000, guid: 58d97d5e6083c6141a489be86bd6dbef, type: 3}
+  m_Name: ProgressionChangedEventSO
   m_EditorClassIdentifier: 
-  talismanID: TALISMAN_DASH
-  displayName: Dash Talisman
-  description: This talisman activate dash  for our character.
-  icon: {fileID: 0}
+  _developerDescription: 
