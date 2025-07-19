@@ -119,6 +119,54 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &78499287
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 78499289}
+  - component: {fileID: 78499288}
+  m_Layer: 0
+  m_Name: GameProgressionSystem
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &78499288
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 78499287}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f89cf2be323758f43bc39782bf62f8b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uniqueID: 67017d24-55ae-4c31-8be7-fd5023b19fb2
+  talismanDatabase: {fileID: 0}
+  onCollectibleCollected: {fileID: 0}
+  abilityCheckChannel: {fileID: 0}
+--- !u!4 &78499289
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 78499287}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &471915813 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 378454640849913407, guid: def11a3d4ac5d1b4eacf68c629c6836e, type: 3}
@@ -824,3 +872,4 @@ SceneRoots:
   - {fileID: 710886896}
   - {fileID: 9211768950883067721}
   - {fileID: 1355892530}
+  - {fileID: 78499289}

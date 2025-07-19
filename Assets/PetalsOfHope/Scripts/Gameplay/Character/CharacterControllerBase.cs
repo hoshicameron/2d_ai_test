@@ -257,7 +257,6 @@ namespace PetalOfHope.Gameplay.Character
             {
                 CurrentStateName = StateMachine.CurrentState.GetType().Name;
             }
-            Debug.Log($"[CharacterController] Scale updated to: {transform.localScale}");
         }
 
         protected virtual void FixedUpdate()
