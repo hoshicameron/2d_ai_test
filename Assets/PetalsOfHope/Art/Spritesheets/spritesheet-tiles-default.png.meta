@@ -108,7 +108,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 60
+  spritePixelsToUnits: 64
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -205,7 +205,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-tiles-default_1
+      name: tile_stone_right_curve
       rect:
         serializedVersion: 2
         x: 64
@@ -227,7 +227,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-tiles-default_2
+      name: tile_stone_single
       rect:
         serializedVersion: 2
         x: 128
@@ -293,7 +293,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-tiles-default_5
+      name: tile_dirt_7
       rect:
         serializedVersion: 2
         x: 320
@@ -315,7 +315,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-tiles-default_6
+      name: tile_pink_half_left
       rect:
         serializedVersion: 2
         x: 384
@@ -337,7 +337,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-tiles-default_7
+      name: tile_jungle_12
       rect:
         serializedVersion: 2
         x: 448
@@ -359,7 +359,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-tiles-default_8
+      name: tile_jungle_5
       rect:
         serializedVersion: 2
         x: 512
@@ -381,7 +381,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-tiles-default_9
+      name: tile_rock_half_right
       rect:
         serializedVersion: 2
         x: 576
@@ -601,7 +601,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-tiles-default_19
+      name: tile_stone_left_curve
       rect:
         serializedVersion: 2
         x: 64
@@ -623,7 +623,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-tiles-default_20
+      name: tile_ice_top_mid
       rect:
         serializedVersion: 2
         x: 128
@@ -645,7 +645,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-tiles-default_21
+      name: tile_ice_3
       rect:
         serializedVersion: 2
         x: 192
@@ -667,7 +667,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-tiles-default_22
+      name: tile_dirt_right
       rect:
         serializedVersion: 2
         x: 256
@@ -689,7 +689,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-tiles-default_23
+      name: tile_dirt_8
       rect:
         serializedVersion: 2
         x: 320
@@ -733,7 +733,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-tiles-default_25
+      name: tile_jungle_13
       rect:
         serializedVersion: 2
         x: 448
@@ -755,7 +755,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-tiles-default_26
+      name: tile_jungle_9
       rect:
         serializedVersion: 2
         x: 512
@@ -777,7 +777,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-tiles-default_27
+      name: tile_rock_half_mid
       rect:
         serializedVersion: 2
         x: 576
@@ -997,7 +997,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-tiles-default_37
+      name: tile_stone_mid_midder
       rect:
         serializedVersion: 2
         x: 64
@@ -1019,7 +1019,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-tiles-default_38
+      name: tile_ice_mid_mid
       rect:
         serializedVersion: 2
         x: 128
@@ -1041,7 +1041,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-tiles-default_39
+      name: tile_ice_1
       rect:
         serializedVersion: 2
         x: 192
@@ -1063,7 +1063,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-tiles-default_40
+      name: tile_dirt_right_curve
       rect:
         serializedVersion: 2
         x: 256
@@ -1085,7 +1085,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-tiles-default_41
+      name: tile_dirt_single
       rect:
         serializedVersion: 2
         x: 320
@@ -1129,7 +1129,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-tiles-default_43
+      name: tile_jungle_14
       rect:
         serializedVersion: 2
         x: 448
@@ -1151,7 +1151,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-tiles-default_44
+      name: tile_jungle_7
       rect:
         serializedVersion: 2
         x: 512
@@ -1173,7 +1173,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-tiles-default_45
+      name: tile_rock_half_left
       rect:
         serializedVersion: 2
         x: 576
@@ -1371,7 +1371,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-tiles-default_54
+      name: tile_water_0
       rect:
         serializedVersion: 2
         x: 0
@@ -1393,7 +1393,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-tiles-default_55
+      name: tile_stone_mid_lefter
       rect:
         serializedVersion: 2
         x: 64
@@ -1415,7 +1415,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-tiles-default_56
+      name: tile_ice_mid_bottom
       rect:
         serializedVersion: 2
         x: 128
@@ -1437,7 +1437,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-tiles-default_57
+      name: tile_ice_2
       rect:
         serializedVersion: 2
         x: 192
@@ -1459,7 +1459,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-tiles-default_58
+      name: tile_dirt_left_curve
       rect:
         serializedVersion: 2
         x: 256
@@ -1481,7 +1481,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-tiles-default_59
+      name: tile_pink_mid_top
       rect:
         serializedVersion: 2
         x: 320
@@ -1503,7 +1503,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-tiles-default_60
+      name: tile_pink_3
       rect:
         serializedVersion: 2
         x: 384
@@ -1525,7 +1525,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-tiles-default_61
+      name: tile_jungle_right
       rect:
         serializedVersion: 2
         x: 448
@@ -1547,7 +1547,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-tiles-default_62
+      name: tile_jungle_8
       rect:
         serializedVersion: 2
         x: 512
@@ -1767,7 +1767,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-tiles-default_72
+      name: tile_water_1
       rect:
         serializedVersion: 2
         x: 0
@@ -1789,7 +1789,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-tiles-default_73
+      name: tile_stone_half_right
       rect:
         serializedVersion: 2
         x: 64
@@ -1833,7 +1833,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-tiles-default_75
+      name: tile_ice_6
       rect:
         serializedVersion: 2
         x: 192
@@ -1855,7 +1855,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-tiles-default_76
+      name: tile_dirt_middle
       rect:
         serializedVersion: 2
         x: 256
@@ -1877,7 +1877,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-tiles-default_77
+      name: tile_pink_mid_mid
       rect:
         serializedVersion: 2
         x: 320
@@ -1899,7 +1899,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-tiles-default_78
+      name: tile_pink_1
       rect:
         serializedVersion: 2
         x: 384
@@ -1921,7 +1921,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-tiles-default_79
+      name: tile_jungle_right_curve
       rect:
         serializedVersion: 2
         x: 448
@@ -1943,7 +1943,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-tiles-default_80
+      name: tile_jungle_mid_single
       rect:
         serializedVersion: 2
         x: 512
@@ -2163,7 +2163,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-tiles-default_90
+      name: tile_water_2
       rect:
         serializedVersion: 2
         x: 0
@@ -2185,7 +2185,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-tiles-default_91
+      name: tile_stone_half_middle
       rect:
         serializedVersion: 2
         x: 64
@@ -2229,7 +2229,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-tiles-default_93
+      name: tile_ice_4
       rect:
         serializedVersion: 2
         x: 192
@@ -2251,7 +2251,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-tiles-default_94
+      name: tile_dirt_left
       rect:
         serializedVersion: 2
         x: 256
@@ -2273,7 +2273,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-tiles-default_95
+      name: tile_pink_mid_bottom
       rect:
         serializedVersion: 2
         x: 320
@@ -2295,7 +2295,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-tiles-default_96
+      name: tile_pink_2
       rect:
         serializedVersion: 2
         x: 384
@@ -2317,7 +2317,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-tiles-default_97
+      name: tile_jungle_left_curve
       rect:
         serializedVersion: 2
         x: 448
@@ -2339,7 +2339,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-tiles-default_98
+      name: tile_rock_top_mid
       rect:
         serializedVersion: 2
         x: 512
@@ -2361,7 +2361,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-tiles-default_99
+      name: tile_rock_3
       rect:
         serializedVersion: 2
         x: 576
@@ -2581,7 +2581,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-tiles-default_109
+      name: tile_stone_half_left
       rect:
         serializedVersion: 2
         x: 64
@@ -2625,7 +2625,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-tiles-default_111
+      name: tile_ice_5
       rect:
         serializedVersion: 2
         x: 192
@@ -2647,7 +2647,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-tiles-default_112
+      name: tile_dirt_half_right
       rect:
         serializedVersion: 2
         x: 256
@@ -2691,7 +2691,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-tiles-default_114
+      name: tile_pink_6
       rect:
         serializedVersion: 2
         x: 384
@@ -2713,7 +2713,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-tiles-default_115
+      name: tile_jungle_top_middle
       rect:
         serializedVersion: 2
         x: 448
@@ -2735,7 +2735,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-tiles-default_116
+      name: tile_rock_mid_mid
       rect:
         serializedVersion: 2
         x: 512
@@ -2757,7 +2757,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-tiles-default_117
+      name: tile_rock_1
       rect:
         serializedVersion: 2
         x: 576
@@ -3021,7 +3021,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-tiles-default_129
+      name: tile_ice_9
       rect:
         serializedVersion: 2
         x: 192
@@ -3043,7 +3043,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-tiles-default_130
+      name: tile_dirt_half_middle
       rect:
         serializedVersion: 2
         x: 256
@@ -3087,7 +3087,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-tiles-default_132
+      name: tile_pink_4
       rect:
         serializedVersion: 2
         x: 384
@@ -3109,7 +3109,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-tiles-default_133
+      name: tile_jungle_left
       rect:
         serializedVersion: 2
         x: 448
@@ -3131,7 +3131,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-tiles-default_134
+      name: tile_rock_mid_bottom
       rect:
         serializedVersion: 2
         x: 512
@@ -3153,7 +3153,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-tiles-default_135
+      name: tile_rock_2
       rect:
         serializedVersion: 2
         x: 576
@@ -3417,7 +3417,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-tiles-default_147
+      name: tile_ice_7
       rect:
         serializedVersion: 2
         x: 192
@@ -3439,7 +3439,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-tiles-default_148
+      name: tile_dirt_half_left
       rect:
         serializedVersion: 2
         x: 256
@@ -3483,7 +3483,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-tiles-default_150
+      name: tile_pink_5
       rect:
         serializedVersion: 2
         x: 384
@@ -3505,7 +3505,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-tiles-default_151
+      name: tile_jungle_half_right
       rect:
         serializedVersion: 2
         x: 448
@@ -3549,7 +3549,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-tiles-default_153
+      name: tile_rock_6
       rect:
         serializedVersion: 2
         x: 576
@@ -3725,7 +3725,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-tiles-default_161
+      name: tile_stone_top_mid
       rect:
         serializedVersion: 2
         x: 0
@@ -3747,7 +3747,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-tiles-default_162
+      name: tile_stone_3
       rect:
         serializedVersion: 2
         x: 64
@@ -3769,7 +3769,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-tiles-default_163
+      name: tile_ice_right
       rect:
         serializedVersion: 2
         x: 128
@@ -3791,7 +3791,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-tiles-default_164
+      name: tile_ice_8
       rect:
         serializedVersion: 2
         x: 192
@@ -3857,7 +3857,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-tiles-default_167
+      name: tile_pink_9
       rect:
         serializedVersion: 2
         x: 384
@@ -3879,7 +3879,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-tiles-default_168
+      name: tile_jungle_half_middle
       rect:
         serializedVersion: 2
         x: 448
@@ -3923,7 +3923,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-tiles-default_170
+      name: tile_rock_4
       rect:
         serializedVersion: 2
         x: 576
@@ -4099,7 +4099,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-tiles-default_178
+      name: tile_stone_mid_mid
       rect:
         serializedVersion: 2
         x: 0
@@ -4121,7 +4121,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-tiles-default_179
+      name: tile_stone_1
       rect:
         serializedVersion: 2
         x: 64
@@ -4143,7 +4143,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-tiles-default_180
+      name: tile_ice_right_curve
       rect:
         serializedVersion: 2
         x: 128
@@ -4165,7 +4165,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-tiles-default_181
+      name: tile_ice_single
       rect:
         serializedVersion: 2
         x: 192
@@ -4231,7 +4231,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-tiles-default_184
+      name: tile_pink_7
       rect:
         serializedVersion: 2
         x: 384
@@ -4253,7 +4253,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-tiles-default_185
+      name: tile_jungle_half_left
       rect:
         serializedVersion: 2
         x: 448
@@ -4297,7 +4297,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-tiles-default_187
+      name: tile_rock_5
       rect:
         serializedVersion: 2
         x: 576
@@ -4473,7 +4473,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-tiles-default_195
+      name: tile_stone_mid_bottom
       rect:
         serializedVersion: 2
         x: 0
@@ -4495,7 +4495,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-tiles-default_196
+      name: tile_stone_2
       rect:
         serializedVersion: 2
         x: 64
@@ -4517,7 +4517,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-tiles-default_197
+      name: tile_ice_left_curve
       rect:
         serializedVersion: 2
         x: 128
@@ -4561,7 +4561,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-tiles-default_199
+      name: tile_dirt_3
       rect:
         serializedVersion: 2
         x: 256
@@ -4583,7 +4583,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-tiles-default_200
+      name: tile_pink_right
       rect:
         serializedVersion: 2
         x: 320
@@ -4605,7 +4605,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-tiles-default_201
+      name: tile_pink_8
       rect:
         serializedVersion: 2
         x: 384
@@ -4671,7 +4671,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-tiles-default_204
+      name: tile_rock_9
       rect:
         serializedVersion: 2
         x: 576
@@ -4869,7 +4869,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-tiles-default_213
+      name: tile_stone_6
       rect:
         serializedVersion: 2
         x: 64
@@ -4891,7 +4891,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-tiles-default_214
+      name: tile_ice_middle
       rect:
         serializedVersion: 2
         x: 128
@@ -4935,7 +4935,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-tiles-default_216
+      name: tile_dirt_1
       rect:
         serializedVersion: 2
         x: 256
@@ -4957,7 +4957,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-tiles-default_217
+      name: tile_pink_right_curve
       rect:
         serializedVersion: 2
         x: 320
@@ -4979,7 +4979,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-tiles-default_218
+      name: tile_pink_single
       rect:
         serializedVersion: 2
         x: 384
@@ -5045,7 +5045,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-tiles-default_221
+      name: tile_rock_7
       rect:
         serializedVersion: 2
         x: 576
@@ -5243,7 +5243,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-tiles-default_230
+      name: tile_stone_4
       rect:
         serializedVersion: 2
         x: 64
@@ -5265,7 +5265,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-tiles-default_231
+      name: tile_ice_left
       rect:
         serializedVersion: 2
         x: 128
@@ -5309,7 +5309,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-tiles-default_233
+      name: tile_dirt_2
       rect:
         serializedVersion: 2
         x: 256
@@ -5331,7 +5331,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-tiles-default_234
+      name: tile_pink_left_curve
       rect:
         serializedVersion: 2
         x: 320
@@ -5353,7 +5353,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-tiles-default_235
+      name: tile_jungle_top_mid
       rect:
         serializedVersion: 2
         x: 384
@@ -5375,7 +5375,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-tiles-default_236
+      name: tile_jungle_3
       rect:
         serializedVersion: 2
         x: 448
@@ -5397,7 +5397,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-tiles-default_237
+      name: tile_rock_right
       rect:
         serializedVersion: 2
         x: 512
@@ -5419,7 +5419,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-tiles-default_238
+      name: tile_rock_8
       rect:
         serializedVersion: 2
         x: 576
@@ -5617,7 +5617,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-tiles-default_247
+      name: tile_stone_5
       rect:
         serializedVersion: 2
         x: 64
@@ -5639,7 +5639,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-tiles-default_248
+      name: tile_ice_half_right
       rect:
         serializedVersion: 2
         x: 128
@@ -5683,7 +5683,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-tiles-default_250
+      name: tile_dirt_6
       rect:
         serializedVersion: 2
         x: 256
@@ -5705,7 +5705,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-tiles-default_251
+      name: tile_pink_middle
       rect:
         serializedVersion: 2
         x: 320
@@ -5727,7 +5727,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-tiles-default_252
+      name: tile_jungle_mid_mid
       rect:
         serializedVersion: 2
         x: 384
@@ -5749,7 +5749,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-tiles-default_253
+      name: tile_jungle_1
       rect:
         serializedVersion: 2
         x: 448
@@ -5771,7 +5771,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-tiles-default_254
+      name: tile_rock_right_curve
       rect:
         serializedVersion: 2
         x: 512
@@ -5793,7 +5793,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-tiles-default_255
+      name: tile_rock_single
       rect:
         serializedVersion: 2
         x: 576
@@ -5991,7 +5991,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-tiles-default_264
+      name: tile_stone_9
       rect:
         serializedVersion: 2
         x: 64
@@ -6013,10 +6013,10 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-tiles-default_265
+      name: tile_ice_half_middle
       rect:
         serializedVersion: 2
-        x: 128
+        x: 129
         y: 128
         width: 64
         height: 64
@@ -6057,7 +6057,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-tiles-default_267
+      name: tile_dirt_4
       rect:
         serializedVersion: 2
         x: 256
@@ -6079,7 +6079,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-tiles-default_268
+      name: tile_pink_left
       rect:
         serializedVersion: 2
         x: 320
@@ -6101,7 +6101,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-tiles-default_269
+      name: tile_jungle_mid_buttom
       rect:
         serializedVersion: 2
         x: 384
@@ -6123,7 +6123,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-tiles-default_270
+      name: tile_jungle_2
       rect:
         serializedVersion: 2
         x: 448
@@ -6145,7 +6145,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-tiles-default_271
+      name: tile_rock_left_curve
       rect:
         serializedVersion: 2
         x: 512
@@ -6365,7 +6365,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-tiles-default_281
+      name: tile_stone_7
       rect:
         serializedVersion: 2
         x: 64
@@ -6387,7 +6387,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-tiles-default_282
+      name: tile_ice_half_left
       rect:
         serializedVersion: 2
         x: 128
@@ -6431,7 +6431,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-tiles-default_284
+      name: tile_dirt_5
       rect:
         serializedVersion: 2
         x: 256
@@ -6453,7 +6453,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-tiles-default_285
+      name: tile_pink_half_right
       rect:
         serializedVersion: 2
         x: 320
@@ -6475,7 +6475,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-tiles-default_286
+      name: tile_jungle_10
       rect:
         serializedVersion: 2
         x: 384
@@ -6497,7 +6497,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-tiles-default_287
+      name: tile_jungle_6
       rect:
         serializedVersion: 2
         x: 448
@@ -6519,7 +6519,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-tiles-default_288
+      name: tile_rock_middle
       rect:
         serializedVersion: 2
         x: 512
@@ -6651,7 +6651,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-tiles-default_294
+      name: details_parchin1
       rect:
         serializedVersion: 2
         x: 896
@@ -6717,7 +6717,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-tiles-default_297
+      name: tile_stone_mid_righter
       rect:
         serializedVersion: 2
         x: 0
@@ -6739,7 +6739,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-tiles-default_298
+      name: tile_stone_8
       rect:
         serializedVersion: 2
         x: 64
@@ -6805,7 +6805,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-tiles-default_301
+      name: tile_dirt_9
       rect:
         serializedVersion: 2
         x: 256
@@ -6827,7 +6827,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-tiles-default_302
+      name: tile_pink_half_middle
       rect:
         serializedVersion: 2
         x: 320
@@ -6849,7 +6849,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-tiles-default_303
+      name: tile_jungle_11
       rect:
         serializedVersion: 2
         x: 384
@@ -6871,7 +6871,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-tiles-default_304
+      name: tile_jungle_4
       rect:
         serializedVersion: 2
         x: 448
@@ -6893,7 +6893,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-tiles-default_305
+      name: tile_rock_left
       rect:
         serializedVersion: 2
         x: 512
@@ -6937,7 +6937,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-tiles-default_307
+      name: details_rock
       rect:
         serializedVersion: 2
         x: 640
@@ -7025,7 +7025,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet-tiles-default_311
+      name: details_parchin2
       rect:
         serializedVersion: 2
         x: 896
@@ -7125,6 +7125,9 @@ TextureImporter:
       cloud: -1709330463
       coin: 1554025910
       crusher: 1127863138
+      details_parchin1: -1252656656
+      details_parchin2: 265189761
+      details_rock: 1689444358
       exit_sign: -12555856
       flag_body: -1962090365
       gold_coin 0: -1873983281
@@ -7167,239 +7170,236 @@ TextureImporter:
       sprin_idle: -813094504
       spring_throw: -1050547835
       spritesheet-tiles-default_0: -2808014073550543062
-      spritesheet-tiles-default_1: -4663983427527070357
       spritesheet-tiles-default_103: -694902443
       spritesheet-tiles-default_107: -1930510459
-      spritesheet-tiles-default_109: -1575619467
       spritesheet-tiles-default_11: -5402880079443221757
       spritesheet-tiles-default_110: -626899475
-      spritesheet-tiles-default_111: -1060936672
-      spritesheet-tiles-default_112: 1178191546
       spritesheet-tiles-default_113: 1246001282
-      spritesheet-tiles-default_114: -1239969041
-      spritesheet-tiles-default_115: 198249500
-      spritesheet-tiles-default_116: -695242292
-      spritesheet-tiles-default_117: 1891067984
       spritesheet-tiles-default_121: 1030966649
       spritesheet-tiles-default_124: -1349161961
       spritesheet-tiles-default_125: -1127531645
       spritesheet-tiles-default_127: 1419578285
       spritesheet-tiles-default_128: -1301291044
-      spritesheet-tiles-default_129: 2135042246
-      spritesheet-tiles-default_130: -582767984
       spritesheet-tiles-default_131: -286445081
-      spritesheet-tiles-default_132: 759372232
-      spritesheet-tiles-default_133: 1952214564
-      spritesheet-tiles-default_134: 1260878204
-      spritesheet-tiles-default_135: 1183515090
       spritesheet-tiles-default_139: 237954550
       spritesheet-tiles-default_142: 571701161
       spritesheet-tiles-default_143: 263714201
       spritesheet-tiles-default_145: -474952752
       spritesheet-tiles-default_146: 1601185443
-      spritesheet-tiles-default_147: -1132303920
-      spritesheet-tiles-default_148: 1935693561
       spritesheet-tiles-default_149: 330105123
-      spritesheet-tiles-default_150: -1127832020
-      spritesheet-tiles-default_151: -912323440
       spritesheet-tiles-default_152: -2025747229
-      spritesheet-tiles-default_153: 1803338533
       spritesheet-tiles-default_157: -1035064400
       spritesheet-tiles-default_16: 4548459916359141628
       spritesheet-tiles-default_160: 375365464
-      spritesheet-tiles-default_161: 904493281
-      spritesheet-tiles-default_162: 276087076
-      spritesheet-tiles-default_163: -775153512
-      spritesheet-tiles-default_164: -1657962509
       spritesheet-tiles-default_165: -1236407749
       spritesheet-tiles-default_166: 282453673
-      spritesheet-tiles-default_167: -1822040754
-      spritesheet-tiles-default_168: 1947567224
       spritesheet-tiles-default_169: 1295691361
       spritesheet-tiles-default_17: -5916871559792969337
-      spritesheet-tiles-default_170: 36539853
       spritesheet-tiles-default_174: -229092791
       spritesheet-tiles-default_177: 2111584236
-      spritesheet-tiles-default_178: 1092640685
-      spritesheet-tiles-default_179: 1695902815
       spritesheet-tiles-default_18: 5695104305369758909
-      spritesheet-tiles-default_180: -137911899
-      spritesheet-tiles-default_181: 1939106935
       spritesheet-tiles-default_182: 1927875827
       spritesheet-tiles-default_183: -1322134249
-      spritesheet-tiles-default_184: -605117774
-      spritesheet-tiles-default_185: -633865878
       spritesheet-tiles-default_186: 123296222
-      spritesheet-tiles-default_187: -693595525
       spritesheet-tiles-default_188: 1589078406
       spritesheet-tiles-default_189: -901103025
-      spritesheet-tiles-default_19: 4567531931847817840
       spritesheet-tiles-default_191: 573032036
       spritesheet-tiles-default_194: -1402025210
-      spritesheet-tiles-default_195: -2103131100
-      spritesheet-tiles-default_196: -533102053
-      spritesheet-tiles-default_197: -114587421
       spritesheet-tiles-default_198: -1808703967
-      spritesheet-tiles-default_199: -948609411
-      spritesheet-tiles-default_2: -8361174296143886262
-      spritesheet-tiles-default_20: 723357496
-      spritesheet-tiles-default_200: -1842815028
-      spritesheet-tiles-default_201: -635269521
       spritesheet-tiles-default_202: -286073271
       spritesheet-tiles-default_203: -1725722674
-      spritesheet-tiles-default_204: -102333373
       spritesheet-tiles-default_205: -1726163185
       spritesheet-tiles-default_206: 395495486
       spritesheet-tiles-default_208: -2001882544
-      spritesheet-tiles-default_21: -2021731631
       spritesheet-tiles-default_210: -2114122644
       spritesheet-tiles-default_211: -1256048247
       spritesheet-tiles-default_212: -1624321710
-      spritesheet-tiles-default_213: -811820696
-      spritesheet-tiles-default_214: -686468948
       spritesheet-tiles-default_215: -2109612675
-      spritesheet-tiles-default_216: -900274163
-      spritesheet-tiles-default_217: 618421109
-      spritesheet-tiles-default_218: -545000299
       spritesheet-tiles-default_219: -1493606372
-      spritesheet-tiles-default_22: -257070829
       spritesheet-tiles-default_220: -531042017
-      spritesheet-tiles-default_221: 543739257
       spritesheet-tiles-default_223: 1830233351
       spritesheet-tiles-default_225: -1235963683
       spritesheet-tiles-default_228: -1154592164
       spritesheet-tiles-default_229: -1659822458
-      spritesheet-tiles-default_23: 1906952843
-      spritesheet-tiles-default_230: -489023012
-      spritesheet-tiles-default_231: 122365134
       spritesheet-tiles-default_232: 1881400324
-      spritesheet-tiles-default_233: 223020383
-      spritesheet-tiles-default_234: 947311059
-      spritesheet-tiles-default_235: -1499574747
-      spritesheet-tiles-default_236: 1445829289
-      spritesheet-tiles-default_237: 1367067173
-      spritesheet-tiles-default_238: -1848062731
       spritesheet-tiles-default_239: 2131026606
       spritesheet-tiles-default_24: -1316418959
       spritesheet-tiles-default_242: -1580459711
       spritesheet-tiles-default_245: 1045775235
       spritesheet-tiles-default_246: -1240788216
-      spritesheet-tiles-default_247: 1905135141
-      spritesheet-tiles-default_248: -1144840690
       spritesheet-tiles-default_249: -481700814
-      spritesheet-tiles-default_25: 1729103025
-      spritesheet-tiles-default_250: -376288795
-      spritesheet-tiles-default_251: 37715595
-      spritesheet-tiles-default_252: -517222180
-      spritesheet-tiles-default_253: 1033075048
-      spritesheet-tiles-default_254: -1478072786
-      spritesheet-tiles-default_255: 1436058398
       spritesheet-tiles-default_259: 639265553
-      spritesheet-tiles-default_26: 1000844801
       spritesheet-tiles-default_262: 1144557342
       spritesheet-tiles-default_263: 1630798467
-      spritesheet-tiles-default_264: 1910682670
-      spritesheet-tiles-default_265: -1322874798
       spritesheet-tiles-default_266: 548712960
-      spritesheet-tiles-default_267: -879620273
-      spritesheet-tiles-default_268: -1884044574
-      spritesheet-tiles-default_269: 1149218196
-      spritesheet-tiles-default_27: 376045444
-      spritesheet-tiles-default_270: 949424431
-      spritesheet-tiles-default_271: 1198596840
       spritesheet-tiles-default_273: 297920889
       spritesheet-tiles-default_276: -967962134
       spritesheet-tiles-default_277: 6115443
       spritesheet-tiles-default_280: 1625656246
-      spritesheet-tiles-default_281: 1048494998
-      spritesheet-tiles-default_282: -154069906
       spritesheet-tiles-default_283: 384580153
-      spritesheet-tiles-default_284: 1261001648
-      spritesheet-tiles-default_285: -84001988
-      spritesheet-tiles-default_286: -1910698523
-      spritesheet-tiles-default_287: 2063161469
-      spritesheet-tiles-default_288: -1998381840
       spritesheet-tiles-default_290: 1096991013
       spritesheet-tiles-default_293: -167243488
-      spritesheet-tiles-default_294: -1252656656
       spritesheet-tiles-default_295: 33934643
       spritesheet-tiles-default_296: 729054527
-      spritesheet-tiles-default_297: 528542574
-      spritesheet-tiles-default_298: -361586746
       spritesheet-tiles-default_299: -1715932693
       spritesheet-tiles-default_3: 7202180622392529822
       spritesheet-tiles-default_300: 1684602977
-      spritesheet-tiles-default_301: 1449120825
-      spritesheet-tiles-default_302: 2059442579
-      spritesheet-tiles-default_303: -615501087
-      spritesheet-tiles-default_304: 968381368
-      spritesheet-tiles-default_305: -866425618
-      spritesheet-tiles-default_307: 1689444358
       spritesheet-tiles-default_310: -203319759
-      spritesheet-tiles-default_311: 265189761
       spritesheet-tiles-default_312: 755635781
       spritesheet-tiles-default_313: 1503568481
       spritesheet-tiles-default_34: -1444370816
       spritesheet-tiles-default_35: 1879924386
       spritesheet-tiles-default_36: -1919706378
-      spritesheet-tiles-default_37: 280180487
-      spritesheet-tiles-default_38: -1998457225
-      spritesheet-tiles-default_39: -94343330
       spritesheet-tiles-default_4: 8643378792194019154
-      spritesheet-tiles-default_40: -1045986032
-      spritesheet-tiles-default_41: 408241673
       spritesheet-tiles-default_42: -370410897
-      spritesheet-tiles-default_43: -385495864
-      spritesheet-tiles-default_44: 1283922781
-      spritesheet-tiles-default_45: 1165686926
       spritesheet-tiles-default_49: -166188743
-      spritesheet-tiles-default_5: -1187303547038367165
       spritesheet-tiles-default_52: 664328302
       spritesheet-tiles-default_53: 1970130905
-      spritesheet-tiles-default_54: 302214206
-      spritesheet-tiles-default_55: -1356504079
-      spritesheet-tiles-default_56: -623784974
-      spritesheet-tiles-default_57: -665364095
-      spritesheet-tiles-default_58: -540055335
-      spritesheet-tiles-default_59: 1055590490
-      spritesheet-tiles-default_6: -3297716702956664517
-      spritesheet-tiles-default_60: 1842503719
-      spritesheet-tiles-default_61: -144656038
-      spritesheet-tiles-default_62: -1728967694
       spritesheet-tiles-default_63: 1977356711
       spritesheet-tiles-default_67: 512906356
-      spritesheet-tiles-default_7: 1684297740197026296
       spritesheet-tiles-default_70: -706369230
       spritesheet-tiles-default_71: 1135124487
-      spritesheet-tiles-default_72: -1243657448
-      spritesheet-tiles-default_73: -792489619
       spritesheet-tiles-default_74: -554511837
-      spritesheet-tiles-default_75: -794861596
-      spritesheet-tiles-default_76: -1626061553
-      spritesheet-tiles-default_77: -670455619
-      spritesheet-tiles-default_78: 1631528829
-      spritesheet-tiles-default_79: 1491221358
-      spritesheet-tiles-default_8: 3346331842918924135
-      spritesheet-tiles-default_80: -1183549119
       spritesheet-tiles-default_81: -1826521595
       spritesheet-tiles-default_85: 1325647233
       spritesheet-tiles-default_87: 996306557
       spritesheet-tiles-default_89: -1650092278
-      spritesheet-tiles-default_9: 14887903110802353
-      spritesheet-tiles-default_90: 513187494
-      spritesheet-tiles-default_91: 1721957292
       spritesheet-tiles-default_92: -695114630
-      spritesheet-tiles-default_93: 1129171996
-      spritesheet-tiles-default_94: -2018542039
-      spritesheet-tiles-default_95: 2043583558
-      spritesheet-tiles-default_96: 1230269900
-      spritesheet-tiles-default_97: 1783195905
-      spritesheet-tiles-default_98: -1818370403
-      spritesheet-tiles-default_99: 1516528903
       star: -329078447
       switch_left: 1317895353
       switch_middle: 12689829
       switch_right: 775845275
+      tile_dirt_1: -900274163
+      tile_dirt_2: 223020383
+      tile_dirt_3: -948609411
+      tile_dirt_4: -879620273
+      tile_dirt_5: 1261001648
+      tile_dirt_6: -376288795
+      tile_dirt_7: -1187303547038367165
+      tile_dirt_8: 1906952843
+      tile_dirt_9: 1449120825
+      tile_dirt_half_left: 1935693561
+      tile_dirt_half_middle: -582767984
+      tile_dirt_half_right: 1178191546
+      tile_dirt_left: -2018542039
+      tile_dirt_left_curve: -540055335
+      tile_dirt_middle: -1626061553
+      tile_dirt_right: -257070829
+      tile_dirt_right_curve: -1045986032
+      tile_dirt_single: 408241673
+      tile_ice_1: -94343330
+      tile_ice_2: -665364095
+      tile_ice_3: -2021731631
+      tile_ice_4: 1129171996
+      tile_ice_5: -1060936672
+      tile_ice_6: -794861596
+      tile_ice_7: -1132303920
+      tile_ice_8: -1657962509
+      tile_ice_9: 2135042246
+      tile_ice_half_left: -154069906
+      tile_ice_half_middle: -1322874798
+      tile_ice_half_right: -1144840690
+      tile_ice_left: 122365134
+      tile_ice_left_curve: -114587421
+      tile_ice_mid_bottom: -623784974
+      tile_ice_mid_mid: -1998457225
+      tile_ice_middle: -686468948
+      tile_ice_right: -775153512
+      tile_ice_right_curve: -137911899
+      tile_ice_single: 1939106935
+      tile_ice_top_mid: 723357496
+      tile_jungle_1: 1033075048
+      tile_jungle_10: -1910698523
+      tile_jungle_11: -615501087
+      tile_jungle_12: 1684297740197026296
+      tile_jungle_13: 1729103025
+      tile_jungle_14: -385495864
+      tile_jungle_2: 949424431
+      tile_jungle_3: 1445829289
+      tile_jungle_4: 968381368
+      tile_jungle_5: 3346331842918924135
+      tile_jungle_6: 2063161469
+      tile_jungle_7: 1283922781
+      tile_jungle_8: -1728967694
+      tile_jungle_9: 1000844801
+      tile_jungle_half_left: -633865878
+      tile_jungle_half_middle: 1947567224
+      tile_jungle_half_right: -912323440
+      tile_jungle_left: 1952214564
+      tile_jungle_left_curve: 1783195905
+      tile_jungle_mid_buttom: 1149218196
+      tile_jungle_mid_mid: -517222180
+      tile_jungle_mid_single: -1183549119
+      tile_jungle_right: -144656038
+      tile_jungle_right_curve: 1491221358
+      tile_jungle_top_mid: -1499574747
+      tile_jungle_top_middle: 198249500
+      tile_pink_1: 1631528829
+      tile_pink_2: 1230269900
+      tile_pink_3: 1842503719
+      tile_pink_4: 759372232
+      tile_pink_5: -1127832020
+      tile_pink_6: -1239969041
+      tile_pink_7: -605117774
+      tile_pink_8: -635269521
+      tile_pink_9: -1822040754
+      tile_pink_half_left: -3297716702956664517
+      tile_pink_half_middle: 2059442579
+      tile_pink_half_right: -84001988
+      tile_pink_left: -1884044574
+      tile_pink_left_curve: 947311059
+      tile_pink_mid_bottom: 2043583558
+      tile_pink_mid_mid: -670455619
+      tile_pink_mid_top: 1055590490
+      tile_pink_middle: 37715595
+      tile_pink_right: -1842815028
+      tile_pink_right_curve: 618421109
+      tile_pink_single: -545000299
+      tile_rock_1: 1891067984
+      tile_rock_2: 1183515090
+      tile_rock_3: 1516528903
+      tile_rock_4: 36539853
+      tile_rock_5: -693595525
+      tile_rock_6: 1803338533
+      tile_rock_7: 543739257
+      tile_rock_8: -1848062731
+      tile_rock_9: -102333373
+      tile_rock_half_left: 1165686926
+      tile_rock_half_mid: 376045444
+      tile_rock_half_right: 14887903110802353
+      tile_rock_left: -866425618
+      tile_rock_left_curve: 1198596840
+      tile_rock_mid_bottom: 1260878204
+      tile_rock_mid_mid: -695242292
+      tile_rock_middle: -1998381840
+      tile_rock_right: 1367067173
+      tile_rock_right_curve: -1478072786
+      tile_rock_single: 1436058398
+      tile_rock_top_mid: -1818370403
+      tile_stone_1: 1695902815
+      tile_stone_2: -533102053
+      tile_stone_3: 276087076
+      tile_stone_4: -489023012
+      tile_stone_5: 1905135141
+      tile_stone_6: -811820696
+      tile_stone_7: 1048494998
+      tile_stone_8: -361586746
+      tile_stone_9: 1910682670
+      tile_stone_half_left: -1575619467
+      tile_stone_half_middle: 1721957292
+      tile_stone_half_right: -792489619
+      tile_stone_left_curve: 4567531931847817840
+      tile_stone_mid_bottom: -2103131100
+      tile_stone_mid_lefter: -1356504079
+      tile_stone_mid_mid: 1092640685
+      tile_stone_mid_midder: 280180487
+      tile_stone_mid_righter: 528542574
+      tile_stone_right_curve: -4663983427527070357
+      tile_stone_single: -8361174296143886262
+      tile_stone_top_mid: 904493281
+      tile_water_0: 302214206
+      tile_water_1: -1243657448
+      tile_water_2: 513187494
       torch_light0: 600293325
       torch_light2: 115777643
       torch_light_off: 763923732

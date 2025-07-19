@@ -47,13 +47,13 @@ TagManager:
   - name: Foreground
     uniqueID: 3287557587
     locked: 0
-  - name: BackgroundDetails
+  - name: DetailsBehind
     uniqueID: 3927376109
     locked: 0
   - name: Characters
     uniqueID: 1389593671
     locked: 0
-  - name: ForegroundDetails
+  - name: DetailsFront
     uniqueID: 2613362653
     locked: 0
   m_RenderingLayers:
