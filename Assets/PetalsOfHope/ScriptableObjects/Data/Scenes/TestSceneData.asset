@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54b7f6582eb87504d80c73a172a59f2d, type: 3}
+  m_Name: TestSceneData
+  m_EditorClassIdentifier: 
+  DisplayName: Test
+  SceneType: 3
+  sceneName: TestScene
+  sceneAsset: {fileID: 102900000, guid: 061266ce933584c4a8b6fa58bfb0e9cc, type: 3}
+  LoadingScreenBackground: {fileID: 0}
+  LoadingTip: 
