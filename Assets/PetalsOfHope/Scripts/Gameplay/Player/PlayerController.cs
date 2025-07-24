@@ -2,8 +2,7 @@ using PetalOfHope.Gameplay.Character;
 using PetalsOfHope.Core.Events;
 using PetalsOfHope.Core.StateMachine;
 using UnityEngine;
-using UnityEngine.Serialization;
-using CoreAnimation = PetalsOfHope.Core.Animation.AnimationController;
+using CoreAnimation = PetalsOfHope.Gameplay.Animation.AnimationController;
 
 namespace PetalsOfHope.Gameplay.Player
 {

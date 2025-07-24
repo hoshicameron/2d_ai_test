@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace PetalsOfHope.Core.Animation
+namespace PetalsOfHope.Gameplay.Animation
 {
     /// <summary>
     /// A reusable wrapper around Unity's Animator component that provides a simplified interface

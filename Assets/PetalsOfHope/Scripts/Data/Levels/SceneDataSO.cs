@@ -1,14 +1,15 @@
 using UnityEngine;
+using PetalsOfHope.Interfaces;
 #if UNITY_EDITOR
 using UnityEditor;
 #endif
 
-namespace PetalsOfHope.Core.Events
+namespace PetalsOfHope.Data.Levels
 {
     public enum SceneType { System, Menu, Level, Other }
 
     [CreateAssetMenu(menuName = "Petals of Hope/Scene Management/Scene Data", fileName = "NewSceneDataSO")]
-    public class SceneDataSO : ScriptableObject
+    public class SceneDataSO : ScriptableObject, ISceneData
     {
         [Header("Scene Information")]
         [Tooltip("A friendly display name for the scene (e.g., for UI).")]
@@ -62,17 +63,5 @@ namespace PetalsOfHope.Core.Events
             }
         }
 #endif
-        
-        /*
-        HOW TO USE:
-        1. Create an instance of this ScriptableObject in your project assets (e.g., via Right-Click -> Create -> Petals of Hope -> Scene Management -> Scene Data).
-        2. Name the asset descriptively (e.g., "Level1_SceneData").
-        3. In the Inspector for the asset:
-           - Drag the actual Scene file from your Project window into the "Scene Asset" field. The "Scene Name" will update automatically.
-           - Set the "Display Name" for UI purposes.
-           - Choose the appropriate "Scene Type".
-           - (Optional) Add a background image or loading tip for a loading screen.
-        4. To request a scene load, get a reference to this ScriptableObject asset and pass it as the payload when raising a "LoadSceneRequest" event.
-        */
     }
 }

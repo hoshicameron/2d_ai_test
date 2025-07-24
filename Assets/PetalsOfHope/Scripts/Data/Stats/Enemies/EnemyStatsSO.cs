@@ -1,5 +1,5 @@
 using UnityEngine;
-using PetalsOfHope.Core.Data.Stats;
+using PetalsOfHope.Data.Stats;
 
 namespace PetalsOfHope.Data.Enemies
 {

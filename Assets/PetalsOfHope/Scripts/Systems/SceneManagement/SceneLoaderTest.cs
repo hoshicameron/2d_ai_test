@@ -1,5 +1,8 @@
 using UnityEngine;
 using PetalsOfHope.Core.Events;
+using PetalsOfHope.Data.Levels;
+using PetalsOfHope.Interfaces;
+using UnityEngine.Serialization;
 
 namespace PetalsOfHope.Systems.SceneManagement
 {
@@ -15,9 +18,12 @@ namespace PetalsOfHope.Systems.SceneManagement
         [Tooltip("The channel to request a reload of the current scene.")]
         [SerializeField] private GameEventSO reloadCurrentSceneChannel;
 
+        [FormerlySerializedAs("_sceneToLoad")]
         [Header("Test Data")]
         [Tooltip("The SceneDataSO for the scene you want to load.")]
         [SerializeField] private SceneDataSO sceneToLoad;
+        
+        
 
         [ContextMenu("Test Load Specific Scene")]
         public void TestLoadScene()

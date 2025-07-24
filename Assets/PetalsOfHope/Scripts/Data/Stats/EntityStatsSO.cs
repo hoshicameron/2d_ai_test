@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace PetalsOfHope.Core.Data.Stats
+namespace PetalsOfHope.Data.Stats
 {
     public abstract class EntityStatsSO : ScriptableObject
     {

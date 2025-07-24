@@ -6,7 +6,7 @@ using PetalsOfHope.Gameplay.States;
 using PetalsOfHope.Interfaces;
 using PetalsOfHope.Utilities;
 using UnityEngine;
-using CoreAnimation = PetalsOfHope.Core.Animation.AnimationController;
+using CoreAnimation = PetalsOfHope.Gameplay.Animation.AnimationController;
 
 namespace PetalOfHope.Gameplay.Character
 {
