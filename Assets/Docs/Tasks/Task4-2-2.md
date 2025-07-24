@@ -1,7 +1,7 @@
 # Task ID: 4.2.2
 # Parent Task ID: 4.2
 # Title: Create SceneDataSO for Scene Metadata
-# Status: pending
+# Status: completed
 # Dependencies: 1.1.2 # Folder structure
 # Priority: medium
 # Estimated Effort: S

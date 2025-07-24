@@ -1,6 +1,6 @@
 using System;
 using PetalsOfHope.Core.Events;
-using PetalsOfHope.Core.Persistence.Interfaces;
+using PetalsOfHope.Interfaces;
 using UnityEngine;
 
 namespace PetalsOfHope.Gameplay.Respawn
@@ -9,6 +9,12 @@ namespace PetalsOfHope.Gameplay.Respawn
     {
         [Header("ID")]
         [SerializeField] private string uniqueID;
+
+        [Header("Manual Registration Events")]
+        [Tooltip("Event to request registering a new ISaveable entity.")]
+        [SerializeField] private SaveableEventSO registerSaveableEvent;
+        [Tooltip("Event to request unregistering an ISaveable entity.")]
+        [SerializeField] private SaveableEventSO unregisterSaveableEvent;
         
         [Header("Event Listeners")]
         [SerializeField] private Vector3EventSO playerReachedCheckpointEventSo;
@@ -34,12 +40,16 @@ namespace PetalsOfHope.Gameplay.Respawn
         {
             playerReachedCheckpointEventSo?.RegisterListener(OnPlayerReachedCheckpoint);
             playerDiedEventSo?.RegisterListener(OnPlayerDied);
+            
+            registerSaveableEvent?.Raise(this);
         }
 
         private void OnDisable()
         {
             playerReachedCheckpointEventSo?.UnregisterListener(OnPlayerReachedCheckpoint);
             playerDiedEventSo?.UnregisterListener(OnPlayerDied);
+            
+            unregisterSaveableEvent?.Raise(this);
         }
 
         private void OnPlayerReachedCheckpoint(Vector3 checkpointPosition)

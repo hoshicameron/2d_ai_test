@@ -46,5 +46,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   loadSceneRequestChannel: {fileID: 11400000, guid: 230618192a6e6494da164028e73efc26, type: 2}
   reloadCurrentSceneChannel: {fileID: 11400000, guid: 42937cb9c62479647a93937d8e1dddd5, type: 2}
+  sceneLoadStartedEvent: {fileID: 11400000, guid: 86005b8c0507f8249bc934ec66570193, type: 2}
+  sceneLoadCompletedEvent: {fileID: 11400000, guid: dfe0ceca845d3154b993029d5b716696, type: 2}
   fadeCanvasGroup: {fileID: 0}
   fadeDuration: 0.5

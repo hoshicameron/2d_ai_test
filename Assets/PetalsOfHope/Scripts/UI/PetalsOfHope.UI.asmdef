@@ -1,0 +1,17 @@
+{
+    "name": "PetalsOfHope.UI",
+    "rootNamespace": "",
+    "references": [
+        "GUID:bb71d705545c76744ba2bd04ccc13f15",
+        "GUID:6af51d2a4fd38ee43ad63d715985881e"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

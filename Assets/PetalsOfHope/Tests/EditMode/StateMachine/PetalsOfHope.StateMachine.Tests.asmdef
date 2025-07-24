@@ -2,7 +2,8 @@
     "name": "PetalsOfHope.StateMachine.Tests",
     "rootNamespace": "PetalsOfHope.Tests.StateMachine",
     "references": [
-        "PetalsOfHope.Core"
+        "PetalsOfHope.Core",
+        "PetalsOfHope.Gameplay."
     ],
     "includePlatforms": ["Editor"],
     "excludePlatforms": [],

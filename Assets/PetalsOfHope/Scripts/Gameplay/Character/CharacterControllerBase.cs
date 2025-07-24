@@ -1,12 +1,12 @@
 ﻿using System;
 using PetalOfHope.Gameplay.Character.Movement;
-using PetalsOfHope.Core.StateMachine;
 using PetalsOfHope.Data.Abilities;
+using PetalsOfHope.Gameplay.StateMachine;
 using PetalsOfHope.Gameplay.States;
 using PetalsOfHope.Interfaces;
 using PetalsOfHope.Utilities;
 using UnityEngine;
-using CoreAnimation = PetalsOfHope.Core.Animation.AnimationController;
+using CoreAnimation = PetalsOfHope.Gameplay.Animation.AnimationController;
 
 namespace PetalOfHope.Gameplay.Character
 {
@@ -40,7 +40,11 @@ namespace PetalOfHope.Gameplay.Character
 
         [Space] [Header("Abilities Data")] 
         [SerializeField] private AbilitySheetSO _abilitySheetData;
-        
+
+        [Header("Event Listeners")]
+        [SerializeField] private PetalsOfHope.Core.Events.Channels.AbilityCheckChannelSO abilityCheckChannel;
+        [SerializeField] private PetalsOfHope.Core.Events.GameEventSO sceneLoadCompletedEvent;
+        [SerializeField] private PetalsOfHope.Core.Events.GameEventSO progressionChangedEvent;
         
         [Header("Animation")]
         [SerializeField] private string idleAnimationName = "Idle";
@@ -66,6 +70,12 @@ namespace PetalOfHope.Gameplay.Character
         private Collider2D _currentLadder;
         private float _climbInput;
         protected bool wasGrounded;
+
+        // Ability Flags
+        protected bool _isDashUnlocked;
+        protected bool _isDoubleJumpUnlocked;
+        protected bool _isWallGrabUnlocked;
+        protected bool _isWallJumpUnlocked;
 
         #endregion
         
@@ -203,6 +213,7 @@ namespace PetalOfHope.Gameplay.Character
             }
 
             InputSource?.EnableGameplayInput();
+            UpdateUnlockedAbilities();
         }
 
         protected virtual void OnEnable()
@@ -214,6 +225,15 @@ namespace PetalOfHope.Gameplay.Character
             InputSource.AttackEvent += HandleAttackInput;
             InputSource.JumpEvent += HandleJumpPressed;
             InputSource.JumpCancelledEvent += HandleJumpInputReleased;
+
+            if (sceneLoadCompletedEvent != null)
+            {
+                sceneLoadCompletedEvent.RegisterListener(UpdateUnlockedAbilities);
+            }
+            if (progressionChangedEvent != null)
+            {
+                progressionChangedEvent.RegisterListener(UpdateUnlockedAbilities);
+            }
         }
         
         protected virtual void OnDisable()
@@ -225,6 +245,15 @@ namespace PetalOfHope.Gameplay.Character
             InputSource.AttackEvent -= HandleAttackInput;
             InputSource.JumpEvent -= HandleJumpPressed;
             InputSource.JumpCancelledEvent -= HandleJumpInputReleased;
+
+            if (sceneLoadCompletedEvent != null)
+            {
+                sceneLoadCompletedEvent.UnregisterListener(UpdateUnlockedAbilities);
+            }
+            if (progressionChangedEvent != null)
+            {
+                progressionChangedEvent.UnregisterListener(UpdateUnlockedAbilities);
+            }
         }
 
         private void HandleJumpInputReleased() => JumpInputReleased = true;
@@ -257,7 +286,6 @@ namespace PetalOfHope.Gameplay.Character
             {
                 CurrentStateName = StateMachine.CurrentState.GetType().Name;
             }
-            Debug.Log($"[CharacterController] Scale updated to: {transform.localScale}");
         }
 
         protected virtual void FixedUpdate()
@@ -286,11 +314,12 @@ namespace PetalOfHope.Gameplay.Character
         
         private void StartDash()
         {
-            if (_dashCooldownTimer > 0f || !DashInputPressed) return ;
-    
-            _dashCooldownTimer = _abilitySheetData.dashData.cooldown;
-            IsDashing = true;
-            StateMachine.ChangeState(DashState);
+            if (_isDashUnlocked && _dashCooldownTimer <= 0f && DashInputPressed)
+            {
+                _dashCooldownTimer = _abilitySheetData.dashData.cooldown;
+                IsDashing = true;
+                StateMachine.ChangeState(DashState);
+            }
         }
         
         
@@ -321,7 +350,7 @@ namespace PetalOfHope.Gameplay.Character
         
        public bool CanWallGrab()
         {
-            if (_abilitySheetData.wallGrabData == null) return false;
+            if (!_isWallGrabUnlocked || _abilitySheetData.wallGrabData == null) return false;
             
             return IsTouchingWall && 
                    !IsGrounded && 
@@ -331,7 +360,7 @@ namespace PetalOfHope.Gameplay.Character
         
         public bool CanWallJump()
         {
-            if (_abilitySheetData.wallJumpData == null) return false;
+            if (!_isWallJumpUnlocked || _abilitySheetData.wallJumpData == null) return false;
             
             // Note: We check JumpInputPressed directly from the property
             return (IsTouchingWall || Time.time < LastWallTouchTime + _abilitySheetData.wallJumpData.coyoteWallTime) && 
@@ -391,6 +420,22 @@ namespace PetalOfHope.Gameplay.Character
         protected void HandleCharacterDeath()
         {
             StateMachine.ChangeState(DeathState);
+        }
+
+        private void UpdateUnlockedAbilities()
+        {
+            if (abilityCheckChannel == null) return;
+
+            _isDashUnlocked = abilityCheckChannel.IsUnlocked?.Invoke("TALISMAN_DASH") ?? false;
+            _isDoubleJumpUnlocked = abilityCheckChannel.IsUnlocked?.Invoke("TALISMAN_DOUBLE_JUMP") ?? false;
+            _isWallGrabUnlocked = abilityCheckChannel.IsUnlocked?.Invoke("TALISMAN_WALL_GRAB") ?? false;
+            _isWallJumpUnlocked = abilityCheckChannel.IsUnlocked?.Invoke("TALISMAN_WALL_JUMP") ?? false;
+
+            // We need to update the max jumps based on the double jump ability
+            if (_abilitySheetData != null && _abilitySheetData.jumpData != null)
+            {
+                RemainingJumps = _isDoubleJumpUnlocked ? _abilitySheetData.jumpData.maxJumps : 1;
+            }
         }
     }
 }

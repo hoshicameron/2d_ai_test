@@ -1,15 +1,13 @@
 using PetalOfHope.Gameplay.Character;
 using PetalsOfHope.Core.Events;
-using PetalsOfHope.Core.StateMachine;
 using UnityEngine;
-using UnityEngine.Serialization;
-using CoreAnimation = PetalsOfHope.Core.Animation.AnimationController;
+using CoreAnimation = PetalsOfHope.Gameplay.Animation.AnimationController;
 
 namespace PetalsOfHope.Gameplay.Player
 {
     [RequireComponent(typeof(Rigidbody2D))]
     [RequireComponent(typeof(CapsuleCollider2D))]
-    [RequireComponent(typeof(StateMachine))]
+    [RequireComponent(typeof(StateMachine.StateMachine))]
     [RequireComponent(typeof(CoreAnimation))]
     public class PlayerController : CharacterControllerBase
     {
@@ -43,7 +41,7 @@ namespace PetalsOfHope.Gameplay.Player
         {
             if (!wasGrounded && IsGrounded)
             {
-                RemainingJumps = AbilitySheetData.jumpData.maxJumps;
+                RemainingJumps = _isDoubleJumpUnlocked ? AbilitySheetData.jumpData.maxJumps : 1;
                 playerLandedEventSo?.Raise();
             }
         }
