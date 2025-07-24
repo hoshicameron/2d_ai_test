@@ -72,10 +72,10 @@ namespace PetalOfHope.Gameplay.Character
         protected bool wasGrounded;
 
         // Ability Flags
-        private bool _isDashUnlocked;
-        private bool _isDoubleJumpUnlocked;
-        private bool _isWallGrabUnlocked;
-        private bool _isWallJumpUnlocked;
+        protected bool _isDashUnlocked;
+        protected bool _isDoubleJumpUnlocked;
+        protected bool _isWallGrabUnlocked;
+        protected bool _isWallJumpUnlocked;
 
         #endregion
         

@@ -41,7 +41,7 @@ namespace PetalsOfHope.Gameplay.Player
         {
             if (!wasGrounded && IsGrounded)
             {
-                RemainingJumps = AbilitySheetData.jumpData.maxJumps;
+                RemainingJumps = _isDoubleJumpUnlocked ? AbilitySheetData.jumpData.maxJumps : 1;
                 playerLandedEventSo?.Raise();
             }
         }
