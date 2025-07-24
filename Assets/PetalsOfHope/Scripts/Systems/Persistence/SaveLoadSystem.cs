@@ -5,58 +5,88 @@ using PetalsOfHope.Systems.Persistence.Services;
 using PetalsOfHope.Core.Events;
 using System;
 using PetalsOfHope.Interfaces;
+using UnityEngine.Serialization;
 
 namespace PetalsOfHope.Systems.Persistence
 {
     /// <summary>
     /// Manages saving and loading game state using the active IDataService.
     /// </summary>
-    public class SaveLoadManager : MonoBehaviour
+    public class SaveLoadSystem : MonoBehaviour
     {
+        
         [Header("Data Service Configuration")]
         [Tooltip("The data service to use. If null, will default to creating a JsonDataServiceSO at runtime.")]
-        [SerializeField] private IDataServiceSO _dataServiceSO;
+        [SerializeField] private IDataServiceSO dataServiceSo;
+        
         
         [Tooltip("Filename for the main save game data.")]
-        [SerializeField] private string _saveFileName = "game_save_data";
+        [SerializeField] private string saveFileName = "game_save_data";
         
         [Tooltip("Whether to encrypt the save data.")]
-        [SerializeField] private bool _encryptData = false;
+        [SerializeField] private bool encryptData = false;
+
+        [Header("Event Channels for Requesting Actions")]
+        [Tooltip("Event to request saving the game.")]
+        [SerializeField] private GameEventSO saveGameRequestEvent;
+        [Tooltip("Event to request loading the game.")]
+        [SerializeField] private GameEventSO loadGameRequestEvent;
+        [Tooltip("Event to request deleting the save data.")]
+        [SerializeField] private GameEventSO deleteSaveRequestEvent;
+
+        [Header("Manual Registration Events")]
+        [Tooltip("Event to request registering a new ISaveable entity.")]
+        [SerializeField] private SaveableEventSO registerSaveableEvent;
+        [Tooltip("Event to request unregistering an ISaveable entity.")]
+        [SerializeField] private SaveableEventSO unregisterSaveableEvent;
 
         [Header("Save/Load Events")]
-        [SerializeField] private OnBeforeSaveGameEventSO _onBeforeSaveGameEventSO;
-        [SerializeField] private OnAfterSaveGameEventSO _onAfterSaveGameEventSO;
-        [SerializeField] private OnAfterLoadGameEventSO _onAfterLoadGameEventSO;
-        [SerializeField] private OnSaveFailedEventSO _onSaveFailedEventSO;
-        [SerializeField] private OnLoadFailedEventSO _onLoadFailedEventSO;
+        [SerializeField] private OnBeforeSaveGameEventSO onBeforeSaveGameEventSo;
+        [SerializeField] private OnAfterSaveGameEventSO onAfterSaveGameEventSo;
+        [SerializeField] private OnAfterLoadGameEventSO onAfterLoadGameEventSo;
+        [SerializeField] private OnSaveFailedEventSO onSaveFailedEventSo;
+        [SerializeField] private OnLoadFailedEventSO onLoadFailedEventSo;
 
         private IDataService _activeDataService;
-        private List<ISaveable> _saveableEntities;
-
-        // Singleton instance
-        public static SaveLoadManager Instance { get; private set; }
+        private List<ISaveable> _saveableEntities = new();
 
         private void Awake()
         {
-            // Singleton pattern
-            if (Instance != null && Instance != this)
-            {
-                Destroy(gameObject);
-                return;
-            }
-            
-            Instance = this;
-            DontDestroyOnLoad(gameObject); // Persist across scenes
-
+            // This component should exist on a persistent object that is not destroyed on scene loads.
+            // The responsibility for this is moved outside the manager itself.
             InitializeDataService();
             FindAllSaveableEntities();
         }
 
+        private void OnEnable()
+        {
+            // Subscribe to request events
+            saveGameRequestEvent?.RegisterListener(SaveGame);
+            loadGameRequestEvent?.RegisterListener(LoadGame);
+            deleteSaveRequestEvent?.RegisterListener(DeleteSave);
+
+            // Subscribe to manual registration events
+            registerSaveableEvent?.RegisterListener(RegisterSaveable);
+            unregisterSaveableEvent?.RegisterListener(UnregisterSaveable);
+        }
+
+        private void OnDisable()
+        {
+            // Unsubscribe from request events
+            saveGameRequestEvent?.UnregisterListener(SaveGame);
+            loadGameRequestEvent?.UnregisterListener(LoadGame);
+            deleteSaveRequestEvent?.UnregisterListener(DeleteSave);
+
+            // Unsubscribe from manual registration events
+            registerSaveableEvent?.UnregisterListener(UnregisterSaveable);
+            unregisterSaveableEvent?.UnregisterListener(UnregisterSaveable);
+        }
+
         private void InitializeDataService()
         {
-            if (_dataServiceSO != null)
+            if (dataServiceSo != null)
             {
-                _activeDataService = _dataServiceSO;
+                _activeDataService = dataServiceSo;
                 Debug.Log("Using configured IDataServiceSO.");
             }
             else
@@ -102,15 +132,29 @@ namespace PetalsOfHope.Systems.Persistence
         }
 
         /// <summary>
-        /// Saves the game state.
+        /// Saves the game state. Triggered by an event.
         /// </summary>
-        /// <returns>True if the save was successful, false otherwise.</returns>
-        public bool SaveGame()
+        public void SaveGame()
+        {
+            bool success = PerformSave();
+            if (success)
+            {
+                onAfterSaveGameEventSo?.Raise();
+                Debug.Log("Game saved successfully.");
+            }
+            else
+            {
+                onSaveFailedEventSo?.Raise();
+                Debug.LogError("Failed to save game.");
+            }
+        }
+
+        private bool PerformSave()
         {
             try
             {
                 // Notify listeners that we're about to save
-                _onBeforeSaveGameEventSO?.Raise();
+                onBeforeSaveGameEventSo?.Raise();
 
                 // Create a dictionary to hold all save data
                 var gameState = new Dictionary<string, object>();
@@ -142,49 +186,50 @@ namespace PetalsOfHope.Systems.Persistence
                 }
 
                 // Save the game state
-                bool success = _activeDataService.Save(_saveFileName, gameState, _encryptData);
-
-                if (success)
-                {
-                    _onAfterSaveGameEventSO?.Raise();
-                    Debug.Log("Game saved successfully.");
-                }
-                else
-                {
-                    _onSaveFailedEventSO?.Raise();
-                    Debug.LogError("Failed to save game.");
-                }
-
-                return success;
+                return _activeDataService.Save(saveFileName, gameState, encryptData);
             }
             catch (Exception e)
             {
-                _onSaveFailedEventSO?.Raise();
+                onSaveFailedEventSo?.Raise();
                 Debug.LogError($"Error during save: {e.Message}");
                 return false;
             }
         }
 
         /// <summary>
-        /// Loads the game state.
+        /// Loads the game state. Triggered by an event.
         /// </summary>
-        /// <returns>True if the load was successful, false otherwise.</returns>
-        public bool LoadGame()
+        public void LoadGame()
+        {
+            bool success = PerformLoad();
+            if (success)
+            {
+                // Notify listeners that loading is complete
+                onAfterLoadGameEventSo?.Raise();
+                Debug.Log("Game loaded successfully.");
+            }
+            else
+            {
+                onLoadFailedEventSo?.Raise();
+                Debug.LogError("Failed to load game state.");
+            }
+        }
+
+        private bool PerformLoad()
         {
             try
             {
-                if (!_activeDataService.HasKey(_saveFileName))
+                if (!_activeDataService.HasKey(saveFileName))
                 {
                     Debug.Log("No save file found.");
                     return false;
                 }
 
                 // Load the game state
-                var gameState = _activeDataService.Load<Dictionary<string, object>>(_saveFileName, _encryptData);
+                var gameState = _activeDataService.Load<Dictionary<string, object>>(saveFileName, encryptData);
                 
                 if (gameState == null)
                 {
-                    _onLoadFailedEventSO?.Raise();
                     Debug.LogError("Failed to load game state: Invalid save data.");
                     return false;
                 }
@@ -209,26 +254,21 @@ namespace PetalsOfHope.Systems.Persistence
                         }
                     }
                 }
-
-                // Notify listeners that loading is complete
-                _onAfterLoadGameEventSO?.Raise();
-                Debug.Log("Game loaded successfully.");
                 return true;
             }
             catch (Exception e)
             {
-                _onLoadFailedEventSO?.Raise();
                 Debug.LogError($"Error during load: {e.Message}");
                 return false;
             }
         }
 
         /// <summary>
-        /// Deletes the current save file.
+        /// Deletes the current save file. Triggered by an event.
         /// </summary>
-        public bool DeleteSave()
+        public void DeleteSave()
         {
-            bool success = _activeDataService.Delete(_saveFileName);
+            bool success = _activeDataService.Delete(saveFileName);
             if (success)
             {
                 Debug.Log("Save file deleted successfully.");
@@ -237,7 +277,6 @@ namespace PetalsOfHope.Systems.Persistence
             {
                 Debug.LogWarning("Failed to delete save file or file did not exist.");
             }
-            return success;
         }
 
         /// <summary>
@@ -245,7 +284,7 @@ namespace PetalsOfHope.Systems.Persistence
         /// </summary>
         public bool HasSave()
         {
-            return _activeDataService.HasKey(_saveFileName);
+            return _activeDataService.HasKey(saveFileName);
         }
     }
 }
