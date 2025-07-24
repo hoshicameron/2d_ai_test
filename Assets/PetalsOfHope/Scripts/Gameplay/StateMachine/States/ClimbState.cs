@@ -1,6 +1,6 @@
 ﻿using PetalOfHope.Gameplay.Character;
-using PetalsOfHope.Core.StateMachine;
 using PetalsOfHope.Data.Abilities;
+using PetalsOfHope.Gameplay.StateMachine;
 using UnityEngine;
 
 namespace PetalsOfHope.Gameplay.States
@@ -16,7 +16,7 @@ namespace PetalsOfHope.Gameplay.States
         private bool _isAtTop;
         private bool _isAtBottom;
 
-        public ClimbState(CharacterControllerBase characterController, StateMachine stateMachine, 
+        public ClimbState(CharacterControllerBase characterController, StateMachine.StateMachine stateMachine, 
             string climbIdleAnimationName, string climbDownAnimationName, string climbUpAnimationName,
             ClimbData climbData)
             : base(stateMachine)

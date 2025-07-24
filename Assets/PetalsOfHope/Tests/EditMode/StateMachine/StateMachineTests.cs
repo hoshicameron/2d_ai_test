@@ -1,5 +1,5 @@
 using NUnit.Framework;
-using PetalsOfHope.Core.StateMachine;
+using PetalsOfHope.Gameplay.StateMachine;
 using UnityEngine;
 using UnityEngine.TestTools;
 
@@ -9,7 +9,7 @@ namespace PetalsOfHope.Tests.StateMachine
     public class StateMachineTests
     {
         private GameObject _testGameObject;
-        private Core.StateMachine.StateMachine _stateMachine;
+        private Gameplay.StateMachine.StateMachine _stateMachine;
         private MockState _mockState1;
         private MockState _mockState2;
 
@@ -18,7 +18,7 @@ namespace PetalsOfHope.Tests.StateMachine
         {
             // Create a test GameObject and add the StateMachine component
             _testGameObject = new GameObject("TestStateMachine");
-            _stateMachine = _testGameObject.AddComponent<Core.StateMachine.StateMachine>();
+            _stateMachine = _testGameObject.AddComponent<Gameplay.StateMachine.StateMachine>();
             
             // Create mock states
             _mockState1 = new MockState(_stateMachine);
@@ -183,7 +183,7 @@ namespace PetalsOfHope.Tests.StateMachine
             public int UpdateCount { get; private set; }
             public int FixedUpdateCount { get; private set; }
 
-            public MockState(Core.StateMachine.StateMachine stateMachine) : base(stateMachine) { }
+            public MockState(Gameplay.StateMachine.StateMachine stateMachine) : base(stateMachine) { }
 
             public override void Enter() => EnterCount++;
             public override void Exit() => ExitCount++;

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace PetalsOfHope.Core.StateMachine
+namespace PetalsOfHope.Gameplay.StateMachine
 {
     /// <summary>
     /// A MonoBehaviour component that manages states and handles transitions between them.

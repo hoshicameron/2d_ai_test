@@ -1,5 +1,5 @@
 using PetalOfHope.Gameplay.Character;
-using PetalsOfHope.Core.StateMachine;
+using PetalsOfHope.Gameplay.StateMachine;
 using UnityEngine;
 
 namespace PetalsOfHope.Gameplay.States
@@ -8,7 +8,7 @@ namespace PetalsOfHope.Gameplay.States
     {
         private readonly CharacterControllerBase _characterController;
 
-        public RespawnState(CharacterControllerBase characterController, StateMachine stateMachine) 
+        public RespawnState(CharacterControllerBase characterController, StateMachine.StateMachine stateMachine) 
             : base(stateMachine)
         {
             _characterController = characterController;

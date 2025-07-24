@@ -1,6 +1,5 @@
 using PetalOfHope.Gameplay.Character;
 using PetalsOfHope.Core.Events;
-using PetalsOfHope.Core.StateMachine;
 using UnityEngine;
 using CoreAnimation = PetalsOfHope.Gameplay.Animation.AnimationController;
 
@@ -8,7 +7,7 @@ namespace PetalsOfHope.Gameplay.Player
 {
     [RequireComponent(typeof(Rigidbody2D))]
     [RequireComponent(typeof(CapsuleCollider2D))]
-    [RequireComponent(typeof(StateMachine))]
+    [RequireComponent(typeof(StateMachine.StateMachine))]
     [RequireComponent(typeof(CoreAnimation))]
     public class PlayerController : CharacterControllerBase
     {

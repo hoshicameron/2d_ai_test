@@ -1,5 +1,5 @@
+using PetalsOfHope.Gameplay.StateMachine;
 using UnityEngine;
-using PetalsOfHope.Core.StateMachine;
 
 namespace PetalsOfHope.Tests
 {

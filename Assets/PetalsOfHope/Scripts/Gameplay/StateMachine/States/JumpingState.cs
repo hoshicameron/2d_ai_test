@@ -1,6 +1,6 @@
 using PetalOfHope.Gameplay.Character;
 using UnityEngine;
-using PetalsOfHope.Core.StateMachine;
+using PetalsOfHope.Gameplay.StateMachine;
 
 namespace PetalsOfHope.Gameplay.States
 {
@@ -10,7 +10,7 @@ namespace PetalsOfHope.Gameplay.States
         private readonly string _jumpAnimationName;
         private bool _jumpCutoffApplied = false;
 
-        public JumpingState(CharacterControllerBase characterController, StateMachine stateMachine, string jumpAnimationName) 
+        public JumpingState(CharacterControllerBase characterController, StateMachine.StateMachine stateMachine, string jumpAnimationName) 
             : base(stateMachine)
         {
             _characterController = characterController;

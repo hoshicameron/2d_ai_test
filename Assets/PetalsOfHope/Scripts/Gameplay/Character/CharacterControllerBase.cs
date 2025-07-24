@@ -1,7 +1,7 @@
 ﻿using System;
 using PetalOfHope.Gameplay.Character.Movement;
-using PetalsOfHope.Core.StateMachine;
 using PetalsOfHope.Data.Abilities;
+using PetalsOfHope.Gameplay.StateMachine;
 using PetalsOfHope.Gameplay.States;
 using PetalsOfHope.Interfaces;
 using PetalsOfHope.Utilities;

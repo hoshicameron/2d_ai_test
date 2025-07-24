@@ -1,7 +1,7 @@
 using PetalOfHope.Gameplay.Character;
 using UnityEngine;
-using PetalsOfHope.Core.StateMachine;
 using PetalsOfHope.Data.Abilities;
+using PetalsOfHope.Gameplay.StateMachine;
 
 namespace PetalsOfHope.Gameplay.States
 {
@@ -15,7 +15,7 @@ namespace PetalsOfHope.Gameplay.States
         private int _wallJumpDirection;
         private bool _canMove;
 
-        public WallJumpState(CharacterControllerBase characterController, StateMachine stateMachine, string animationName, WallJumpData wallJumpData) 
+        public WallJumpState(CharacterControllerBase characterController, StateMachine.StateMachine stateMachine, string animationName, WallJumpData wallJumpData) 
             : base(stateMachine)
         {
             _characterController = characterController;

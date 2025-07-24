@@ -1,6 +1,6 @@
 using PetalOfHope.Gameplay.Character;
 using UnityEngine;
-using PetalsOfHope.Core.StateMachine;
+using PetalsOfHope.Gameplay.StateMachine;
 
 namespace PetalsOfHope.Gameplay.States
 {
@@ -9,7 +9,7 @@ namespace PetalsOfHope.Gameplay.States
         private readonly CharacterControllerBase _characterController;
         private readonly string _moveAnimationName;
 
-        public MovingState(CharacterControllerBase characterController, StateMachine stateMachine, string moveAnimationName) 
+        public MovingState(CharacterControllerBase characterController, StateMachine.StateMachine stateMachine, string moveAnimationName) 
             : base(stateMachine)
         {
             _characterController = characterController;

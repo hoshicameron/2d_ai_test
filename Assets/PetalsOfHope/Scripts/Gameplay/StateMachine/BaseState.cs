@@ -1,6 +1,4 @@
-using UnityEngine;
-
-namespace PetalsOfHope.Core.StateMachine
+namespace PetalsOfHope.Gameplay.StateMachine
 {
     /// <summary>
     /// Abstract base class for all states in the state machine.

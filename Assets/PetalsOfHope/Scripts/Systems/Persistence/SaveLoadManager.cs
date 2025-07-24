@@ -94,7 +94,7 @@ namespace PetalsOfHope.Systems.Persistence
         /// </summary>
         public void FindAllSaveableEntities()
         {
-            _saveableEntities = FindObjectsOfType<MonoBehaviour>(true)
+            _saveableEntities = FindObjectsByType<MonoBehaviour>(FindObjectsSortMode.None)
                 .OfType<ISaveable>()
                 .ToList();
                 
