@@ -1,7 +1,7 @@
 # Task ID: 4.3.2
 # Parent Task ID: 4.3
 # Title: Implement InventorySystem
-# Status: pending
+# Status: completed
 # Dependencies: 4.3.1, 1.2 # TalismanDataSO, Event Bus (for TalismanAwardedEventSO)
 # Priority: high
 # Estimated Effort: M
