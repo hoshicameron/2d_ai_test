@@ -1,10 +1,10 @@
 using UnityEngine;
-using PetalsOfHope.Core.Persistence.Interfaces;
 using System;
 using System.IO;
 using System.Text;
+using PetalsOfHope.Interfaces;
 
-namespace PetalsOfHope.Core.Persistence.Services
+namespace PetalsOfHope.Systems.Persistence.Services
 {
     /// <summary>
     /// Implementation of IDataService that saves data to JSON files in the persistent data path.

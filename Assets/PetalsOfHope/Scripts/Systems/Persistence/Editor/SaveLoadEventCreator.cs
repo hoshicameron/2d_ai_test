@@ -3,7 +3,7 @@ using UnityEngine;
 using System.IO;
 using PetalsOfHope.Core.Events;
 
-namespace PetalsOfHope.Editor.Core.Events.Persistence
+namespace PetalsOfHope.Editor.Systems.Events.Persistence
 {
     public static class SaveLoadEventCreator
     {

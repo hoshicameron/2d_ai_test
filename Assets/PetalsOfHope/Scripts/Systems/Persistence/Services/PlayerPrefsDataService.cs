@@ -1,8 +1,8 @@
-using UnityEngine;
-using PetalsOfHope.Core.Persistence.Interfaces;
 using System;
+using PetalsOfHope.Interfaces;
+using UnityEngine;
 
-namespace PetalsOfHope.Core.Persistence.Services
+namespace PetalsOfHope.Systems.Persistence.Services
 {
     /// <summary>
     /// Implementation of IDataService that uses Unity's PlayerPrefs for data persistence.

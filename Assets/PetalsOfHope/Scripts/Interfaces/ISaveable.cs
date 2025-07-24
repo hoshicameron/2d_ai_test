@@ -1,4 +1,4 @@
-namespace PetalsOfHope.Core.Persistence.Interfaces
+namespace PetalsOfHope.Interfaces
 {
     /// <summary>
     /// Interface for objects that can save and load their state.

@@ -1,13 +1,12 @@
 using UnityEngine;
 using System.Collections.Generic;
-using PetalsOfHope.Core.Persistence.Interfaces;
 using PetalsOfHope.Data.Collectibles;
 using PetalsOfHope.Core.Events;
 using PetalsOfHope.Core.Events.Channels;
 using System;
 using PetalsOfHope.Interfaces;
 
-namespace PetalsOfHope.Systems
+namespace PetalsOfHope.Systems.Progression
 {
     public class GameProgressionSystem : MonoBehaviour, ISaveable
     {

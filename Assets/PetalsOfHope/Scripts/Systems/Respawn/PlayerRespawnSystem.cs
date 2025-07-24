@@ -1,6 +1,6 @@
 using System;
 using PetalsOfHope.Core.Events;
-using PetalsOfHope.Core.Persistence.Interfaces;
+using PetalsOfHope.Interfaces;
 using UnityEngine;
 
 namespace PetalsOfHope.Gameplay.Respawn

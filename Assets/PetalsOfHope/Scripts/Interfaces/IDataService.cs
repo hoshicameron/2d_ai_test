@@ -1,6 +1,4 @@
-using System;
-
-namespace PetalsOfHope.Core.Persistence.Interfaces
+namespace PetalsOfHope.Interfaces
 {
     /// <summary>
     /// Interface for data persistence services.

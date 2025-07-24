@@ -1,12 +1,12 @@
 using UnityEngine;
 using System.Collections.Generic;
 using System.Linq;
-using PetalsOfHope.Core.Persistence.Interfaces;
-using PetalsOfHope.Core.Persistence.Services;
+using PetalsOfHope.Systems.Persistence.Services;
 using PetalsOfHope.Core.Events;
 using System;
+using PetalsOfHope.Interfaces;
 
-namespace PetalsOfHope.Core.Persistence
+namespace PetalsOfHope.Systems.Persistence
 {
     /// <summary>
     /// Manages saving and loading game state using the active IDataService.

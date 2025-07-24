@@ -1,7 +1,7 @@
-﻿using PetalsOfHope.Core.Persistence.Interfaces;
+﻿using PetalsOfHope.Interfaces;
 using UnityEngine;
 
-namespace PetalsOfHope.Core.Persistence.Services
+namespace PetalsOfHope.Systems.Persistence.Services
 {
     [CreateAssetMenu(menuName = "Petals of Hope/Data Services/JSON Data Service")]
     public class JsonDataServiceSO : IDataServiceSO
