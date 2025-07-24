@@ -9,11 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 54b7f6582eb87504d80c73a172a59f2d, type: 3}
+  m_Script: {fileID: 11500000, guid: 409b15d76c2efaa4ab9ace94cb120760, type: 3}
   m_Name: TestSceneData
   m_EditorClassIdentifier: 
-  DisplayName: Test
-  SceneType: 3
+  DisplayName: TestScene
+  SceneType: 2
   sceneName: TestScene
   sceneAsset: {fileID: 102900000, guid: 061266ce933584c4a8b6fa58bfb0e9cc, type: 3}
   LoadingScreenBackground: {fileID: 0}

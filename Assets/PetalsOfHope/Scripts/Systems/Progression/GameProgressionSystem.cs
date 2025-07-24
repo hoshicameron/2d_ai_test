@@ -28,6 +28,12 @@ namespace PetalsOfHope.Systems.Progression
         [Header("Event Raisers")]
         [Tooltip("Raised when progression data changes (e.g., a talisman is collected).")]
         [SerializeField] private GameEventSO progressionChangedEvent;
+        
+        [Header("Manual Registration Events")]
+        [Tooltip("Event to request registering a new ISaveable entity.")]
+        [SerializeField] private SaveableEventSO registerSaveableEvent;
+        [Tooltip("Event to request unregistering an ISaveable entity.")]
+        [SerializeField] private SaveableEventSO unregisterSaveableEvent;
 
         private HashSet<string> _collectedTalismanIDs = new();
 
@@ -48,6 +54,8 @@ namespace PetalsOfHope.Systems.Progression
             {
                 abilityCheckChannel.IsUnlocked = HasTalisman;
             }
+            
+            registerSaveableEvent?.Raise(this);
         }
 
         private void OnDisable()
@@ -60,6 +68,8 @@ namespace PetalsOfHope.Systems.Progression
             {
                 abilityCheckChannel.IsUnlocked = null;
             }
+            
+            unregisterSaveableEvent?.Raise(this);
         }
 
         private void HandleCollectibleCollected(ICollectible collectible)
