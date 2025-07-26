@@ -48,6 +48,8 @@ MonoBehaviour:
   talismanDatabase: {fileID: 11400000, guid: 174b226d7aeed224d932b7f585aae616, type: 2}
   onCollectibleCollected: {fileID: 11400000, guid: e072762171ea83a4bb913b844a97edff, type: 2}
   abilityCheckChannel: {fileID: 11400000, guid: 7a5fc313ed70e29428b60a6a3268e635, type: 2}
+  levelCheckChannel: {fileID: 11400000, guid: ebaf0c674e859ff4f951d814ca891bb9, type: 2}
   progressionChangedEvent: {fileID: 11400000, guid: 70ed262a771ca3e46944814d24893b06, type: 2}
+  levelUnlockedEvent: {fileID: 11400000, guid: ce424e74b7f7ff9419eefe459b358cc3, type: 2}
   registerSaveableEvent: {fileID: 11400000, guid: fe3563c53c4790e4a859227450b10e67, type: 2}
   unregisterSaveableEvent: {fileID: 11400000, guid: c40932a1b5d6d9b449c2248da0b9cf94, type: 2}

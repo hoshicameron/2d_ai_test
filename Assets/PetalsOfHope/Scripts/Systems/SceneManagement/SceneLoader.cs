@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Collections;
 using PetalsOfHope.Core.Events;
+using PetalsOfHope.Core.Events.Channels;
 
 namespace PetalsOfHope.Systems.SceneManagement
 {
@@ -10,6 +11,9 @@ namespace PetalsOfHope.Systems.SceneManagement
         [Header("Event Listeners")]
         [Tooltip("Listen for requests to load a specific scene.")]
         [SerializeField] private LoadSceneRequestEventSO loadSceneRequestChannel;
+        
+        [Tooltip("Channel to check if a level is unlocked before loading.")]
+        [SerializeField] private LevelCheckChannelSO levelCheckChannel;
         
         [Tooltip("Listen for requests to reload the current scene.")]
         [SerializeField] private GameEventSO reloadCurrentSceneChannel;
@@ -71,9 +75,21 @@ namespace PetalsOfHope.Systems.SceneManagement
 
         private void OnLoadSceneRequested(PetalsOfHope.Interfaces.ISceneData sceneData)
         {
-            if (sceneData != null && !_isLoading)
+            if (sceneData == null || _isLoading) return;
+
+            string sceneName = sceneData.GetSceneName();
+            
+            // Check if the level is unlocked before loading.
+            bool isUnlocked = levelCheckChannel?.Function?.Invoke(sceneName) ?? true; // Default to true if channel is not set, to not block gameplay.
+            
+            if (isUnlocked)
             {
-                StartCoroutine(LoadSceneRoutine(sceneData.GetSceneName()));
+                StartCoroutine(LoadSceneRoutine(sceneName));
+            }
+            else
+            {
+                Debug.LogWarning($"Scene load request for '{sceneName}' was blocked because the level is not unlocked.");
+                // Optionally, raise an event here to inform the UI (e.g., "ShowLevelLockedMessageEvent")
             }
         }
 
