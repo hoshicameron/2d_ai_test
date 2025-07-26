@@ -426,10 +426,10 @@ namespace PetalOfHope.Gameplay.Character
         {
             if (abilityCheckChannel == null) return;
 
-            _isDashUnlocked = abilityCheckChannel.IsUnlocked?.Invoke("TALISMAN_DASH") ?? false;
-            _isDoubleJumpUnlocked = abilityCheckChannel.IsUnlocked?.Invoke("TALISMAN_DOUBLE_JUMP") ?? false;
-            _isWallGrabUnlocked = abilityCheckChannel.IsUnlocked?.Invoke("TALISMAN_WALL_GRAB") ?? false;
-            _isWallJumpUnlocked = abilityCheckChannel.IsUnlocked?.Invoke("TALISMAN_WALL_JUMP") ?? false;
+            _isDashUnlocked = abilityCheckChannel.Function?.Invoke("TALISMAN_DASH") ?? false;
+            _isDoubleJumpUnlocked = abilityCheckChannel.Function?.Invoke("TALISMAN_DOUBLE_JUMP") ?? false;
+            _isWallGrabUnlocked = abilityCheckChannel.Function?.Invoke("TALISMAN_WALL_GRAB") ?? false;
+            _isWallJumpUnlocked = abilityCheckChannel.Function?.Invoke("TALISMAN_WALL_JUMP") ?? false;
 
             // We need to update the max jumps based on the double jump ability
             if (_abilitySheetData != null && _abilitySheetData.jumpData != null)

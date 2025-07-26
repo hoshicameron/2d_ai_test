@@ -1,7 +1,7 @@
 # Task ID: 4.4
 # Parent Task ID: 4
 # Title: Player Ability System & Advanced States Implementation
-# Status: pending
+# Status: competed
 # Dependencies: 2.4, 1.3.2, 4.5 (GameProgressionManager) # PlayerController, AbilitySO, GameProgressionManager
 # Priority: high
 # Estimated Effort: XL (aggregate of subtasks)

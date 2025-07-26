@@ -52,7 +52,7 @@ namespace PetalsOfHope.Tests.Systems
                 return;
             }
 
-            bool isUnlocked = abilityCheckChannel.IsUnlocked?.Invoke(talismanIDToCheck) ?? false;
+            bool isUnlocked = abilityCheckChannel.Function?.Invoke(talismanIDToCheck) ?? false;
             
             Debug.Log($"TEST: Checking for talisman ID '{talismanIDToCheck}'. Result: {isUnlocked}");
         }

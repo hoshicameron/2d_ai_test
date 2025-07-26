@@ -1,7 +1,7 @@
 # Task ID: 4.4.4
 # Parent Task ID: 4.4
 # Title: Implement WallJumpState
-# Status: pending
+# Status: completed
 # Dependencies: 4.4.3 # WallGrabState (or other states that can initiate wall jump)
 # Priority: high
 # Estimated Effort: M

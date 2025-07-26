@@ -1,7 +1,7 @@
 # Task ID: 4.4.1
 # Parent Task ID: 4.4
 # Title: Implement PlayerAbilities Component
-# Status: pending
+# Status: competed
 # Dependencies: 1.3.2, 4.5 (GameProgressionManager), 4.3.2 (InventorySystem) # AbilitySO definition, GPM, Inventory
 # Priority: high
 # Estimated Effort: M

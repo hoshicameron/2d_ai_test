@@ -1,7 +1,7 @@
 # Task ID: 4.4.3
 # Parent Task ID: 4.4
 # Title: Implement WallGrabState (Wall Slide / Wall Hang)
-# Status: pending
+# Status: completed
 # Dependencies: 2.4.1, 4.4.1 # PlayerController, PlayerAbilities
 # Priority: high
 # Estimated Effort: L

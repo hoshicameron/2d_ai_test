@@ -1,7 +1,7 @@
 # Task ID: 4.4.2
 # Parent Task ID: 4.4
 # Title: Implement DoubleJumpState
-# Status: pending
+# Status: competed
 # Dependencies: 2.4.1, 4.4.1 # PlayerController, PlayerAbilities
 # Priority: high
 # Estimated Effort: M
