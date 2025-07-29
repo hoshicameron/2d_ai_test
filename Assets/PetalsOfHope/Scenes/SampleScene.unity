@@ -829,6 +829,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2588947157356309037, guid: 596ea6d36dfaa8c4bb4ae64b67820341, type: 3}
+      propertyPath: levelCheckChannel
+      value: 
+      objectReference: {fileID: 11400000, guid: ebaf0c674e859ff4f951d814ca891bb9, type: 2}
+    - target: {fileID: 2588947157356309037, guid: 596ea6d36dfaa8c4bb4ae64b67820341, type: 3}
+      propertyPath: levelUnlockedEvent
+      value: 
+      objectReference: {fileID: 11400000, guid: ce424e74b7f7ff9419eefe459b358cc3, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
