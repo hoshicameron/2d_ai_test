@@ -1,9 +1,6 @@
-using System;
 using UnityEngine;
 using PetalsOfHope.Core.Events;
 using PetalsOfHope.Data.Levels;
-using PetalsOfHope.Interfaces;
-using UnityEngine.Serialization;
 
 namespace PetalsOfHope.UI.SplashScreen
 {

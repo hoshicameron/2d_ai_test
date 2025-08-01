@@ -4,6 +4,7 @@ using PetalsOfHope.Data.Collectibles;
 using PetalsOfHope.Core.Events;
 using PetalsOfHope.Core.Events.Channels;
 using System;
+using PetalsOfHope.Data.Levels;
 using PetalsOfHope.Interfaces;
 using UnityEngine.Serialization;
 
@@ -40,12 +41,13 @@ namespace PetalsOfHope.Systems.Progression
         [Tooltip("Event to request unregistering an ISaveable entity.")]
         [SerializeField] private SaveableEventSO unregisterSaveableEvent;
 
+        
         [Header("Progression Data (Initial/Default State)")]
         [Tooltip("List of SceneDataSO assets that are unlocked by default at the start of a new game.")]
-        [SerializeField] private List<ISceneData> _defaultUnlockedLevels;
+        [SerializeField] private List<SceneDataSO> defaultUnlockedLevels;
 
         // Runtime data
-        private HashSet<string> _unlockedLevelSceneNames = new HashSet<string>();
+        private HashSet<string> _unlockedLevelSceneNames = new();
         private HashSet<string> _collectedTalismanIDs = new();
 
         public string UniqueID => uniqueID;
@@ -135,7 +137,7 @@ namespace PetalsOfHope.Systems.Progression
         private void InitializeDefaultProgression()
         {
             _unlockedLevelSceneNames.Clear();
-            foreach(var levelData in _defaultUnlockedLevels)
+            foreach(var levelData in defaultUnlockedLevels)
             {
                 if (levelData != null) UnlockLevel(levelData, false);
             }
