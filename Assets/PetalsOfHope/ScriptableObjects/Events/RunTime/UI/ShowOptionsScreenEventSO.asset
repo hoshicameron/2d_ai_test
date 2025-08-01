@@ -9,12 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 409b15d76c2efaa4ab9ace94cb120760, type: 3}
-  m_Name: MainSceneData
+  m_Script: {fileID: 11500000, guid: 58d97d5e6083c6141a489be86bd6dbef, type: 3}
+  m_Name: ShowOptionsScreenEventSO
   m_EditorClassIdentifier: 
-  DisplayName: Main
-  SceneType: 2
-  sceneName: Main
-  sceneAsset: {fileID: 102900000, guid: 003da332854db4345836bc6804980202, type: 3}
-  LoadingScreenBackground: {fileID: 0}
-  LoadingTip: 
+  _developerDescription: 

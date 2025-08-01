@@ -14,11 +14,9 @@ namespace PetalsOfHope.Systems.Persistence
     /// </summary>
     public class SaveLoadSystem : MonoBehaviour
     {
-        
         [Header("Data Service Configuration")]
         [Tooltip("The data service to use. If null, will default to creating a JsonDataServiceSO at runtime.")]
         [SerializeField] private IDataServiceSO dataServiceSo;
-        
         
         [Tooltip("Filename for the main save game data.")]
         [SerializeField] private string saveFileName = "game_save_data";
