@@ -1,112 +1,145 @@
-using UnityEngine;
 using System.Collections.Generic;
-using PetalsOfHope.Core.Input;
-using PetalsOfHope.Core.Events;
+using System.Linq;
+using PetalsOfHope.Data;
+using PetalsOfHope.UI.Base;
+using PetalsOfHope.UI.Controllers;
+using PetalsOfHope.UI.Screens;
+using UnityEngine;
 
 namespace PetalsOfHope.UI
 {
     /// <summary>
-    /// Manages the visibility and state of all major UI screens.
-    /// Operates on an event-driven basis, without a singleton instance.
+    /// Manages the UI screens in the game, ensuring that only one screen is active at a time.
+    /// Acts as the bootstrapper for the UI system, creating controllers and injecting dependencies.
     /// </summary>
     public class UISystem : MonoBehaviour
     {
-        [Header("UI Screens (Assign in Inspector)")]
-        [SerializeField] private GameObject hudScreen;
-        [SerializeField] private GameObject mainScreen;
-        [SerializeField] private GameObject pauseScreen;
-        [SerializeField] private GameObject optionsScreen;
+        [Header("Screens")]
+        [SerializeField] private List<ScreenView> screens;
 
-        [Header("Input & Events")]
-        [SerializeField] private InputReader inputReader;
-        [SerializeField] private GameEventSO pauseGameEvent;
-        [SerializeField] private GameEventSO resumeGameEvent;
         
-        [Header("Screen Control Events")]
-        [SerializeField] private GameEventSO showMainScreenEvent;
-        [SerializeField] private GameEventSO hideMainScreenEvent;
-        [SerializeField] private GameEventSO showHUDScreenEvent;
-        [SerializeField] private GameEventSO hideHUDScreenEvent;
-        [SerializeField] private GameEventSO showOptionsScreenEvent;
-        [SerializeField] private GameEventSO hideOptionsScreenEvent;
+        [Header("Event Channels")]
+        [SerializeField] private UIEventChannels uiEvents;
 
-        private bool isGamePaused = false;
+        private ScreenView _currentScreen;
+        private readonly List<object> _controllers = new();
 
         private void Awake()
         {
-            // This system should be on a persistent object, loaded from the Startup scene.
-            DontDestroyOnLoad(gameObject);
+            // Initialize all screens and hide them by default.
+            foreach (var screen in screens)
+            {
+                screen.Initialize();
+                screen.Hide();
+            }
 
-            // Initial setup: show main screen, hide others.
-            mainScreen?.SetActive(true);
-            hudScreen?.SetActive(false);
-            pauseScreen?.SetActive(false);
-            optionsScreen?.SetActive(false);
+            CreateControllers();
+            SubscribeToScreenEvents();
         }
 
-        private void OnEnable()
+        private void OnDestroy()
         {
-            // The connection for pausing is made via UnityEvents in the Inspector.
-            // 1. Create a GameEventSO asset (e.g., "PauseRequestEvent").
-            // 2. In the InputReader, make the Pause action raise this event.
-            // 3. On that event asset, add a persistent listener that calls this component's TogglePauseScreen() method.
+            // Terminate all controllers
+            foreach (var controller in _controllers)
+            {
+                switch (controller)
+                {
+                    case GameplayScreenController c1:
+                        c1.Terminate();
+                        break;
+                    case MainScreenController c2:
+                        c2.Terminate();
+                        break;
+                    case OptionsScreenController c3:
+                        c3.Terminate();
+                        break;
+                    case SplashScreenController c4:
+                        c4.Terminate();
+                        break;
+                }
+            }
+
+            foreach (var screen in screens)
+            {
+                screen.Terminate();
+            }
             
-            showMainScreenEvent?.RegisterListener(ShowMainScreen);
-            hideMainScreenEvent?.RegisterListener(HideMainScreen);
-            showHUDScreenEvent?.RegisterListener(ShowHUDScreen);
-            hideHUDScreenEvent?.RegisterListener(HideHUDScreen);
-            showOptionsScreenEvent?.RegisterListener(ShowOptionsScreen);
-            hideOptionsScreenEvent?.RegisterListener(HideOptionsScreen);
+            UnsubscribeFromScreenEvents();
         }
 
-        private void OnDisable()
+        private void CreateControllers()
         {
-            showMainScreenEvent?.UnregisterListener(ShowMainScreen);
-            hideMainScreenEvent?.UnregisterListener(HideMainScreen);
-            showHUDScreenEvent?.UnregisterListener(ShowHUDScreen);
-            hideHUDScreenEvent?.UnregisterListener(HideHUDScreen);
-            showOptionsScreenEvent?.UnregisterListener(ShowOptionsScreen);
-            hideOptionsScreenEvent?.UnregisterListener(HideOptionsScreen);
-        }
-
-        // This method is public so it can be called by a GameEventSO.
-        public void TogglePauseScreen()
-        {
-            if (isGamePaused)
+            var gameplayScreenView = screens.OfType<GameplayScreenView>().FirstOrDefault();
+            if (gameplayScreenView != null)
             {
-                pauseScreen?.SetActive(false);
-                hudScreen?.SetActive(true);
-                Time.timeScale = 1f;
-                isGamePaused = false;
-                inputReader?.EnableGameplayInput();
-                resumeGameEvent?.Raise();
+                var controller = new GameplayScreenController(gameplayScreenView, uiEvents);
+                _controllers.Add(controller);
             }
-            else
+
+            var mainScreenView = screens.OfType<MainScreenView>().FirstOrDefault();
+            if (mainScreenView != null)
             {
-                pauseScreen?.SetActive(true);
-                hudScreen?.SetActive(false);
-                Time.timeScale = 0f;
-                isGamePaused = true;
-                inputReader?.EnableUIInput();
-                pauseGameEvent?.Raise();
+                var controller = new MainScreenController(mainScreenView, uiEvents);
+                _controllers.Add(controller);
+            }
+
+            var optionsScreenView = screens.OfType<OptionsScreenView>().FirstOrDefault();
+            if (optionsScreenView != null)
+            {
+                var controller = new OptionsScreenController(optionsScreenView, uiEvents);
+                _controllers.Add(controller);
+            }
+
+            var splashScreenView = screens.OfType<SplashScreenView>().FirstOrDefault();
+            if (splashScreenView != null)
+            {
+                var controller = new SplashScreenController(splashScreenView, uiEvents);
+                _controllers.Add(controller);
             }
         }
 
-        // Private methods to be called by events for showing/hiding screens
-        private void ShowMainScreen() => mainScreen?.SetActive(true);
-        private void HideMainScreen() => mainScreen?.SetActive(false);
-        private void ShowHUDScreen() => hudScreen?.SetActive(true);
-        private void HideHUDScreen() => hudScreen?.SetActive(false);
-        private void ShowOptionsScreen() => optionsScreen?.SetActive(true);
-        private void HideOptionsScreen() => optionsScreen?.SetActive(false);
-        
-        /*
-        HOW TO USE:
-        1. Place this component on a persistent GameObject in your Startup scene.
-        2. Create and assign all the UI Screen prefabs (HUD, MainScreen, etc.) to the fields in the Inspector.
-        3. Assign the InputReader and all required GameEventSO assets.
-        4. Other systems can now show/hide screens by raising the appropriate event (e.g., raise `showOptionsScreenEvent` to show the options).
-        5. The InputReader needs to be configured to raise a specific event for the "Pause" action, which in turn calls `UISystem.TogglePauseScreen`.
-        */
+        /// <summary>
+        /// Shows a screen of the specified type.
+        /// </summary>
+        /// <typeparam name="T">The type of the screen to show.</typeparam>
+        public void ShowScreen<T>() where T : ScreenView
+        {
+            var screenToShow = screens.FirstOrDefault(s => s is T);
+            if (screenToShow == null)
+            {
+                Debug.LogError($"{nameof(UISystem)}: Screen of type {typeof(T).Name} not found.");
+                return;
+            }
+
+            if (_currentScreen != null)
+            {
+                _currentScreen.Hide();
+            }
+
+            _currentScreen = screenToShow;
+            _currentScreen.Show();
+        }
+
+        private void SubscribeToScreenEvents()
+        {
+            if (uiEvents == null) return;
+
+            uiEvents.ShowGameplayScreenEvent.RegisterListener(ShowGameplayScreen);
+            uiEvents.ShowOptionsScreenEvent.RegisterListener(ShowOptionsScreen);
+            uiEvents.ShowMainMenuScreenEvent.RegisterListener(ShowMainMenuScreen);
+        }
+
+        private void UnsubscribeFromScreenEvents()
+        {
+            if (uiEvents == null) return;
+
+            uiEvents.ShowGameplayScreenEvent.UnregisterListener(ShowGameplayScreen);
+            uiEvents.ShowOptionsScreenEvent.UnregisterListener(ShowOptionsScreen);
+            uiEvents.ShowMainMenuScreenEvent.UnregisterListener(ShowMainMenuScreen);
+        }
+
+        private void ShowGameplayScreen() => ShowScreen<GameplayScreenView>();
+        private void ShowOptionsScreen() => ShowScreen<OptionsScreenView>();
+        private void ShowMainMenuScreen() => ShowScreen<MainScreenView>();
     }
 }
