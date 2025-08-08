@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 409b15d76c2efaa4ab9ace94cb120760, type: 3}
   m_Name: TestSceneData
   m_EditorClassIdentifier: 
-  DisplayName: TestScene
+  DisplayName: Test Scene
   SceneType: 2
-  sceneName: TestScene
+  sceneName: Test
   sceneAsset: {fileID: 102900000, guid: 061266ce933584c4a8b6fa58bfb0e9cc, type: 3}
   LoadingScreenBackground: {fileID: 0}
   LoadingTip: 

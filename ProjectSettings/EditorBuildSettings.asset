@@ -6,11 +6,17 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/PetalsOfHope/Scenes/SampleScene.unity
+    path: Assets/PetalsOfHope/Scenes/Sample.unity
     guid: 8c9cfa26abfee488c85f1582747f6a02
   - enabled: 1
-    path: Assets/PetalsOfHope/Scenes/Testing/TestScene.unity
+    path: Assets/PetalsOfHope/Scenes/Testing/Test.unity
     guid: 061266ce933584c4a8b6fa58bfb0e9cc
+  - enabled: 1
+    path: Assets/PetalsOfHope/Scenes/UI.unity
+    guid: b0e85d4f8c768914d9c43cd7bbf206c3
+  - enabled: 1
+    path: Assets/PetalsOfHope/Scenes/Main.unity
+    guid: 003da332854db4345836bc6804980202
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0
