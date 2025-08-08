@@ -594,9 +594,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 2786964755995394936, guid: 70b7623af81260d4fb2363a3896d351d, type: 3}
       insertIndex: -1
       addedObject: {fileID: 3785836354358677620}
-    - targetCorrespondingSourceObject: {fileID: 2786964755995394936, guid: 70b7623af81260d4fb2363a3896d351d, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1668504673722535371}
   m_SourcePrefab: {fileID: 100100000, guid: 70b7623af81260d4fb2363a3896d351d, type: 3}
 --- !u!224 &708968818173096452 stripped
 RectTransform:
@@ -617,23 +614,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3155549371302925291}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 136a11038edfb3a4484a810e54a53e24, type: 3}
+  m_Script: {fileID: 11500000, guid: cc42319a65518d9438b6e4bf61755a1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   loadingBar: {fileID: 6533143558605286192}
---- !u!114 &1668504673722535371
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3155549371302925291}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5a1aba3bd99547e46b07a46eed74beb5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  onSystemsInitialized: {fileID: 0}
-  loadMainScreenRequest: {fileID: 0}
-  onLoadingProgressUpdate: {fileID: 0}
-  mainScreenSceneData: {fileID: 11400000, guid: 02522b6b9687174459d5e7ab6724efa1, type: 2}
