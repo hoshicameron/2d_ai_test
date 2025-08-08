@@ -14,25 +14,19 @@ namespace PetalsOfHope.UI
     /// </summary>
     public class UISystem : MonoBehaviour
     {
-        [Header("Screens")]
-        [SerializeField] private List<ScreenView> screens;
-
+        [Header("Screen Prefabs")]
+        [SerializeField] private List<ScreenView> screenPrefabs;
         
         [Header("Event Channels")]
         [SerializeField] private UIEventChannels uiEvents;
 
         private ScreenView _currentScreen;
+        private readonly List<ScreenView> _instantiatedScreens = new();
         private readonly List<object> _controllers = new();
 
         private void Awake()
         {
-            // Initialize all screens and hide them by default.
-            foreach (var screen in screens)
-            {
-                screen.Initialize();
-                screen.Hide();
-            }
-
+            InstantiateAndInitializeScreens();
             CreateControllers();
             SubscribeToScreenEvents();
         }
@@ -59,38 +53,50 @@ namespace PetalsOfHope.UI
                 }
             }
 
-            foreach (var screen in screens)
+            // Terminate and destroy screens
+            foreach (var screen in _instantiatedScreens)
             {
                 screen.Terminate();
             }
             
             UnsubscribeFromScreenEvents();
         }
+        
+        private void InstantiateAndInitializeScreens()
+        {
+            foreach (var screenPrefab in screenPrefabs)
+            {
+                var screenInstance = Instantiate(screenPrefab, transform);
+                _instantiatedScreens.Add(screenInstance);
+                screenInstance.Initialize();
+                screenInstance.Hide();
+            }
+        }
 
         private void CreateControllers()
         {
-            var gameplayScreenView = screens.OfType<GameplayScreenView>().FirstOrDefault();
+            var gameplayScreenView = _instantiatedScreens.OfType<GameplayScreenView>().FirstOrDefault();
             if (gameplayScreenView != null)
             {
                 var controller = new GameplayScreenController(gameplayScreenView, uiEvents);
                 _controllers.Add(controller);
             }
 
-            var mainScreenView = screens.OfType<MainScreenView>().FirstOrDefault();
+            var mainScreenView = _instantiatedScreens.OfType<MainScreenView>().FirstOrDefault();
             if (mainScreenView != null)
             {
                 var controller = new MainScreenController(mainScreenView, uiEvents);
                 _controllers.Add(controller);
             }
 
-            var optionsScreenView = screens.OfType<OptionsScreenView>().FirstOrDefault();
+            var optionsScreenView = _instantiatedScreens.OfType<OptionsScreenView>().FirstOrDefault();
             if (optionsScreenView != null)
             {
                 var controller = new OptionsScreenController(optionsScreenView, uiEvents);
                 _controllers.Add(controller);
             }
 
-            var splashScreenView = screens.OfType<SplashScreenView>().FirstOrDefault();
+            var splashScreenView = _instantiatedScreens.OfType<SplashScreenView>().FirstOrDefault();
             if (splashScreenView != null)
             {
                 var controller = new SplashScreenController(splashScreenView, uiEvents);
@@ -104,7 +110,7 @@ namespace PetalsOfHope.UI
         /// <typeparam name="T">The type of the screen to show.</typeparam>
         public void ShowScreen<T>() where T : ScreenView
         {
-            var screenToShow = screens.FirstOrDefault(s => s is T);
+            var screenToShow = _instantiatedScreens.FirstOrDefault(s => s is T);
             if (screenToShow == null)
             {
                 Debug.LogError($"{nameof(UISystem)}: Screen of type {typeof(T).Name} not found.");

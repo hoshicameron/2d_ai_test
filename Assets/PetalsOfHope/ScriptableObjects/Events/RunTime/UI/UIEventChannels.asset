@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5051fcc08a882e14bb121022d8b6ee51, type: 3}
+  m_Name: UIEventChannels
+  m_EditorClassIdentifier: 
+  PauseGameEvent: {fileID: 11400000, guid: a4301f30ac0a09741ba16e39cf5651aa, type: 2}
+  ResumeGameEvent: {fileID: 11400000, guid: 6066421eaab25414f9bf00e1fcf995e9, type: 2}
+  NewGameEvent: {fileID: 11400000, guid: 76f269c0b356e584faa8deea621dc554, type: 2}
+  LoadGameEvent: {fileID: 11400000, guid: 4c9600edac9ef5e47823d72fb0139994, type: 2}
+  QuitGameEvent: {fileID: 11400000, guid: c8d62c8bb03d4f64383ddfe0fc8413ba, type: 2}
+  BackEvent: {fileID: 11400000, guid: 30476056bf5207c4c9fea5977f0fd852, type: 2}
+  ShowOptionsScreenEvent: {fileID: 11400000, guid: 74f6a453987a4fa4994de5575825f148, type: 2}
+  ShowMainMenuScreenEvent: {fileID: 11400000, guid: 7a01a631179997445a6569c8a1544708, type: 2}
+  ShowGameplayScreenEvent: {fileID: 11400000, guid: 51367147a3d51e84d8b0b3a4998c071b, type: 2}
+  PlayerHealthChangedEvent: {fileID: 11400000, guid: be511a8c38a190541bc19a4fb62308a9, type: 2}
+  CoinCountChangedEvent: {fileID: 11400000, guid: 6feb74cd9e21e3d47bf8b128d218d460, type: 2}
+  MasterVolumeChangedEvent: {fileID: 0}
+  BgmVolumeChangedEvent: {fileID: 0}
+  SfxVolumeChangedEvent: {fileID: 0}
+  LoadingProgressEvent: {fileID: 0}
