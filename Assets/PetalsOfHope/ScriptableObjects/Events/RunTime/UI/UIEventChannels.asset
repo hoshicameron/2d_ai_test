@@ -23,7 +23,7 @@ MonoBehaviour:
   ShowGameplayScreenEvent: {fileID: 11400000, guid: 51367147a3d51e84d8b0b3a4998c071b, type: 2}
   PlayerHealthChangedEvent: {fileID: 11400000, guid: be511a8c38a190541bc19a4fb62308a9, type: 2}
   CoinCountChangedEvent: {fileID: 11400000, guid: 6feb74cd9e21e3d47bf8b128d218d460, type: 2}
-  MasterVolumeChangedEvent: {fileID: 0}
-  BgmVolumeChangedEvent: {fileID: 0}
-  SfxVolumeChangedEvent: {fileID: 0}
-  LoadingProgressEvent: {fileID: 0}
+  MasterVolumeChangedEvent: {fileID: 11400000, guid: 602682bc8064f484990e9f25964911c7, type: 2}
+  BgmVolumeChangedEvent: {fileID: 11400000, guid: 43ee7f78b802c0243ad156df25064452, type: 2}
+  SfxVolumeChangedEvent: {fileID: 11400000, guid: 0c96f39c2cea0a64da58024aa66d15bf, type: 2}
+  LoadingProgressEvent: {fileID: 11400000, guid: 8a64ed6796ab3cc45bd8b7c2b94adb46, type: 2}

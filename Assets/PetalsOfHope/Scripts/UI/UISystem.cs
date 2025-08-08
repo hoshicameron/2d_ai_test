@@ -20,7 +20,7 @@ namespace PetalsOfHope.UI
         [Header("Event Channels")]
         [SerializeField] private UIEventChannels uiEvents;
 
-        private ScreenView _currentScreen;
+        private readonly Stack<ScreenView> _navigationStack = new();
         private readonly List<ScreenView> _instantiatedScreens = new();
         private readonly List<object> _controllers = new();
 
@@ -29,6 +29,12 @@ namespace PetalsOfHope.UI
             InstantiateAndInitializeScreens();
             CreateControllers();
             SubscribeToScreenEvents();
+        }
+
+        private void Start()
+        {
+            // Show the main menu as the initial screen
+            ShowScreen<MainScreenView>();
         }
 
         private void OnDestroy()
@@ -105,11 +111,17 @@ namespace PetalsOfHope.UI
         }
 
         /// <summary>
-        /// Shows a screen of the specified type.
+        /// Shows a screen of the specified type and adds it to the navigation stack.
         /// </summary>
         /// <typeparam name="T">The type of the screen to show.</typeparam>
         public void ShowScreen<T>() where T : ScreenView
         {
+            if (_navigationStack.Count > 0)
+            {
+                var currentScreen = _navigationStack.Peek();
+                currentScreen.Hide();
+            }
+
             var screenToShow = _instantiatedScreens.FirstOrDefault(s => s is T);
             if (screenToShow == null)
             {
@@ -117,13 +129,26 @@ namespace PetalsOfHope.UI
                 return;
             }
 
-            if (_currentScreen != null)
+            _navigationStack.Push(screenToShow);
+            screenToShow.Show();
+        }
+
+        /// <summary>
+        /// Hides the current screen and shows the previous one in the navigation stack.
+        /// </summary>
+        public void GoToPreviousScreen()
+        {
+            if (_navigationStack.Count <= 1)
             {
-                _currentScreen.Hide();
+                Debug.LogWarning($"{nameof(UISystem)}: No previous screen in the stack to go back to.");
+                return;
             }
 
-            _currentScreen = screenToShow;
-            _currentScreen.Show();
+            var currentScreen = _navigationStack.Pop();
+            currentScreen.Hide();
+
+            var previousScreen = _navigationStack.Peek();
+            previousScreen.Show();
         }
 
         private void SubscribeToScreenEvents()
@@ -133,6 +158,7 @@ namespace PetalsOfHope.UI
             uiEvents.ShowGameplayScreenEvent.RegisterListener(ShowGameplayScreen);
             uiEvents.ShowOptionsScreenEvent.RegisterListener(ShowOptionsScreen);
             uiEvents.ShowMainMenuScreenEvent.RegisterListener(ShowMainMenuScreen);
+            uiEvents.BackEvent.RegisterListener(GoToPreviousScreen);
         }
 
         private void UnsubscribeFromScreenEvents()
@@ -142,6 +168,7 @@ namespace PetalsOfHope.UI
             uiEvents.ShowGameplayScreenEvent.UnregisterListener(ShowGameplayScreen);
             uiEvents.ShowOptionsScreenEvent.UnregisterListener(ShowOptionsScreen);
             uiEvents.ShowMainMenuScreenEvent.UnregisterListener(ShowMainMenuScreen);
+            uiEvents.BackEvent.UnregisterListener(GoToPreviousScreen);
         }
 
         private void ShowGameplayScreen() => ShowScreen<GameplayScreenView>();
