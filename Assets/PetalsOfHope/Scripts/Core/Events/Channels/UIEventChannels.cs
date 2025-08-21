@@ -19,9 +19,9 @@ namespace PetalsOfHope.Core.Events.Channels
         public GameEventSO BackEvent;
 
         [Header("Screen Navigation Events")]
-        public GameEventSO ShowGameplayScreenEvent;
         public GameEventSO ShowOptionsScreenEvent;
         public GameEventSO ShowMainMenuScreenEvent;
+        public GameEventSO ShowGameplayScreenEvent;
 
         [Header("Player-Related Events")]
         public IntEventSO PlayerHealthChangedEvent;

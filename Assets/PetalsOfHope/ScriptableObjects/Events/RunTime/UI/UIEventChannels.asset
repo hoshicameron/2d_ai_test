@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5051fcc08a882e14bb121022d8b6ee51, type: 3}
+  m_Script: {fileID: 11500000, guid: 5f6ea5bd1e0484342bce6bfc4801ec81, type: 3}
   m_Name: UIEventChannels
   m_EditorClassIdentifier: 
   PauseGameEvent: {fileID: 11400000, guid: a4301f30ac0a09741ba16e39cf5651aa, type: 2}

@@ -1,4 +1,4 @@
-using PetalsOfHope.Data;
+using PetalsOfHope.Core.Events.Channels;
 using PetalsOfHope.UI.Screens;
 
 namespace PetalsOfHope.UI.Controllers

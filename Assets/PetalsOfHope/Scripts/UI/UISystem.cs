@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
-using PetalsOfHope.Data;
+using PetalsOfHope.Core.Events.Channels;
 using PetalsOfHope.UI.Base;
 using PetalsOfHope.UI.Controllers;
 using PetalsOfHope.UI.Screens;
@@ -19,6 +19,7 @@ namespace PetalsOfHope.UI
         
         [Header("Event Channels")]
         [SerializeField] private UIEventChannels uiEvents;
+        
 
         private readonly Stack<ScreenView> _navigationStack = new();
         private readonly List<ScreenView> _instantiatedScreens = new();
@@ -155,21 +156,38 @@ namespace PetalsOfHope.UI
         {
             if (uiEvents == null) return;
 
+            // Screen navigation
             uiEvents.ShowGameplayScreenEvent.RegisterListener(ShowGameplayScreen);
             uiEvents.ShowOptionsScreenEvent.RegisterListener(ShowOptionsScreen);
             uiEvents.ShowMainMenuScreenEvent.RegisterListener(ShowMainMenuScreen);
             uiEvents.BackEvent.RegisterListener(GoToPreviousScreen);
+            
+            // Volume event forwarding
+            uiEvents.MasterVolumeChangedEvent.RegisterListener(OnMasterVolumeChanged_Forwarder);
+            uiEvents.BgmVolumeChangedEvent.RegisterListener(OnBgmVolumeChanged_Forwarder);
+            uiEvents.SfxVolumeChangedEvent.RegisterListener(OnSfxVolumeChanged_Forwarder);
         }
 
         private void UnsubscribeFromScreenEvents()
         {
             if (uiEvents == null) return;
 
+            // Screen navigation
             uiEvents.ShowGameplayScreenEvent.UnregisterListener(ShowGameplayScreen);
             uiEvents.ShowOptionsScreenEvent.UnregisterListener(ShowOptionsScreen);
             uiEvents.ShowMainMenuScreenEvent.UnregisterListener(ShowMainMenuScreen);
             uiEvents.BackEvent.UnregisterListener(GoToPreviousScreen);
+            
+            // Volume event forwarding
+            uiEvents.MasterVolumeChangedEvent.UnregisterListener(OnMasterVolumeChanged_Forwarder);
+            uiEvents.BgmVolumeChangedEvent.UnregisterListener(OnBgmVolumeChanged_Forwarder);
+            uiEvents.SfxVolumeChangedEvent.UnregisterListener(OnSfxVolumeChanged_Forwarder);
         }
+
+        // --- Event Forwarders ---
+        private void OnMasterVolumeChanged_Forwarder(float value) => uiEvents.MasterVolumeChangedEvent.Raise(value);
+        private void OnBgmVolumeChanged_Forwarder(float value) => uiEvents.BgmVolumeChangedEvent.Raise(value);
+        private void OnSfxVolumeChanged_Forwarder(float value) => uiEvents.SfxVolumeChangedEvent.Raise(value);
 
         private void ShowGameplayScreen() => ShowScreen<GameplayScreenView>();
         private void ShowOptionsScreen() => ShowScreen<OptionsScreenView>();

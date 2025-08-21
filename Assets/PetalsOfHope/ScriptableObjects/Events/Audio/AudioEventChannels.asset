@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d0554466d2c9a246a1f94c620fc31cd, type: 3}
+  m_Name: AudioEventChannels
+  m_EditorClassIdentifier: 
+  PlayMusicEvent: {fileID: 11400000, guid: 84d482c81349c95418b67d05548cb131, type: 2}
+  PlaySFXEvent: {fileID: 11400000, guid: 64a3fd4a9c745b04dadef1fc6aadfd79, type: 2}
+  PlayUISoundEvent: {fileID: 11400000, guid: 222dd77e242c9d541bbe1f01ee6ac133, type: 2}
+  MasterVolumeChangedEvent: {fileID: 11400000, guid: 602682bc8064f484990e9f25964911c7, type: 2}
+  BgmVolumeChangedEvent: {fileID: 11400000, guid: 43ee7f78b802c0243ad156df25064452, type: 2}
+  SfxVolumeChangedEvent: {fileID: 11400000, guid: 0c96f39c2cea0a64da58024aa66d15bf, type: 2}
