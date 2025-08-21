@@ -3,6 +3,6 @@ using UnityEngine;
 
 namespace PetalsOfHope.Core.Events
 {
-    [CreateAssetMenu(menuName = "Petals of Hope/Events/Play SFX Event")]
+    [CreateAssetMenu(menuName = "Petals of Hope/Events/Audio/Play SFX Event")]
     public class PlaySFXEvent : TypedEventSO<SFXType> { }
 }

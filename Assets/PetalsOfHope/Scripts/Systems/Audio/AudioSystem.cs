@@ -4,7 +4,6 @@ using PetalsOfHope.Core.Events.Channels;
 using PetalsOfHope.Data.Audio;
 using UnityEngine;
 using UnityEngine.Audio;
-using UnityEngine.Serialization;
 
 namespace PetalsOfHope.Systems
 {

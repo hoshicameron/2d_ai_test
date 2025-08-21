@@ -119,58 +119,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &46020521
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 46020523}
-  - component: {fileID: 46020522}
-  m_Layer: 0
-  m_Name: AusioSystem
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &46020522
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 46020521}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e5392b02704daf647b22ec2405761bc9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  audioEvents: {fileID: 0}
-  soundDatabase: {fileID: 0}
-  mainAudioMixer: {fileID: 0}
-  bgmGroup: {fileID: 0}
-  sfxGroup: {fileID: 0}
-  bgmSource: {fileID: 0}
-  sfxSourcePrefab: {fileID: 0}
-  sfxPoolSize: 10
---- !u!4 &46020523
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 46020521}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &49866516
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -581,6 +529,71 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &1660885807
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 645908297226572017, guid: 7d3c45b53f878de4ea62833cc0bd92fb, type: 3}
+      propertyPath: m_Name
+      value: AudioSystem
+      objectReference: {fileID: 0}
+    - target: {fileID: 2745560310996358906, guid: 7d3c45b53f878de4ea62833cc0bd92fb, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2745560310996358906, guid: 7d3c45b53f878de4ea62833cc0bd92fb, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2745560310996358906, guid: 7d3c45b53f878de4ea62833cc0bd92fb, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2745560310996358906, guid: 7d3c45b53f878de4ea62833cc0bd92fb, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2745560310996358906, guid: 7d3c45b53f878de4ea62833cc0bd92fb, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2745560310996358906, guid: 7d3c45b53f878de4ea62833cc0bd92fb, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2745560310996358906, guid: 7d3c45b53f878de4ea62833cc0bd92fb, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2745560310996358906, guid: 7d3c45b53f878de4ea62833cc0bd92fb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2745560310996358906, guid: 7d3c45b53f878de4ea62833cc0bd92fb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2745560310996358906, guid: 7d3c45b53f878de4ea62833cc0bd92fb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6576284356592916742, guid: 7d3c45b53f878de4ea62833cc0bd92fb, type: 3}
+      propertyPath: sfxPoolSize
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6576284356592916742, guid: 7d3c45b53f878de4ea62833cc0bd92fb, type: 3}
+      propertyPath: sfxSourcePrefab
+      value: 
+      objectReference: {fileID: 3218232864654750538, guid: d13df576b25a54e44b11b43210bfeb7e, type: 3}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 7d3c45b53f878de4ea62833cc0bd92fb, type: 3}
 --- !u!225 &2044493229 stripped
 CanvasGroup:
   m_CorrespondingSourceObject: {fileID: 3265642367665517173, guid: a94a4d535c912324391cc794381fc832, type: 3}
@@ -653,4 +666,4 @@ SceneRoots:
   - {fileID: 49866516}
   - {fileID: 829455593}
   - {fileID: 2825240812266421119}
-  - {fileID: 46020523}
+  - {fileID: 1660885807}
