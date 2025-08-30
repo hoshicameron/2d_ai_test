@@ -1,7 +1,7 @@
 using UnityEngine;
 using System;
 using PetalsOfHope.Data.Player;
-using PetalsOfHope.Interfaces;
+using PetalsOfHope.Contracts;
 
 namespace PetalsOfHope.Gameplay.Enemies.Core
 {

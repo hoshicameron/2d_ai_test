@@ -1,4 +1,4 @@
-namespace PetalsOfHope.Interfaces
+namespace PetalsOfHope.Contracts
 {
     using UnityEngine;
 

@@ -1,7 +1,7 @@
 ﻿// IDataServiceSO.cs
 using UnityEngine;
 
-namespace PetalsOfHope.Interfaces
+namespace PetalsOfHope.Contracts
 {
     /// <summary>
     /// Base class for ScriptableObject-based data services

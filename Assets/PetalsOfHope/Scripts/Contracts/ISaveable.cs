@@ -1,4 +1,4 @@
-namespace PetalsOfHope.Interfaces
+namespace PetalsOfHope.Contracts
 {
     /// <summary>
     /// Interface for objects that can save and load their state.

@@ -1,7 +1,7 @@
 ﻿using PetalsOfHope.AI.Core;
 using PetalsOfHope.AI.Data;
 using PetalsOfHope.AI.Path;
-using PetalsOfHope.Interfaces;
+using PetalsOfHope.Contracts;
 using PetalsOfHope.Scripts.AI.Data;
 using UnityEditor;
 using UnityEngine;

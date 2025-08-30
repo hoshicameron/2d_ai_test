@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 using PetalsOfHope.Data.Player;
 using PetalsOfHope.Core.Events;
-using PetalsOfHope.Interfaces;
+using PetalsOfHope.Contracts;
 using CoreAnimation = PetalsOfHope.Gameplay.Animation.AnimationController; // Alias
 
 // In Assets/_Project/Scripts/Gameplay/Player/PlayerHealth.cs

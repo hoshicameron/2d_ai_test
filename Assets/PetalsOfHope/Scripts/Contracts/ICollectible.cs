@@ -1,4 +1,4 @@
-namespace PetalsOfHope.Interfaces
+namespace PetalsOfHope.Contracts
 {
     /// <summary>
     /// Defines the contract for any ScriptableObject that represents a collectible item.

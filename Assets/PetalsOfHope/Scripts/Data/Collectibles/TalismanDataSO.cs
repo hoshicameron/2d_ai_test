@@ -1,5 +1,5 @@
 using UnityEngine;
-using PetalsOfHope.Interfaces;
+using PetalsOfHope.Contracts;
 
 namespace PetalsOfHope.Data.Collectibles
 {

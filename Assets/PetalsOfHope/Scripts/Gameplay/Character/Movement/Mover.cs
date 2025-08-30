@@ -1,4 +1,4 @@
-﻿using PetalsOfHope.Interfaces;
+﻿using PetalsOfHope.Contracts;
 using UnityEngine;
 
 namespace PetalOfHope.Gameplay.Character.Movement

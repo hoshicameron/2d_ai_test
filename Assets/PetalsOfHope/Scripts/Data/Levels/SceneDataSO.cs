@@ -1,5 +1,5 @@
 using UnityEngine;
-using PetalsOfHope.Interfaces;
+using PetalsOfHope.Contracts;
 #if UNITY_EDITOR
 using UnityEditor;
 #endif

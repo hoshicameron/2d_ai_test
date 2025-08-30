@@ -1,4 +1,4 @@
-﻿namespace PetalsOfHope.Core.Enums
+﻿namespace PetalsOfHope.Contracts
 {
     /// <summary>
     /// Defines the types of background music tracks available in the game.

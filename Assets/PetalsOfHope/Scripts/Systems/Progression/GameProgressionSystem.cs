@@ -5,7 +5,7 @@ using PetalsOfHope.Core.Events;
 using PetalsOfHope.Core.Events.Channels;
 using System;
 using PetalsOfHope.Data.Levels;
-using PetalsOfHope.Interfaces;
+using PetalsOfHope.Contracts;
 using UnityEngine.Serialization;
 
 namespace PetalsOfHope.Systems.Progression

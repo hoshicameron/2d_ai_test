@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace PetalsOfHope.Interfaces
+namespace PetalsOfHope.Contracts
 {
     public interface IMover
     {

@@ -1,4 +1,4 @@
-namespace PetalsOfHope.Interfaces
+namespace PetalsOfHope.Contracts
 {
     /// <summary>
     /// Interface for data persistence services.

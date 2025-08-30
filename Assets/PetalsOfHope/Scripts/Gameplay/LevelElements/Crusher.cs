@@ -1,6 +1,6 @@
 using UnityEngine;
 using System.Collections;
-using PetalsOfHope.Interfaces;
+using PetalsOfHope.Contracts;
 
 namespace PetalsOfHope.Gameplay.LevelElements
 {

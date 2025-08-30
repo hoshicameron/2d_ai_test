@@ -1,7 +1,7 @@
 using UnityEngine;
 using PetalsOfHope.Core.Events;
 using PetalsOfHope.Data.Levels;
-using PetalsOfHope.Interfaces;
+using PetalsOfHope.Contracts;
 using UnityEngine.Serialization;
 
 namespace PetalsOfHope.Systems.SceneManagement

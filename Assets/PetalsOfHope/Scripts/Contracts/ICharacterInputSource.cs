@@ -3,7 +3,7 @@ using Unity.Android.Gradle.Manifest;
 using UnityEngine;
 using Action = System.Action;
 
-namespace PetalsOfHope.Interfaces
+namespace PetalsOfHope.Contracts
 {
     public interface ICharacterInputSource
     {

@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using PetalsOfHope.Core.Enums;
+using PetalsOfHope.Contracts;
 using UnityEngine;
 
 namespace PetalsOfHope.Data.Audio

@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace PetalsOfHope.Interfaces
+namespace PetalsOfHope.Contracts
 {
     /// <summary>
     /// An interface that provides a read-only view of a character's state and properties.

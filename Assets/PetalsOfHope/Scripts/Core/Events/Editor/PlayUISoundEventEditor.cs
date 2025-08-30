@@ -1,6 +1,6 @@
 using UnityEditor;
 using PetalsOfHope.Core.Events;
-using PetalsOfHope.Core.Enums;
+using PetalsOfHope.Contracts;
 
 namespace PetalsOfHope.Editor.Events
 {

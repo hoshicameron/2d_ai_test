@@ -1,4 +1,4 @@
-using PetalsOfHope.Core.Enums;
+using PetalsOfHope.Contracts;
 using UnityEngine;
 
 namespace PetalsOfHope.Core.Events

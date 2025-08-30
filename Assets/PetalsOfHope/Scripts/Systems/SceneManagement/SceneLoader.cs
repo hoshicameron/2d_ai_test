@@ -73,7 +73,7 @@ namespace PetalsOfHope.Systems.SceneManagement
             }
         }
 
-        private void OnLoadSceneRequested(PetalsOfHope.Interfaces.ISceneData sceneData)
+        private void OnLoadSceneRequested(PetalsOfHope.Contracts.ISceneData sceneData)
         {
             if (sceneData == null || _isLoading) return;
 

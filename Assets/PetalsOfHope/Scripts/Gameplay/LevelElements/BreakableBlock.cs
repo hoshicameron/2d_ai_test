@@ -1,5 +1,5 @@
 using UnityEngine;
-using PetalsOfHope.Interfaces;
+using PetalsOfHope.Contracts;
 using PetalsOfHope.Core.Events;
 
 namespace PetalsOfHope.Gameplay.LevelElements

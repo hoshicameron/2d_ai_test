@@ -1,6 +1,6 @@
 ﻿using System;
 using PetalsOfHope.Core.Input;
-using PetalsOfHope.Interfaces;
+using PetalsOfHope.Contracts;
 using UnityEngine;
 
 namespace PetalsOfHope.Gameplay.Player
